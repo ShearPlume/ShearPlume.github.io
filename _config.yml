@@ -104,4 +104,4 @@ theme: landscape
 deploy:
   type: git
   repo: https://github.com/ShearPlume/ShearPlume.github.io.git
-  branch: hexo
+  branch: master
