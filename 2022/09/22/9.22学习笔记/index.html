@@ -4,19 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | Franklin&#39;s secret cabin</title>
+  <title>Franklin&#39;s secret cabin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="9.22学习笔记 lab心得：1.java 里string类型不同于int或double这种值类型，不能用 &#x3D;&#x3D; 比较，因为 &#x3D;&#x3D; 比较的是引用，而string类即使堆中的实际值一样，二者在栈上的引用是不一样的。必须用.equle。 2.Scanner.next不吸收回车，所以使用next读一行字符后要接一个nextline来吸收掉return。 3.sc.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/09/16/hello-world/index.html">
+<meta property="og:title" content="Franklin&#39;s secret cabin">
+<meta property="og:url" content="http://example.com/2022/09/22/9.22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Franklin&#39;s secret cabin">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="9.22学习笔记 lab心得：1.java 里string类型不同于int或double这种值类型，不能用 &#x3D;&#x3D; 比较，因为 &#x3D;&#x3D; 比较的是引用，而string类即使堆中的实际值一样，二者在栈上的引用是不一样的。必须用.equle。 2.Scanner.next不吸收回车，所以使用next读一行字符后要接一个nextline来吸收掉return。 3.sc.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-16T20:47:14.457Z">
-<meta property="article:modified_time" content="2022-09-16T20:47:14.457Z">
+<meta property="og:image" content="c:\Users\18309\ShearPlume.github.io\source_posts\pics\%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220922132122.jpg">
+<meta property="article:published_time" content="2022-09-22T11:36:22.040Z">
+<meta property="article:modified_time" content="2022-09-22T12:22:10.103Z">
 <meta property="article:author" content="Franklin Yang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\18309\ShearPlume.github.io\source_posts\pics\%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220922132122.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Franklin's secret cabin" type="application/atom+xml">
   
@@ -77,46 +79,28 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-9.22学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/09/16/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-09-16T20:47:14.457Z" itemprop="datePublished">2022-09-16</time>
+    <a href="/2022/09/22/9.22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2022-09-22T11:36:22.040Z" itemprop="datePublished">2022-09-22</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Hello World
-    </h1>
-  
-
-      </header>
-    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <h2 id="9-22学习笔记"><a href="#9-22学习笔记" class="headerlink" title="9.22学习笔记"></a>9.22学习笔记</h2><p><img src="C:\Users\18309\ShearPlume.github.io\source_posts\pics\微信图片_20220922132122.jpg" alt="微信图片_20220922132122"></p>
+<h3 id="lab心得："><a href="#lab心得：" class="headerlink" title="lab心得："></a>lab心得：</h3><p>1.java 里string类型不同于int或double这种值类型，不能用 &#x3D;&#x3D; 比较，因为 &#x3D;&#x3D; 比较的是引用，而string类即使堆中的实际值一样，二者在栈上的引用是不一样的。必须用.equle。</p>
+<p>2.Scanner.next不吸收回车，所以使用next读一行字符后要接一个nextline来吸收掉return。</p>
+<p>3.sc.nextLine().trim(); 方法表示去掉字符串中前后的空格。</p>
+<p>4.VScode的3个使用技巧：Alt+Shift+F：一键整理代码<br>Alt+Shift+A：快速块注释<br>Ctrl+&#x2F;：快速行注释</p>
+<h3 id="lecrure-心得："><a href="#lecrure-心得：" class="headerlink" title="lecrure 心得："></a>lecrure 心得：</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/16/hello-world/" data-id="cl84yd4hv000140tw3ohn5rzn" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/22/9.22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl8d0yuv90000nstwhazmc8gk" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -167,7 +151,7 @@
       <ul>
         
           <li>
-            <a href="/2022/09/16/hello-world/">Hello World</a>
+            <a href="/2022/09/22/9.22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">(no title)</a>
           </li>
         
           <li>
