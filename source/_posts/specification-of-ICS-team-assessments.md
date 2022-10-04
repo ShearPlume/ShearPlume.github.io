@@ -56,7 +56,7 @@ M&W公司关于个人信息服务对工作效率提升及其安全性的看法�
 
 ![image-20221005001735797](specification-of-ICS-team-assessments/image-20221005001735797.png)
 
-![image-20221005001748076](../../../AppData/Roaming/Typora/typora-user-images/image-20221005001748076.png)
+![image-20221005003443742](specification-of-ICS-team-assessments/image-20221005003443742.png)
 
 ##### 10.成绩反馈
 
