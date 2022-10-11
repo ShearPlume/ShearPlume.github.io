@@ -1,5 +1,5 @@
 ---
-title: specification of ICS team assessments
+title: specification of ECS team assessments
 date: 2022-10-04 23:44:26
 tags:
 ---
@@ -38,9 +38,9 @@ M&W公司关于个人信息服务对工作效率提升及其安全性的看法�
 
 ##### 7.提交物料的dues
 
-![image-20221005001003276](specification-of-ICS-team-assessments/image-20221005001003276.png)
+![image-20221005001003276](specification-of-ECS-team-assessments/image-20221005001003276.png)
 
-![image-20221005001038199](specification-of-ICS-team-assessments/image-20221005001038199.png)
+![image-20221005001038199](specification-of-ECS-team-assessments/image-20221005001038199.png)
 
 ##### 8.格式
 
@@ -54,9 +54,9 @@ M&W公司关于个人信息服务对工作效率提升及其安全性的看法�
 
 ##### 9.整体时间表
 
-![image-20221005001735797](specification-of-ICS-team-assessments/image-20221005001735797.png)
+![image-20221005001735797](specification-of-ECS-team-assessments/image-20221005001735797.png)
 
-![image-20221005003443742](specification-of-ICS-team-assessments/image-20221005003443742.png)
+![image-20221005003443742](specification-of-ECS-team-assessments/image-20221005003443742.png)
 
 ##### 10.成绩反馈
 
@@ -68,6 +68,6 @@ M&W公司关于个人信息服务对工作效率提升及其安全性的看法�
 
 ##### 12.评分标准
 
-![image-20221005002141436](specification-of-ICS-team-assessments/image-20221005002141436.png)
+![image-20221005002141436](specification-of-ECS-team-assessments/image-20221005002141436.png)
 
-![image-20221005002153641](specification-of-ICS-team-assessments/image-20221005002153641.png)
+![image-20221005002153641](specification-of-ECS-team-assessments/image-20221005002153641.png)
