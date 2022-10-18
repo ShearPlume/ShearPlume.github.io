@@ -2,6 +2,8 @@
 title: 第一篇clog尝试
 date: 2022-09-24 19:58:54
 tags:
+- clog
+- life
 ---
 
 ![](第一篇clog尝试/clog001.png)

@@ -2,6 +2,8 @@
 title: 10.4 java
 date: 2022-10-04 14:36:35
 tags:
+- java
+- course
 ---
 
 #### 类的equals(object o)

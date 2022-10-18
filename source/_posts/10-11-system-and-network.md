@@ -2,6 +2,8 @@
 title: 10.11 system and network
 date: 2022-10-17 16:34:27
 tags:
+- S&N
+- course
 ---
 
 ### machine code

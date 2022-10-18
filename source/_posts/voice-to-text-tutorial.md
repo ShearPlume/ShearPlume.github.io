@@ -2,6 +2,8 @@
 title: voice to text tutorial
 date: 2022-10-16 21:23:06
 tags:
+- experience
+- summary
 ---
 
 # 微软自带的免费高精度语音转文字教程

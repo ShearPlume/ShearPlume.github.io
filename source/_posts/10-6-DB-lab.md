@@ -2,6 +2,8 @@
 title: 10.6 DB lab
 date: 2022-10-06 12:17:16
 tags:
+- DB
+- lab
 ---
 
 #### Task1:

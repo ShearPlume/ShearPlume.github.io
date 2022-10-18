@@ -2,6 +2,8 @@
 title: System lecture02
 date: 2022-10-10 04:04:49
 tags:
+- S&N
+- course
 ---
 
 ### 2.二进制码

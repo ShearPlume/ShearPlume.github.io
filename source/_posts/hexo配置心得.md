@@ -2,6 +2,7 @@
 title: hexo配置心得
 date: 2022-09-22 13:32:59
 tags:
+- experience
 ---
 
  ![](../images/1.jpg)

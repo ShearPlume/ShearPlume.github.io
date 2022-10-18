@@ -2,6 +2,9 @@
 title: specification of ECS team assessments
 date: 2022-10-04 23:44:26
 tags:
+- experience
+- summary
+- course
 ---
 
 ##### 1.占比：20%

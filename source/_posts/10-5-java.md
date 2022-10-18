@@ -2,6 +2,8 @@
 title: 10.5 java
 date: 2022-10-05 15:14:54
 tags:
+- java
+- course
 ---
 
 ##### 抽象类
