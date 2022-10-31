@@ -9,7 +9,7 @@ tags:
 
 *This policy framework uses SESM (Social Engineering through Social Media)[1] and is developed from three aspects: people, process and technology*
 
-##### People Policy.
+#### People Policy.
 
 Employees must attend regular training sessions on information security breaches, and the company will provide different levels of training for different employee positions with different levels of exposure to the risk of information breaches.
 
@@ -23,7 +23,7 @@ Employees must observe the following restrictions when using company information
 
 What company intellectual property can be used? What can be talked about the company's products and services? What company secrets or other information could be posted?
 
-##### Process Policy.
+#### Process Policy.
 
 The company must classify personal, professional and corporate accounts in the communication service and enhance technical security for non-personal accounts.
 
@@ -37,7 +37,7 @@ New communication services software for all personal terminals, desktops and lap
 
 In the event of a breach of information or a cyber attack, the response team should be the first to minimize the damage.
 
-##### Technology Policy.
+#### Technology Policy.
 
 Enterprises have the right to use internal network devices to log web services and user logins in applications.
 
@@ -53,7 +53,7 @@ Companies must review third-party software and APIs.
 
 
 
- 
+#### references：
 
 *[1]   Wilcox, H., & Bhattacharya, M. (2016, June). A framework to mitigate social engineering through social media within the enterprise. In 2016 IEEE 11th Conference on Industrial Electronics and Applications (ICIEA) (pp. 1039-1044). IEEE.*
 
