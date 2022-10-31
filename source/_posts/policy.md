@@ -2,6 +2,8 @@
 title: policy
 date: 2022-10-29 16:44:05
 tags:
+- ECS
+- course
 ---
 
 **本policy 框架使用SESM (Social Engineering through Social Media)，从people，process和tech三方面展开**
