@@ -242,7 +242,7 @@ WHERE C1.DID IN
 
 ##### Validation of results:
 
-![image-20221111203816349](../../../Desktop/image-20221111203816349.png)
+![image-20221111203816349](DB-ae1/image-20221111203816349.png)
 
 Since Rogers is the only director who has more than 2 managers(3 in our data), the outcome is correct.
 
@@ -268,7 +268,7 @@ WHERE
 
 ##### Validation of results:
 
-![image-20221111203924209](../../../Desktop/image-20221111203924209.png)
+![image-20221111203924209](DB-ae1/image-20221111203924209.png)
 
 Since SEC has been assigned to 2 directors while INV has only been assigned to one, the outcome is correct
 
@@ -297,6 +297,6 @@ WHERE
 
 ##### Validation of results:
 
-![image-20221111203936295](../../../Desktop/image-20221111203936295.png)
+![image-20221111203936295](DB-ae1/image-20221111203936295.png)
 
 Since Simon (a.k.a. SI) has changed his committee team most frequently(3 times: 2000,2021,2022 respectively),  the outcome is correct.
