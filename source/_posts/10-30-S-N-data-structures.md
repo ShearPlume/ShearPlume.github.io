@@ -78,4 +78,116 @@ X[R3] ，EA是X+R3。这是使用其全部潜力的索引寻址。
 
 ![image-20221112131019403](10-30-S-N-data-structures/image-20221112131019403.png)
 
- 
+##### section 7 练习：
+
+exercise 1：
+
+![image-20221114195631760](10-30-S-N-data-structures/image-20221114195631760.png)
+
+```assembly
+; sum = 0;
+; for (i = 0; i<n; i++)
+; { sum = sum + X[i]; }
+
+;R1 = 1
+;R2 = I
+;R3 = N
+;R4 = SUM
+;R5 = X[I]
+;R6 = TEMP BOOL
+
+	LEA		R1,1[R0]	;R1=1
+	LOAD	R2,I[R0]	;R2 = I
+	LOAD	R3,N[R0]	;R3 = N		
+	LEA		R4,0[R0]	;R4 = SUM	
+LOOP	CMPGT	R6,R3,R2	;IF I<N
+	JUMPF	R6,DONE[R0]	;IF I>N,JUMP TO DONE	
+	LOAD	R5,X[R2]	;LOAD X[I]
+	ADD		R4,R4,R5	;SUM+=X[I]
+	ADD		R2,R1,R2	;I+=1
+	JUMP	LOOP[R0]	;BACK TO THE LOOP
+
+DONE		STORE	R4,SUM[R0]	;LOAD OUTCOME TO SUM
+	TRAP	R0,R0,R0	;END	
+;SET DATA
+
+N	DATA	5
+I	DATA	0
+X 	data 17 	; X[0]
+	data 2 		; X[1]
+	data 150 	; X[2]
+	data -3 	; X[3]
+	data 25 	; X[4]
+SUM	DATA	0	
+```
+
+exercise2:
+
+![image-20221114195724747](10-30-S-N-data-structures/image-20221114195724747.png)
+
+
+
+```assembly
+;int tempmax =0;
+;while(x[i]>=0)
+;{
+;    if (x[i]>tempmax)
+;        tempmax=x[i];   
+;	 i++; 
+;}
+
+;R1 = I
+;R2 = TEMPMAX
+;R3 = X[I]
+;R4 = 1
+;R5 = TEMP BOOL
+
+	LEA	R1,0[R0]	;SET O TO I
+	LEA 	R2,0[R0]	;SET TEMPMAX WITH 0
+	LEA	R4,1[R0]	;SET CONSTANT 1 TO R4
+
+LOOP	LOAD	R3,X[R1]	;LOAD X[I]
+	CMPLT	R5,R3,R0	;IF X[I]<0
+	JUMPT	R5,DONE[R0]	;IF X[I]<0,JUMO TO DONE
+	CMPGT	R5,R3,R2	;IF X[I]>TEMPMAX
+	JUMPF	R5,SKIP[R0]	;IF X[I]!>TEMPMAX,JUMP TO SKIP
+	LEA	R2,0[R3]	;TRMPMAX=X[I]
+SKIP	ADD	R1,R1,R4	;I++
+	JUMP	LOOP[R0]	;BACK TO LOOP
+DONE	STORE	R2,MAX[R0]	;STORE OUTCOME TO MAX
+	TRAP	R0,R0,R0	;END
+
+;DATA AREA
+
+X	DATA	2	;X[0]
+	DATA	42
+	DATA	224
+	DATA	19
+	DATA	4
+	DATA	-1	;X[5]
+MAX	DATA	0	;MAX , INITIAL 0
+		
+```
+
+```c
+int possum=0;
+int n;
+int numofneg=0;
+int numofposodd=0;
+bool overflow=false;
+
+for(int i=0;i<n;i++)
+{
+    if(x[i]>0)
+    {
+        possum+=x[i];
+        if(possum<0)
+            overflow=true;
+        if(x[i]%2!=0)
+            numofposodd++;
+    }        
+    else if(x[i]<0)
+        numofneg++;
+}
+```
+
