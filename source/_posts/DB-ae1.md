@@ -78,9 +78,9 @@ Delete Anomaly:  If  we delete DID 1, then  we have to delete the tuple with 1 a
 
 ##### step1:
 
-{MID,  CID,  CNAME,  FYEAR}
+{<u>MID,  CID</u>,  CNAME,  <u>FYEAR</u>}
 
-{MID, MNAME，HCNAME}
+{<u>MID</u>, MNAME，HCNAME}
 
 ##### explanation:
 
@@ -88,7 +88,7 @@ MNAME and HCNAME Partly dependent on MID, thus, the relation is not 2NF, we spli
 
 ##### step2:
 
-MANAGER1:{<u>MID,  CID,  FYEAR</u>}
+MANAGER1:{<u>MID$^*$,  CID$^*$,  FYEAR</u>}
 
 MANAGER2:{<u>MID</u>, MNAME，HCNAME}
 
@@ -104,13 +104,23 @@ CNAME Partly dependent on CID, thus, the relation is not 2NF, we split the relat
 
 ##### step1:
 
-CEO1:{<u>MID,  DID</u>}
+CEO1:{<u>MID,  DID</u>$^*$}
 
-CEO2:{<u>DID</u>，DIRECTOR，RESPONSIBILITY,}
+CEO2:{<u>DID</u>，DIRECTOR，RESPONSIBILITY}
 
 ##### explanation:
 
-DIRECTOR and RESPONSBILITY Partly dependent on DID, thus, split the relation into two.
+DIRECTOR and RESPONSBILITY Partly dependent on DID, thus, splitting the relation into two. But there still exists a transitive dependency in CEO2: DID→DIRECTOR→RESPONSIBILITY.
+
+##### step2:
+
+CEO1:{<u>MID,  DID</u>$^*$}
+
+CEO2:{<u>DID</u>，DIRECTOR$^*$}
+
+CEO3:{<u>DIRECTOR</u>，RESPONSIBILITY}
+
+We split CEO2 to 2.
 
 **Now the table2 has been normalized to BCNF.**
 
@@ -172,16 +182,22 @@ CREATE TABLE CEO1(
 	DID INT,
 	PRIMARY KEY (MID,DID)
 );
-
 CREATE TABLE CEO2(
 	DID INT PRIMARY KEY,
-	DIRECTOR VARCHAR(10),
+	DIRECTOR VARCHAR(10)
+);
+CREATE TABLE CEO3(
+	DIRECTOR VARCHAR(10) PRIMARY KEY,
 	RESPONSIBILITY VARCHAR(15)
 );
-
 ALTER TABLE CEO1 
 	ADD CONSTRAINT CEO1_FK1
 	FOREIGN KEY (DID) REFERENCES CEO2(DID) 
+	ON UPDATE CASCADE	
+	ON DELETE SET NULL;
+ALTER TABLE CEO2
+	ADD CONSTRAINT CEO2_FK1
+	FOREIGN KEY (DIRECTOR) REFERENCES CEO3(DIRECTOR) 
 	ON UPDATE CASCADE	
 	ON DELETE SET NULL;
 ```
@@ -193,10 +209,10 @@ Insert data in advance:
 for MANAGER schema:
 
 ```sql
-INSERT INTO MANAGER2 VALUES (1,'SI','LEEDS');
-INSERT INTO MANAGER2 VALUES (2,'EU','ROME');
-INSERT INTO MANAGER2 VALUES (3,'PE','MUN');
-INSERT INTO MANAGER2 VALUES (4,'JO','GLA');
+INSERT INTO MANAGER2 VALUES (1,'Simon','LEEDS');
+INSERT INTO MANAGER2 VALUES (2,'Euan','ROME');
+INSERT INTO MANAGER2 VALUES (3,'Peter','MUN');
+INSERT INTO MANAGER2 VALUES (4,'John','GLA');
 
 INSERT INTO MANAGER3 VALUES (1,'DEV');
 INSERT INTO MANAGER3 VALUES (2,'HR');
@@ -219,7 +235,7 @@ MANAGER1:
 
 MANAGER2:
 
-![image-20221111220450492](DB-ae1/image-20221111220450492.png)
+![image-20221117003849468](DB-ae1/image-20221117003849468.png)
 
 MANAGER3:
 
@@ -228,12 +244,16 @@ MANAGER3:
 for CEO schema:
 
 ```sql
-INSERT INTO CEO2 VALUES (1,'Rogers','SEC');
-INSERT INTO CEO2 VALUES (2,'Burn','INV');
-INSERT INTO CEO2 VALUES (3,'Miller','SEC');
+INSERT INTO CEO3 VALUES ('Rogers','SEC');
+INSERT INTO CEO3 VALUES ('Burn','INV');
+INSERT INTO CEO3 VALUES ('Miller','SEC');
+
+INSERT INTO CEO2 VALUES (1,'Rogers');
+INSERT INTO CEO2 VALUES (2,'Burn');
+INSERT INTO CEO2 VALUES (3,'Miller');
 
 INSERT INTO CEO1 VALUES (1,1);
-INSERT INTO CEO1 VALUES (2,2);
+INSERT INTO CEO1 VALUES (1,2);
 INSERT INTO CEO1 VALUES (2,3);
 INSERT INTO CEO1 VALUES (3,1);
 INSERT INTO CEO1 VALUES (1,3);
@@ -248,7 +268,11 @@ CEO1:
 
 CEO2:
 
-![image-20221111220602347](DB-ae1/image-20221111220602347.png)
+![image-20221117002336489](DB-ae1/image-20221117002336489.png)
+
+CEO3:
+
+![image-20221117002402109](DB-ae1/image-20221117002402109.png)
 
 #### SQL1:
 
@@ -266,7 +290,7 @@ WHERE C1.DID IN
 
 ![image-20221111203816349](DB-ae1/image-20221111203816349.png)
 
-Since Rogers is the only director who has more than 2 managers(3 in our data), the outcome is correct.
+Since Rogers is the only director who has more than 2 managers(==notice we add one more data in the insert part in addition to the given data so Rogers has 3 managers in our data==), the outcome is correct.
 
 #### SQL2:
 
@@ -274,17 +298,17 @@ Since Rogers is the only director who has more than 2 managers(3 in our data), t
 
 ```sql
 SELECT DISTINCT RESPONSIBILITY
-FROM CEO2 AS C1
+FROM CEO3 AS C1
 WHERE
-	(SELECT COUNT(DISTINCT DID)
-	FROM CEO2 
+	(SELECT COUNT(DISTINCT DIRECTOR)
+	FROM CEO3
 	WHERE 
 		RESPONSIBILITY =C1.RESPONSIBILITY
 	 	GROUP BY  RESPONSIBILITY)
 	=
 	(SELECT MAX(COUNTS)FROM 
-		(SELECT COUNT(DISTINCT DID) AS COUNTS 
-		FROM CEO2 
+		(SELECT COUNT(DISTINCT DIRECTOR) AS COUNTS 
+		FROM CEO3
 		GROUP BY  RESPONSIBILITY)AS C2)
 ```
 
@@ -292,7 +316,7 @@ WHERE
 
 ![image-20221111203924209](DB-ae1/image-20221111203924209.png)
 
-Since SEC has been assigned to 2 directors while INV has only been assigned to one, the outcome is correct
+Since SEC(Security) has been assigned to 2 directors while INV(Investment) has only been assigned to one, the outcome is correct
 
 #### SQL3:
 
@@ -319,6 +343,6 @@ WHERE
 
 ##### Validation of results:
 
-![image-20221111203936295](DB-ae1/image-20221111203936295.png)
+![image-20221117002722348](DB-ae1/image-20221117002722348.png)
 
-Since Simon (a.k.a. SI) has changed his committee team most frequently(3 times: 2000,2021,2022 respectively),  the outcome is correct.
+Since Simon has changed his committee team most frequently(3 times: 2000,2021,2022 respectively),  the outcome is correct.
