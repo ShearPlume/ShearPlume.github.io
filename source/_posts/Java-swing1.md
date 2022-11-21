@@ -9,7 +9,7 @@ tags:
 ### Layouts:
 
 布局,掌握元素放置的必须选择,可以采取多种布局的方式组合.在swing中有很多布局可以选择
-常用布局: BorderLayout,FlowLayout,GridLayout
+常用布局: FlowLayout,BorderLayout,GridLayout
 进阶布局: SpringLayout,CardLayout,BoxLayout,GridBagLayout
 第三方布局: FormLayout,MigLayout
 
@@ -65,6 +65,10 @@ Java中间容器是可以包含其它相应组件的容器，但是中间容器�
 
 •    ==JPanel：最灵活、最常用的中间容器。==
 
+在北、南、东、西每个区域只能添加一个组件。
+
+要放置多个组件，你必须将它们添加到一个Jpanel（它是一个容器），然后将Jpanel添加到相应的区域。Jpanel中的子窗口的排列方式默认是流式的，子窗口还能再分成小的子窗口。
+
 •    JScrollPane：与 JPanel 类似，但还可在大的组件或可扩展组件周围提供滚动条。
 
 •    JTabbedPane：包含多个组件，但一次只显示一个组件。用户可在组件之间方便地切换。
@@ -88,14 +92,96 @@ Java中间容器是可以包含其它相应组件的容器，但是中间容器�
 
 容器大小改变时，组件的相对位置不变，大小会改变。
 
-设置网格布局行数和列数时，行数或者列数可以有一个为零。若rows为0，cols为3，则列数固定为3，行数不限，每行只能放3个控件或容器。若cols为0，rows为3，则行数固定为3，列数不限，且每行必定有控件，若组件个数不能整除行数，则除去最后一行外的所有行组件个数为：Math.ceil(组件个数/rows)。
+设置网格布局行数和列数时，==行数或者列数可以有一个为零。若rows为0，cols为3，则列数固定为3，行数不限，每行只能放3个控件或容器。若cols为0，rows为3，则行数固定为3，列数不限，且每行必定有控件，==若组件个数不能整除行数，则除去最后一行外的所有行组件个数为：Math.ceil(组件个数/rows)。
+
+![image-20221120152904230](Java-swing1/image-20221120152904230.png)
 
 Math.ceil(double x)：传回不小于x的最小整数值。比如行数为3，组件数为13个，则Math.ceil(13/3)=5，即第一行，第二行组件数各为5个，剩下的组件放在最后一行。
 
 若组件数超过网格设定的个数，则布局管理器会自动增加网格个数，原则是保持行数不变。
+
+add()函数接受的组件被视为objec，所以如果一个组件对象先后被add进两个JPanel，==它只会在最后一个中出现==
 
 ##### 2.常用构造函数及方法：
 
 ![image-20221108135456831](Java-swing1/image-20221108135456831.png)
 
 ![image-20221108135413163](Java-swing1/image-20221108135413163.png)
+
+### JPanel
+
+#### 摘要：
+
+The default layout for a sub-window (JPanel) is ==Flow Layout==
+
+![image-20221120151457935](Java-swing1/image-20221120151457935.png)
+
+#### 例子：	
+
+```java
+package swing.week7_swing;
+
+import java.awt.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+public class SimpleFrame1 extends JFrame {
+	private JButton button1;
+	private JLabel label1;
+	private JTextField textField1;
+
+	public SimpleFrame1() {
+		final int HEIGHT = 300;
+		final int WIDTH = HEIGHT * 2;
+		this.setTitle("A Simple GUI");
+		this.setSize(WIDTH, HEIGHT);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		this.setLayout(new BorderLayout());
+
+		JPanel northPanel = new JPanel(new FlowLayout());
+		JPanel southPanel = new JPanel(new FlowLayout());
+		JPanel eastPanel = new JPanel(new FlowLayout());
+		JPanel westPanel = new JPanel(new FlowLayout());
+		JPanel centerPanel = new JPanel(new FlowLayout());
+
+		northPanel.setBackground(Color.white);
+		label1 = new JLabel(" Click the Button");
+		button1 = new JButton("Click");
+		northPanel.add(label1);
+		northPanel.add(button1);
+
+		textField1 = new JTextField(30);
+		southPanel.add(textField1);
+		southPanel.setBackground(Color.green);
+
+		eastPanel.setBackground(Color.yellow);
+		westPanel.setBackground(Color.blue);
+		centerPanel.setBackground(Color.black);
+
+		this.add(northPanel, BorderLayout.NORTH);
+		this.add(southPanel, BorderLayout.SOUTH);
+		this.add(eastPanel, BorderLayout.EAST);
+		this.add(westPanel, BorderLayout.WEST);
+		this.add(centerPanel, BorderLayout.CENTER);
+	}
+
+	/*
+	 * Main method -- creates the SimpleFrame object
+	 */
+	public static void main(String[] args) {
+		SimpleFrame1 gui = new SimpleFrame1();
+		gui.setVisible(true);
+	}
+}
+
+```
+
