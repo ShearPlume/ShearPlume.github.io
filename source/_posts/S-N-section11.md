@@ -2,8 +2,8 @@
 title: S&N section11
 date: 2022-12-08 15:09:57
 tags:
-course
-S&N
+- course
+- S&N
 ---
 
 ## Section11 Networks

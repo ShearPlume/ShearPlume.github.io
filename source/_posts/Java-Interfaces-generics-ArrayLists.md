@@ -231,6 +231,12 @@ class B1 implements IB<Integer> {
 
 ArrayList 类是一个可以动态修改的数组，与普通数组的区别就是它是没有固定大小的限制，我们可以添加或删除元素。
 
+ArrayList默认容量位10：
+
+​	①arrayList 底层是个 数组， Object[] elementData ；
+
+​	②size是 这个arrayList 的 底层数组 Object[] elementData 包含的元素 ，记住了是包含，而不是 这个数组的 length （length是注意点了，数组的length其实说白了就是所谓的容量）；
+
 ArrayList 继承了 AbstractList ，并实现了 List 接口
 
 ArrayList是泛型类所以有<>标志
@@ -243,7 +249,7 @@ import java.util.ArrayList; // 引入 ArrayList 类
 ArrayList<E> objectName =new ArrayList<>();　 // 初始化
 ```
 
-**E**: 泛型数据类型，用于设置 objectName 的数据类型，**只能为引用数据类型**。
+**E**: 泛型数据类型，用于设置 objectName 的数据类型，**只能为引用数据类型**。想用int只能用封装类Integer
 
 **objectName**: 对象名。
 
@@ -350,6 +356,14 @@ public class JiyikTest {
 
 
 #### ArrayList常用方法：
+
+==特殊：.sort(Comparator.naturalOrder)== 
+
+naturalOrder是比较器功能接口的静态方法。
+
+Java 8中引入的Comparator.naturalOrder方法返回一个比较器，该比较器以自然顺序比较可比较对象。
+
+对于自然排序，一个类需要实现Comparable并定义compareTo方法。
 
 | 序号 | 方法                                                         | 描述                                          |
 | ---- | ------------------------------------------------------------ | --------------------------------------------- |
