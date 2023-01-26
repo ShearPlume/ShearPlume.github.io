@@ -97,7 +97,7 @@ Up主更新视频通知粉丝和老板：
 ```java
 public class ObserverPattern {
     public static void main(String[] args) {
-        Subject subject = new YoutuberPeeta();
+        Subject subject = new YoutuberYFK();
         Observer obs1 = new Fans();
         Observer obs2 = new Vendor();
         subject.add(obs1);
@@ -109,12 +109,12 @@ public class ObserverPattern {
 ```
 
 ```
-Peeta 发布恰饭视频
+YFK 发布恰饭视频
 --------------
 紛絲看到表示傷心！
 老板看到恰饭视频覺得開心！
 
-Peeta 發布新vlog影片
+YFK 發布新vlog影片
 --------------
 紛絲看到VLOG覺得有趣！
 老板看到VLOG表示為啥不是恰饭视频！
