@@ -28,7 +28,7 @@ tags:
 
 ### 信息量的度量--熵
 
-![image-20230222073226026](/CSD-Information-Theory/image-20230222073226026.png)
+![image-20230222073226026](CSD-Information-Theory/image-20230222073226026.png)
 
 ### 消息中的冗余：冗余度
 
@@ -46,17 +46,17 @@ tags:
 
 定义：长度为Ｎ比特的消息Ｍ，假设它的信息量为Ｈ(Ｍ)，则其冗余度为：
 
-![image-20230222074142031](/CSD-Information-Theory/image-20230222074142031.png)
+![image-20230222074142031](CSD-Information-Theory/image-20230222074142031.png)
 
 （也可以说$H(M)\div N$ 等于1时，没有冗余。这个可看作编码效率）
 
- 总冗余为![image-20230222074426126](../CSD-Information-Theory/image-20230222074426126.png)
+ 总冗余为![image-20230222074426126](CSD-Information-Theory/image-20230222074426126.png)
 
-![image-20230222074514388](/CSD-Information-Theory/image-20230222074514388.png)
+![image-20230222074514388](CSD-Information-Theory/image-20230222074514388.png)
 
 有意思~
 
-![image-20230222074632519](/CSD-Information-Theory/image-20230222074632519.png)
+![image-20230222074632519](CSD-Information-Theory/image-20230222074632519.png)
 
 1/(1-D)=/N/H(M),表示消息长度/信息量，完美压缩就是把消息压缩到只剩信息
 
@@ -130,7 +130,7 @@ tags:
 
 ► 假设我们有一个L符号的字母表。 
 
-► 长度为N的可能消息的数量是$L^N = (2^R)^N = 2^{RN}$，因为$L = 2^R$ $(R=\log_2^L)$
+► 长度为N的可能消息的数量是$L^N = (2^R)^N = 2^{RN}，因为L = 2^R$ $(R=\log_2^L)$
 
 ► 有意义的消息的数量可以用语言的实际码率来表示，即 $2^{rN}$
 
