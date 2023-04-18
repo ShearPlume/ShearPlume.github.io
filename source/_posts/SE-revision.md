@@ -245,7 +245,7 @@ void cleanup(boolean memfull, boolean user_req) {//数据耦合
 
 数据耦合，控制耦合，时序耦合， 公共耦合，内容耦合
 
-##### 怎么改进他？
+**怎么改进他？**
 
 看到69页
 
