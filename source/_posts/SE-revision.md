@@ -19,45 +19,45 @@ tags:
 
 #### 复习要点：
 
-- ##### 抽象, 封装, 继承, 多态性
+##### 抽象, 封装, 继承, 多态性
 
-  - 继承的典型用途
+- 继承的典型用途
 
-    - 基类：
-    - 为一系列的子类定义一个接口
-    - 为子类添加特定的功能
-    - 系统只通过基类的接口进行交互
+  - 基类：
+  - 为一系列的子类定义一个接口
+  - 为子类添加特定的功能
+  - 系统只通过基类的接口进行交互
 
-  - 多态性
+- 多态性
 
-    - 子类共享父类的类型
+  - 子类共享父类的类型
 
-      - 你不能删除功能，只能扩展（表格只会变大）。
+    - 你不能删除功能，只能扩展（表格只会变大）。
 
-    - 意味着它们可以透明地用于父类可以使用的任何地方
+  - 意味着它们可以透明地用于父类可以使用的任何地方
 
-    - 多态性意味着一个对象的具体行为取决于它的类型
+  - 多态性意味着一个对象的具体行为取决于它的类型
 
-    - 多态性： 隐藏行为
-      多态性同样因为你不能做什么而有用
+  - 多态性： 隐藏行为
+    多态性同样因为你不能做什么而有用
 
-      调用者不允许知道一个对象的确切类型
-      只允许它至少具有给定（很宽泛）类型的功能
+    调用者不允许知道一个对象的确切类型
+    只允许它至少具有给定（很宽泛）类型的功能
 
-  - 封闭性
+- 封闭性
 
-    - 对象控制自己的状态，例如，它们内部有数据。
-    - 理想情况下，只有隐藏的/很好地控制对它的访问
+  - 对象控制自己的状态，例如，它们内部有数据。
+  - 理想情况下，只有隐藏的/很好地控制对它的访问
 
-    
+  
 
-- ##### 可见性修改器
+##### 可见性修改器
 
-- ##### 抽象类/接口
+##### 抽象类/接口
 
-- ##### 获取器/设置器
+##### 获取器/设置器
 
-- ##### 最终性
+##### 最终性
 
 
 
@@ -65,31 +65,31 @@ tags:
 
 #### 复习要点：
 
-- ##### 规模
+##### 规模
 
-  - 抽象
-  - 文档
-  - 团队工作
+- 抽象
+- 文档
+- 团队工作
 
-- ##### 变化
+##### 变化
 
-  - 低耦合
-  - 高内聚
-  - 冲刺、版本控制、敏捷
+- 低耦合
+- 高内聚
+- 冲刺、版本控制、敏捷
 
-- ##### 你应该了解以上这些挑战如何影响软件的设计
+##### 以上这俩挑战如何影响软件的设计
 
-  软件规模过大：任何一个人无法阅读全部代码，此时需要：
+软件规模过大：任何一个人无法阅读全部代码，此时需要：
 
-  - 解决复杂问题的技术（第二学期）
-  - 团队合作（第一学期）
+- 解决复杂问题的技术（第二学期）
+- 团队合作（第一学期）
 
-  软件存在变化：与其他学科不同，软件变化很大
+软件存在变化：与其他学科不同，软件变化很大
 
-  - 敏捷技术（第一学期）都是关于变化的
-  - 我们如何处理需求的变化？ 不要依赖提前收集
-  - 我们如何发现需要改变的问题？ 不断沟通（站立）。
-  - 我们如何跟踪功能的变化？ 用户故事/打印板
+- 敏捷技术（第一学期）都是关于变化的
+- 我们如何处理需求的变化？ 不要依赖提前收集
+- 我们如何发现需要改变的问题？ 不断沟通（站立）。
+- 我们如何跟踪功能的变化？ 用户故事/打印板
 
 ##### 抽象作为处理规模的基本技术
 
@@ -130,29 +130,29 @@ tags:
 
 ##### 软件内聚类型：
 
-Coincidental/Utility Cohesion (Usually Bad)
+###### Coincidental/Utility Cohesion (Usually Bad)
 
 ​	无意义的随机分组，啥类型都肯可能有
 
-Logical Cohesion (Usually Bad)
+###### Logical Cohesion (Usually Bad)
 
 ​	对具有类似逻辑的组件进行分组，这种逻辑可能很肤浅
 
-Sequential/Procedural/Temporal Cohesion
+###### Sequential/Procedural/Temporal Cohesion
 
 ​	通过使用时间分组
 
-Communication/Informational Cohesion
+###### Communication/Informational Cohesion
 
 ​	对相同数据进行操作的组件被保存在一起	（==OOP的类中经常使用==）
 
-Functional Cohesion (Best)	（==是不是很像method？==）
+###### Functional Cohesion (Best)	（==是不是很像method？==）
 
 ​	分组来解决一个（定义明确的）单一问题
 
 ##### 软件耦合类型：
 
-Content Coupling (Usually bad)
+###### Content Coupling (Usually bad)
 
 ​	组件依赖于另一个组件的内部细节，如果内部细节发生变化，另一个组件就会==停止工作==!
 
@@ -162,13 +162,13 @@ Content Coupling (Usually bad)
 2. 一个模块不通过正常入口转到另一模块内部；
 3. 一个模块有多个入口
 
-Common Data Coupling 公共耦合(Usually bad; read-only data can be okay)
+###### Common Data Coupling 公共耦合(Usually bad; read-only data can be okay)
 
 ​	 对共享数据的依赖性： 全局变量，但是如果别人改变/删除了你所依赖的全局数据怎么办？（之后的单例模式可以解决此问题）
 
 若一组模块都访问同一个公共数据环境，则它们之间的耦合就称为公共耦合。公共的数据环境可以是全局数据结构、共享的通信区、内存的公共覆盖区等。
 
-Control Coupling (Not always bad)	
+###### Control Coupling (Not always bad)	
 
 ​	一个模块的功能由另一个模块改变
 
@@ -184,7 +184,7 @@ void printValue(bool alsoPrintNewLine) { ... }
 - 如果这是一个小的组，并且所有的调用者都同意，那么没关系
 - 由于需要尊重 "旧 "的控制接口，会使改变一个组件变得更加困难
 
-Stamp Coupling
+###### Stamp Coupling
 
 如果一组模块通过参数表传递记录信息，就是标记耦合。==它是某一数据结构的子结构，而不是简单变量==。
 
@@ -207,36 +207,39 @@ System.out.println(u.name);
 
 - 对于复制参数的语言，会损害性能
 
-==Data Coupling==
+###### ==Data Coupling==
 
 两个组件通过共享数据进行互动
+
+如果一个模块访问另一个模块时，彼此之间是通过数据参数(不是控制参数、公共数据结构或外部变量)来交换输入、输出信息的，则称这种耦合为数据耦合。和content区别在于==content的重点在于依赖外部变化==
+
 - 你传递的数据越多，耦合就越紧密：
   - 向一个方法传递大量的参数
   - 额外的对象可以减少这种情况，例如，现在你只耦合到一个单一的接口,此接口集成了那些参数。
     - 但要小心盖章耦合
 - 不是公共耦合，因为数据移动是局部而不是全局的的，例如通过参数。
 
-Routine/Temporal Coupling
+###### Routine/Temporal Coupling
 
 - 方法/组件需要被一起调用来做一些事情
   - setup(), act(), teardown()
 - 这些之间存在着时间关系
 - 调用代码必须掌握正确的顺序
 
-Interface Coupling (Best Form)
+###### Interface Coupling (Best Form)
 
 - 通过定义良好的API进行互动
   - 实施细节是隐藏的
   - 总体目标需要明确：CalculateTotal()而不是f()。
 
-**例题：下列代码包含了哪些耦合方式？**
+##### 例题：下列代码包含了哪些耦合方式？
 
 ```java
-void cleanup(boolean memfull, boolean user_req) {//数据耦合
+void cleanup(boolean memfull, boolean user_req) {//
  if (user_req && IGNORE_USER_REQ) return;//控制耦合， 公共耦合（第二个是全局变量）
  log.write(LOG_LEVEL);
  log.write(“start cleanup”);
- collector.cleanup(memfull, mem.size, mem.start, mem.end, mem.id);//mem.size取决于size是public的（一个模块访问了另一个模块的内部数据）
+ collector.cleanup(memfull, mem.size, mem.start, mem.end, mem.id);//mem.size依赖于size是public的（一个模块访问了另一个模块的内部数据），内容耦合，数据耦合
  log.write(LOG_LEVEL);
  log.write(“end cleanup”);
  }
@@ -245,13 +248,124 @@ void cleanup(boolean memfull, boolean user_req) {//数据耦合
 
 数据耦合，控制耦合，时序耦合， 公共耦合，内容耦合
 
-**怎么改进他？**
+###### **怎么改进他？**
 
-看到69页
+首先我们知道==不好==的耦合有：
+
+内容耦合， 公共耦合，控制耦合，时序耦合
+
+依次改进：
+
+- 内容耦合:
+
+  - `collector.cleanup(memfull,mem)`，直接传mem而不是mem的内部数据size
+
+- 公共耦合：
+
+  - `if (user_req && global.ignore_user_req) return;`，不用全局变量而用全局全局对象的属性，比全局的、可公开访问的变量更好
+
+- 控制耦合：存在控制耦合但是问题不大
+
+- 时序耦合：
+
+  - 把按时序打印的信息放在一起：
+
+  - 最终样子：
+
+  - ```java
+     void cleanup(boolean memfull, boolean user_req) {
+     if (user_req && globals.should_ignore_user_req()) return;
+     log.write(LOG_LEVEL, “start cleanup”);
+     collector.cleanup(memfull, mem);
+     log.write(LOG_LEVEL, "end cleanup");
+     }
+    ```
+
+**==所以说控制耦合到底要不要消除？？==**
+
+##### 总结图
+
+![image-20230418233903251](SE-revision/image-20230418233903251.png)
+
+##### lab：（老师说很可能会考）
+
+lab问题：
+
+为什么我们需要去除耦合？
+- 太多的耦合可能表明设计不佳
+  - 分享太多的信息
+  - 棘手的使用互动（例如：常规耦合）
+- 本质上：耦合度过高的代码（没有足够的内聚力）是难以改变的
+  - 困难的意思是 "通过你的程序的大段传播"
+  - 在较小的实验室例子中不是一个大问题
+  - 但如果你有一个100万行的代码库，则是一个巨大的问题。
+
+### Week 3 Object Orientated Design
+
+#### 目标：
+
+将OOP与耦合/内聚联系起来
+
+学习控制组件使用的高级OOP特性
+
+- 例如，改善耦合性
+
+#### 对象和内聚
+
+对象本身就是内聚的体现：数据 + 作用于该数据的方法
+
+##### 对象内部的内聚
+
+###### 对象具有==通信内聚性communication cohesive==（对相同数据进行操作的组件被保持在一起）
+
+通信内聚性：
+
+- 数据是实例变量
+- "组件"是方法
+
+对象不只是因为其是对象就拥有内聚性
+
+反例1：冗余数据
+
+```java
+public class Everything {
+private DataBase db;
+private WebsiteServer server;
+private BankAccount acc1, acc2l;
+private HTMLFormatter fmt;
+...
+}
+
+```
+
+反例2：方法
+
+```java
+public class User {
+private DataBase db;
+...
+public String getName();
+public void validateUser();
+...
+// Assume only method using db
+public void syncDB();
+}
+//db不应该属于User，要么db作为参数传给syncDB要么把类名改成UserDatbaseController
+
+```
+
+###### 公共数据：
+
+技术上讲，类的方法==肯定存在==公共耦合，但是由于高度的通信内聚性，影响较小
+
+##### 对象外部的内聚
+
+###### 接口
+
+看到83页
 
 
 
-Week 3 Object Orientated Design
 Week 4 Tools for Software Modelling (UML)
 Week 5 Testing
 Week 6 Errors/Safe Classes/Java Packages
