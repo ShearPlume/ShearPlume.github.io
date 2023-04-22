@@ -38,8 +38,8 @@ tags:
 
   - 多态性意味着一个对象的具体行为取决于它的类型
 
-  - 多态性： 隐藏行为
-    多态性同样因为你不能做什么而有用
+    - 多态性： 隐藏行为
+      多态性同样因为你不能做什么而有用
 
     调用者不允许知道一个对象的确切类型
     只允许它至少具有给定（很宽泛）类型的功能
@@ -310,11 +310,11 @@ lab问题：
 
 - 例如，改善耦合性
 
-#### 对象和内聚
+#### 对象的内聚与耦合
 
 对象本身就是内聚的体现：数据 + 作用于该数据的方法
 
-##### 对象内部的内聚
+#### 对象内部的内聚
 
 ###### 对象具有==通信内聚性communication cohesive==（对相同数据进行操作的组件被保持在一起）
 
@@ -354,17 +354,164 @@ public void syncDB();
 
 ```
 
-###### 公共数据：
+#### 对象内部的耦合：公共数据
 
-技术上讲，类的方法==肯定存在==公共耦合，但是由于高度的通信内聚性，影响较小
+技术上讲，类的方法==肯定存在==公共耦合（ 它们访问相同的成员变量（即使是私有的）），但是由于高度的通信内聚性，影响较小
 
-##### 对象外部的内聚
+#### 对象外部的内聚
 
 ###### 接口
 
-看到83页
 
 
+
+
+#### OOP其他内聚的形式：
+
+##### getter/setter：
+
+访问控制的基础
+
+
+
+##### 继承
+
+应该是有内涵的
+
+- 对象的关系非常密切，分享行为/数据是有意义的
+
+引入了父类和任何子类之间的耦合关系
+
+- 父类中的任何变化都会反映在子类中
+- 共同的数据/共同的方法
+
+仍然可以通过访问修改器来控制这一点
+
+- 例如，不要让子类方法影响父类数据。
+
+##### super函数
+
+常用于构造函数中，super()代表调用父类构造函数，super.xxx()代表调用父类的其他函数
+
+##### 抽象类
+
+可通过抽象类强制继承
+
+- 抽象类：类在构造之前必须被继承
+- 抽象方法：方法必须由子类来实现
+
+##### 接口
+
+接口可以理解为满足以下条件的抽象类：
+- 没有数据
+- 所有的方法都被标记为抽象的
+
+它们定义了一个子类必须实现的API
+
+一个类可以实现多个接口（java不行）
+
+##### 多态
+
+针对超类进行编码（一般是接口），具体实现是隐藏的，这样在需要时就可以改变它，有事可以取代control coupling（传递对象来代替传递flag标志参数）,达到解耦的效果
+
+**例子：**
+
+```java
+// 如果函数是共享的，那么抽象类会更好！
+public interface Car { public String details(); }
+public class FordFocus implements Car {
+public String details() { return "Ford Focus"; }}
+public class HondaCivic implements Car {
+public String details() { return "Honda Civic"; }}
+// 做了正确的事情，但不依赖于Car的类型。
+// 我们已经使用多态性对实现进行了解耦！
+public void printCatDetails(Car c) {
+System.out.println(c.details());
+}
+
+```
+
+tip:尽量与最宽泛的类互动（顶层的），不要泄露实现细节
+
+```java
+// Usually Bad: Leaks implementation details
+public ArrayList<Integer> f(...) {}
+// Much better: Just says what sort of thing it is
+// (some form of ordered collection)
+public List<Integer> f(...) {}
+```
+
+##### Finality最终性
+
+除了私有函数外，如果我们想要设置一个不能被重写的public/protected的方法，就用到finial关键字
+
+```java
+class Finality {
+public final String prettyPrint() { return "Final"; }
+}
+class SubFinal extends Finality {
+public String prettyPrint() { return "Override"; }
+}
+//重写final函数会报错
+
+```
+
+除了函数，其他地方也能用final关键字：
+
+- final类不能被继承
+- final变量不能被重新分配
+- 这都是关于控制组件之间的使用/关系的。
+  - 就是说，控制耦合/内聚力
+
+##### 总结
+
+对象是有沟通的内聚
+- 即对相同数据进行操作的方法
+
+内聚/耦合控制的语言特征
+
+- 可见性标识符：公有、私有、保护
+- 继承：创建有内聚的方法 "树"。
+- 抽象类/接口： 只与API耦合
+  - 具体实现保持抽象
+- 多态性： 不允许耦合到具体的实现（只允许耦合到高层抽象类或者接口）
+- 最终性： 控制何时允许重写
+
+##### Q&A：
+
+```
+问：
+耦合和内聚力之间有什么关系，这是否意味着我们需要一直去除耦合，增加内聚力？
+答：
+耦合和内聚力是成反比的，这样，内聚力高的程序通常耦合度低。看待这个问题的一个方法是思考有多少信息在系统中移动：如果所有东西都是内聚的，那么一起变化的大多数信息将是某个组件的本地信息，不受外部组件的影响。如果不是这样，那么你很可能需要来自更多地方的信息，所以耦合度会增加。
+提醒一下： 耦合的形式有好有坏，但你永远无法消除所有的耦合，否则你就永远写不出有用的东西。例如，你需要允许耦合到一个类的公共方法。
+```
+
+```
+问：
+什么是Java代码中的 "common data公共数据"？我们如何识别它？
+答：
+当多个组件（通常是OOP中的函数）访问共享数据时，就会出现共同数据。例如：一个类中的方法可以共享该类的数据成员；所以这就是共同数据耦合。与其他形式的数据耦合的主要区别在于，这种数据不是通过参数传递的。
+下边有一个例子可以说明
+```
+
+```java
+public class User {
+// Common since both toString
+// and addYears have access to modify
+private String name = "";
+public int age = 1;
+public String toString() { return name + " " + age; }
+// i is *not common* since only addYears has access.
+public String addYears(int i) { age = age + i; }
+}
+public static void main(String args[]) {
+User u = new User();
+// Also common data since it directly accesses data within u
+// Getters/Setters turn common data coupling into interface coupling.
+u.age = 5;
+}
+```
 
 Week 4 Tools for Software Modelling (UML)
 Week 5 Testing
@@ -374,3 +521,4 @@ Week 8 Design Patterns (Creational)
 Week 9 Design Patterns (Structural)
 Week 10 Design Patterns (Behavioural)
 Week 11 Revision of Sem 1 and 2
+
