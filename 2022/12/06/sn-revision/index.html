@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>sn revision | Franklin's secret cabin</title><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2021 1 a 1023的二进制：0000 0011 1111 111103FF 补码：11 11110000 000001 FC01 b 会，8位可表示补码数在-128到127之间，而100+30&#x3D;130&gt;127，实际是-126 01100100+ 00011110+11101100 &#x3D; 10000010+ 11101100 &#x3D; 01101110 c 不是，因为二进制补码正负表示范围不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sn revision">
+<meta property="og:url" content="http://example.com/2022/12/06/sn-revision/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="2021 1 a 1023的二进制：0000 0011 1111 111103FF 补码：11 11110000 000001 FC01 b 会，8位可表示补码数在-128到127之间，而100+30&#x3D;130&gt;127，实际是-126 01100100+ 00011110+11101100 &#x3D; 10000010+ 11101100 &#x3D; 01101110 c 不是，因为二进制补码正负表示范围不同">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2022-12-06T12:32:06.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.717Z">
+<meta property="article:author" content="Franklin Yang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2022/12/06/sn-revision/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'sn revision',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">sn revision</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-12-06T12:32:06.000Z" title="Created 2022-12-06 20:32:06">2022-12-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.717Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/12/06/sn-revision/" data-flag-title="sn revision"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2022/12/06/sn-revision/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/12/06/sn-revision/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="2021">2021</h2>
+<h4 id="1">1</h4>
+<h5 id="a">a</h5>
+<p>1023的二进制：0000 0011 1111 111103FF</p>
+<p>补码：11 11110000 000001 FC01</p>
+<h5 id="b">b</h5>
+<p>会，8位可表示补码数在-128到127之间，而100+30=130&gt;127，实际是-126</p>
+<p>01100100+</p>
+<p>00011110+11101100</p>
+<p>=</p>
+<p>10000010+</p>
+<p>11101100</p>
+<p>=</p>
+<p>01101110</p>
+<h5 id="c">c</h5>
+<p>不是，因为二进制补码正负表示范围不同，举例：8位二进制补码范围是-128到+127，而1-128和1+（-128）不一样，前者会超出补码表示范围</p>
+<h5 id="d">d</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">;int n</span><br><span class="line">;int[] x[n]</span><br><span class="line">;int[] y[n]</span><br><span class="line">;for(int i=0;i&lt;n;i++)</span><br><span class="line">;&#123;</span><br><span class="line">;	if(x[i]&amp;1!=0)</span><br><span class="line">;	y[i]=0</span><br><span class="line">;	else</span><br><span class="line">;	y[i]=1</span><br><span class="line">;&#125;</span><br><span class="line">;REGISTER USAGE</span><br><span class="line">;r1=i</span><br><span class="line">;r2=n</span><br><span class="line">;r3=1</span><br><span class="line">;r4=x[i]</span><br><span class="line">;r5=y[i]</span><br><span class="line">;r6=temp result</span><br><span class="line">;INITIALISATION</span><br><span class="line">	LEA	R1,0[R0]	;SET I INITIAL 0</span><br><span class="line">	LOAD	R2,N[R0]	;SET N TO R2</span><br><span class="line">	LEA	R3,1[R0]	;SET CONSTANT 1 TO R3</span><br><span class="line">;MAINLOOP</span><br><span class="line">LOOP	CMPGT	R9,R2,R1	;IF I&lt;N</span><br><span class="line">	JUMPF	R9,DONE[R0]	;IF I!&lt;N,GOTO DONE</span><br><span class="line">	LOAD	R4,X[R1]	;LOAD X[I]	</span><br><span class="line">	AND	R6,R4,R3	;X[I] AND 1</span><br><span class="line">	JUMPF	R6,SKIP2[R0]	;IF EVEN, GOTO SKIP2</span><br><span class="line">	STORE	R0,Y[R1]	;IF ODD,Y[I]=0	</span><br><span class="line">	JUMP	SKIP3[R0]	;IF ODD GOTO SKIP3</span><br><span class="line">SKIP2	STORE	R3,Y[R1]	;IF EVEN,Y[I]=1</span><br><span class="line">SKIP3	ADD	R1,R1,R3	;I++</span><br><span class="line">	JUMP 	LOOP[R0]	;GO BACK TO LOOP</span><br><span class="line">DONE	 TRAP	R0,R0,R0	;END</span><br><span class="line"></span><br><span class="line">;DATA AREA</span><br><span class="line">X		DATA	1</span><br><span class="line">		DATA	2</span><br><span class="line">		DATA	3</span><br><span class="line">		DATA	4</span><br><span class="line">		DATA	5</span><br><span class="line">		DATA	6</span><br><span class="line">		DATA	6</span><br><span class="line">		DATA	5</span><br><span class="line">		DATA	4</span><br><span class="line">		DATA	3</span><br><span class="line">		DATA	2	</span><br><span class="line">		DATA	1	;SET X[0~N-1]</span><br><span class="line">Y		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	0	</span><br><span class="line">N		DATA	12	;SET N=12</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="e">e</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">;INITIALISATION</span><br><span class="line">	</span><br><span class="line">	LEA	R1,$41A5[R0]	</span><br><span class="line">	LEA	R3,$4000[R0]</span><br><span class="line">	AND	R1,R1,R3</span><br><span class="line">	LEA	R3,14[R0]</span><br><span class="line">	SHIFTR	R1,R1,R3</span><br><span class="line">	LEA	R2,0[R1]</span><br><span class="line">2+2+1+2+1+2=10</span><br></pre></td></tr></table></figure>
+<h4 id="2">2</h4>
+<h5 id="a-2">a</h5>
+<p>缓存存储器如何加速程序的执行？许多高速缓冲存储器只对读周期进行缓冲。为什么会这样，为什么它通常不被看作是一个主要的限制？讨论一下在某些情况下，缓存的写周期是否会带来一些好处。</p>
+<p>答：cache的读写速度比普通内存快10倍，但是容量比较小，而cache会暂存第一次从内存中读取的内容，并在有限时间内存储，以便后续再次访问时能快速读取而不用从内存中慢速读取</p>
+<p>只对读周期缓冲的原因：多次从memory中读同一个内容时周期时，改成从cache中读取会比直接从memory中读取省去很多时间，但是多次向memory写同一内容时仍需在memory上进行写操作，cache对此没有提高速度的效果</p>
+<h5 id="b-2">b</h5>
+<p>下面的Sigma 16代码是用来处理一个10个元素的二进制补码数组（只显示了第一个元素），并用它们的二进制补码倒数替换所有的元素。8000美元的数字是不允许的。然而，尽管这段代码可以组装，但它包含几个错误。</p>
+<p>i. 为该程序制定一个寄存器使用表（适合作为注释列入）。</p>
+<p>ii. 识别这些错误并解释你将如何纠正它们。</p>
+<p>iii. 写出更正后的程序</p>
+<h6 id="i">i:</h6>
+<p>N=R1</p>
+<p>R1=R2</p>
+<p>R2=N</p>
+<p>00000011</p>
+<p>1111111111111101</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">STORE R1,N[R0]</span><br><span class="line">LEA	R2,0[R1]</span><br><span class="line">LOAD R2,N[R0]</span><br><span class="line"></span><br><span class="line">R1=4</span><br><span class="line">R2=5</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">;register uesage:</span><br><span class="line">;R1	1</span><br><span class="line">;r2 i</span><br><span class="line">;r3 n</span><br><span class="line">;r4 x[i]</span><br><span class="line">;r5 temp bool</span><br><span class="line">		LOAD 	R1,1[R0] ;Set R1 to constant 1</span><br><span class="line">		ADD 	R2,R0,R0 ;i:=0</span><br><span class="line">		LOAD	 R3,n[R0] ;Set R3 to n</span><br><span class="line">FORLOOP	CMPEQ R5,R2,R3 ;Is i&lt;n</span><br><span class="line">		JUMPF R5,OUT[R0] ;if yes, exit</span><br><span class="line">		LOAD R4,X[R2] ;load x[i]</span><br><span class="line">		INV R4,R4,R0 ;R6= -x[i]</span><br><span class="line">		ADD R1,R2,R2 ;i:=i+1</span><br><span class="line">		STORE R4,X[R2] ;x[i]=-x[i]</span><br><span class="line">		JUMP FORLOOP[R0] ;loop</span><br><span class="line">		OUT TRAP R0,R0,R0</span><br><span class="line">; Data Area</span><br><span class="line">		n DATA 10</span><br><span class="line">		X DATA -8</span><br></pre></td></tr></table></figure>
+<h6 id="ii">ii:</h6>
+<p>错误1：应该用lea</p>
+<p>错误2：JUMPF</p>
+<p>错误3：INV只是取反，补码求负数还得再+1</p>
+<p>错误4：应该是R4=-x[i]（好像不算）</p>
+<p>错误5：因该是ADD	R2,R1,R2</p>
+<p>错误6：先存负数再i++顺序反了</p>
+<h6 id="iii">iii:</h6>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">;register uesage:</span><br><span class="line">;R1	1</span><br><span class="line">;r2 i</span><br><span class="line">;r3 n</span><br><span class="line">;r4 x[i]</span><br><span class="line">;r5 temp bool</span><br><span class="line">;r4	-x[i]</span><br><span class="line">		LEA	R1,1[R0] ;Set R1 to constant 1</span><br><span class="line">		ADD 	R2,R0,R0 ;i:=0</span><br><span class="line">		LOAD	 R3,n[R0] ;Set R3 to n</span><br><span class="line">FORLOOP	CMPEQ R5,R2,R3 ;Is i&lt;n</span><br><span class="line">		JUMPT R5,OUT[R0] ;if yes, exit</span><br><span class="line">		LOAD R4,X[R2] ;load x[i]</span><br><span class="line">		INV R4,R4,R0 ;R4= -x[i]</span><br><span class="line">		ADD	R4,R1,R4</span><br><span class="line">		STORE R4,X[R2] ;x[i]=-x[i]</span><br><span class="line">		ADD R2,R1,R2 ;i:=i+1		</span><br><span class="line">		JUMP FORLOOP[R0] ;loop</span><br><span class="line">		OUT TRAP R0,R0,R0</span><br><span class="line">; Data Area</span><br><span class="line">		n DATA 10</span><br><span class="line">		X DATA -8</span><br></pre></td></tr></table></figure>
+<h5 id="c-估计修正后的程序需要多少内存周期才能运行。">c.估计修正后的程序需要多少内存周期才能运行。</h5>
+<p>循环前：2+1+3=6</p>
+<p>循环一次：1+2+3+1+1+3+1+2=14</p>
+<p>最后一次循环前：1+2=3</p>
+<p>循环后：1</p>
+<p>共：6+14*10+3+1=150</p>
+<h5 id="d-在修正后的程序中，如果一个主存储器周期需要10ns，而一个高速缓存周期需要1ns，那么估计一个带有高速缓存的系统将获得的优势。">d.在修正后的程序中，如果一个主存储器周期需要10ns，而一个高速缓存周期需要1ns，那么估计一个带有高速缓存的系统将获得的优势。</h5>
+<p>原时间：1500ns</p>
+<p>cache后9次循环将hit，cache hits =（ 1+2+2+1+1+2+1+2）*9=108</p>
+<p>最后一次的3次cycle也会cache hit，total cache hits=108+3=111</p>
+<p>saved time=111*9=999ns</p>
+<p>total time=10*（7+14+2*9）+111=501</p>
+<h4 id="3">3</h4>
+<h5 id="a-3">a</h5>
+<p>在互联网通信中，路由器是如何将IP数据包送到目的地的？解释一下为什么IP使用的路由方法对TCP段或以太网帧都不起作用。</p>
+<p>当一个IP数据包需要被发送到其目的地时，路由器使用其路由表来确定最佳路径。路由表是一组规则，路由器根据每个数据包的目标IP地址来确定将传入的数据包发送到哪里。</p>
+<p>一旦路由器确定了最佳路径，它就将数据包转发到该路径的下一跳。这个过程一直持续到数据包到达目的地。</p>
+<p>IP使用的路由方法对TCP段或以太网帧都不起作用，因为这些类型的数据单元有不同的格式，包含的信息也与IP包不同。例如，一个TCP段包含有关源和目的端口号、序列号和确认号的信息，以及其他与路由过程无关的细节。另一方面，一个以太网帧包含有关源和目的MAC地址的信息，这些信息用于本地网络通信，而不是互联网范围的路由。</p>
+<h5 id="b-3">b</h5>
+<p>一个IP接口的地址是192.10.0.1。这个地址代表什么二进制值？同时写出该值的十六进制</p>
+<p>bin:1100 0000 0000 1010 0000 0000 0000 0001</p>
+<p>hex:00c0 000a 0000 0001</p>
+<h5 id="c-2">c</h5>
+<p>“IP不可靠，而IP承载着TCP；因此，TCP也不可能是可靠的。” 对这个论证的前提和结论的真实性进行评论，并讨论推理是否有效。</p>
+<p>标准答案：</p>
+<p>IP是不可靠的：数据包可能丢失，协议不会恢复它们。数据包可能排序错误或重复，协议不会补偿；协议不检查数据错误[2]。IP确实承载了TCP。所以，两个前提都是真的[1]。结论是不正确的。TCP会恢复丢失的网段，必要时重新排序，使用网段编号并对所有携带的数据进行校验[2]。这个论点是无效的，因为低级协议不可靠的事实并不意味着它所携带的高级协议也会不可靠。高层协议可以用来增加低层协议的能力，事实上这就是分层的全部动机[1]。</p>
+<p>前提正确，</p>
+<h5 id="d-2">d</h5>
+<p>在一个特定的主机上可以同时运行许多TCP连接。参照你所知道的关于通信系统及其与操作系统的关系，解释这一点是如何做到的。</p>
+<p>标准答案：</p>
+<p>假设一个能够运行多个并发进程的操作系统。 通信系统通过使用称为端口号的传输层子地址来运行多个并发连接[1]。不同的进程在同一时间使用通信系统，将自己附加到不同的端口[1]。当一个包含传输层段的IP数据包到达时，该段由IP层提取并向上传输到传输层[1]。该段有一个带有目的端口号的头，该端口号将其引导到正确的目的进程[1]。当一个进程发送数据时，产生的网段总是包括该进程所处的源端口，以便回复可以被正确引导[1]。</p>
+<p>AI：</p>
+<p>在一个给定的主机上有可能同时运行许多TCP连接，因为操作系统使用一个被称为 &quot;端口 &quot;的概念来跟踪不同的连接。  当建立一个TCP连接时，主机和远程设备会商定一个唯一的端口号，用来识别连接。这个端口号被操作系统用来跟踪连接，并将传入和传出的数据路由到正确的应用程序中。  由于有超过65,000个可用的端口号，一台主机可以有多个活跃的TCP连接，每个都使用不同的端口号。操作系统使用端口号来跟踪不同的连接，并将数据发送到正确的应用程序。这使得一台主机上的多个应用程序可以同时建立和维护多个TCP连接。</p>
+<h2 id="2020">2020</h2>
+<h4 id="1-2">1</h4>
+<h5 id="a-4">a</h5>
+<p>Find two 8-bit codewords, X and Y, such that X+Y overflows if the code being used is unsigned but  does not if it is two’s complement. Now find two codewords, W and Z, such that W+Z overflows in  both codes. Explain your reasoning carefully.</p>
+<h5 id="b-4">b</h5>
+<p>$-2^{31} to 2^{31}-1$</p>
+<p>原因：补码最高位是符号位因此数据表示只有31位，而补码会产生所谓的“正0”和“负0”，补码规定将-0的位置留给负数表示范围，因此负数表示范围多1</p>
+<h5 id="c-3">c</h5>
+<p>找出两个8位编码，X和Y，如果使用的编码是无符号的，X+Y会溢出，但如果是两补的，则不会溢出。 如果是无符号代码，X+Y会溢出，但如果是二进制补码，则不会溢出。现在找出两个代码，W和Z，使W+Z在两种代码中都能溢出。 都会溢出。仔细解释一下你的推理。</p>
+<p>X:10000001</p>
+<p>Y:01111111</p>
+<p>无符号相加是129+127=256超过了八位无符号数的表示范围0~255</p>
+<p>补码则是127+（-127）=0=00000000</p>
+<p>W:10000001</p>
+<p>Z:10000001</p>
+<p>无符号数是129+129=258超出0~255</p>
+<p>补码则是-127+（-127）=-254超出-128~127</p>
+<h5 id="d-3">d</h5>
+<p>编写一个Sigma16程序，在一个有n个元素的无符号数组X中，从每个元素中减去1，除非该元素已经为0。 假设n是数据存储器中的无符号变量，表示数组中的元素数。完全注释你的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">;int n;</span><br><span class="line">;for(int i=0;i&lt;n;i++)</span><br><span class="line">;&#123;</span><br><span class="line">;    if(x[i]!=0)</span><br><span class="line">;	x[i]-=1          </span><br><span class="line">;&#125;</span><br><span class="line">;REGISTER USAGE</span><br><span class="line">;R1=I</span><br><span class="line">;R2=N</span><br><span class="line">;R3=CONSTANT 1</span><br><span class="line">;R4=TEMP BOOL AND TEMP AND RESULT</span><br><span class="line">;R5=X[I]</span><br><span class="line">;INITIALISATION</span><br><span class="line">	LEA	R1,0[R0]	;SET I INITIAL 0</span><br><span class="line">	LOAD	R2,N[R0]	;SET N TO R2</span><br><span class="line">	LEA	R3,1[R0]	;SET CONSTANT 1 TO R3</span><br><span class="line">;MAINLOOP</span><br><span class="line">LOOP	CMPGT	R4,R2,R1	;IF I&lt;N</span><br><span class="line">	JUMPF	R4,DONE[R0]	;IF I!&lt;N,GOTO DONE</span><br><span class="line">	LOAD	R5,X[R1]	;LOAD X[I]</span><br><span class="line">	CMPEQ	R4,R5,R0	;IF X[I]==0</span><br><span class="line">	JUMPT	R4,SKIP1[R0]	;IF X[I]==0,GOTO SKIP1</span><br><span class="line">	SUB	R4,R5,R3	;X[I]-=1	</span><br><span class="line">	STORE	R4,X[R1]	;STORE</span><br><span class="line">SKIP1	ADD	R1,R1,R3	;I++</span><br><span class="line">	JUMP 	LOOP[R0]	;GO BACK TO LOOP</span><br><span class="line">DONE	TRAP	R0,R0,R0	;END</span><br><span class="line">;DATA AREA</span><br><span class="line">X		DATA	3</span><br><span class="line">		DATA	-6</span><br><span class="line">		DATA	0</span><br><span class="line">		DATA	10	;SET X[0~N-1]</span><br><span class="line">N		DATA	4	;SET N=4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="2-2">2</h4>
+<h5 id="a-5">a</h5>
+<p>区分主存储器和辅助存储器，并简要解释CPU如何访问存储在两者中的数据  存储的数据。如果一个用户在运行现代操作系统的PC上遇到了性能问题，并使用虚拟内存  遇到问题，在什么情况下，你会建议增加主内存的数量？解释一下你的理由。</p>
+<p>AI:</p>
+<p>主存储器和辅助存储器是两种不同类型的存储设备，在计算机系统中发挥不同的作用。</p>
+<p>主存储器，也被称为RAM（随机存取存储器），由存储器模块组成，是计算机系统中的主要存储区域，通常位于主板上。主存储器的容量有限，但速度快，所以它被用作程序和数据的主要存储区域。由于主存储器的容量有限，当一个程序需要更多的存储空间时，系统会将一些不太常用的数据存储在二级存储器中。</p>
+<p>二级存储器是由硬盘、固态驱动器或其他大容量存储设备组成的。它的容量比主存储器大得多，但访问速度较慢。由于其容量大，二级存储器用于数据的长期存储。</p>
+<p>当一个程序需要访问主存储器中的数据时，CPU直接访问主存储器，因为它的速度较快。如果一个程序需要访问二级存储器中的数据，CPU首先访问一级存储器，将需要的数据加载到一级存储器中，然后再访问一级存储器来获取数据。</p>
+<p>如果用户在运行使用虚拟内存的现代操作系统的PC上遇到了性能问题，我会建议增加主内存的数量。这是因为主内存被用作CPU和辅助内存之间的缓冲器，如果主内存不足，系统将不得不不断地在主内存和辅助内存之间交换数据，这会降低性能。通过增加主内存的数量，系统将有更多的空间来存储数据，减少交换的需要并提高性能。</p>
+<p>答案：</p>
+<p>主存储器是可通过地址总线直接寻址的存储器。CPU可以通过将该位置的地址放在地址总线上，随机访问这种存储器中的任何选定的位置：然后地址解码单独选择该位置，数据可以通过数据总线读或写到该位置[2]。二级存储器不是随机访问的，而是被视为I/O设备（磁盘）。磁盘被划分为有编号的扇区，每个扇区可以存储一个固定大小的数据块。CPU必须通知I/O（磁盘）接口它希望处理的扇区编号，以及该操作是读还是写。如果是前者，它将从扇区接收一个数据块；如果是后者，它将向扇区发送一个数据块[2]。 一个现代的多任务操作系统将使用虚拟内存来允许更多的任务被激活，而不是主内存所能支持的。如果主内存已满，则在磁盘上和磁盘外交换页面，但这很慢。如果任务运行时有持续的磁盘活动，一个合理的假设是没有足够的主内存，页面交换频繁发生。增加主内存可以缓解这种情况[2]。</p>
+<h5 id="b-5">b</h5>
+<p>下面这段Sigma 16代码的目的是将一个8元素的数组（只显示了第一个元素）与所有的元素相加，将结果放在另一个变量sum中。然而，尽管这段代码可以组装，但它包含几个错误。<br>
+i. 为该程序制定一个寄存器使用表（适合作为注释）。<br>
+ii. 识别这些错误，在每一种情况下解释什么是错误的，以及你将如何纠正它。<br>
+iii. 写出更正后的程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">;registor usage</span><br><span class="line">;r1 1</span><br><span class="line">;r2 i</span><br><span class="line">;r3 n</span><br><span class="line">;r4 sum</span><br><span class="line">;r5 temp bool</span><br><span class="line">;r6 x[i]</span><br><span class="line">LEA	R1,1[R0] ;Set R1 to constant 1</span><br><span class="line">ADD R2,R0,R0 ;i:=0</span><br><span class="line">LEA R3,n[R0] ;Set R3 to n</span><br><span class="line">ADD R4,R0,R0 ;sum=0</span><br><span class="line">FORLOOP CMPEQ R5,R2,R3 ;Is i&lt;n</span><br><span class="line">JUMPF R5,OUT[R0] ;if yes, exit</span><br><span class="line">LOAD R6,X[R0] ;load x[i]</span><br><span class="line">ADD R4,R4,R1 ;sum:=sum + x[i]</span><br><span class="line">ADD R1,R2,R2 ;i:=i+1</span><br><span class="line">JUMP FORLOOP[R0] ;loop</span><br><span class="line">OUT STORE R4,sum[R0]</span><br><span class="line">TRAP R0,R0,R0</span><br><span class="line">; Data Area</span><br><span class="line">n DATA 8</span><br><span class="line">sum DATA 0</span><br><span class="line">x 	DATA 0</span><br></pre></td></tr></table></figure>
+<h6 id="i-2">i</h6>
+<h6 id="ii-2">ii</h6>
+<p>1：应该是JUMPT</p>
+<p>2：应该是LAOD R6,X[R2]</p>
+<p>3：应该是ADD R4,R4,R6 ;sum:=sum + x[i]</p>
+<p>4：应该是ADD R2,R2,R1 ;i:=i+1</p>
+<p>5：应该用load得到n</p>
+<h6 id="iii-2">iii</h6>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">;registor usage</span><br><span class="line">;r1 1</span><br><span class="line">;r2 i</span><br><span class="line">;r3 n</span><br><span class="line">;r4 sum</span><br><span class="line">;r5 temp bool</span><br><span class="line">;r6 x[i]</span><br><span class="line">LEA	R1,1[R0] ;Set R1 to constant 1</span><br><span class="line">ADD R2,R0,R0 ;i:=0</span><br><span class="line">LOAD	R3,n[R0] ;Set R3 to n</span><br><span class="line">ADD R4,R0,R0 ;sum=0</span><br><span class="line">FORLOOP CMPEQ R5,R2,R3 ;Is i&lt;n</span><br><span class="line">JUMPT R5,OUT[R0] ;if yes, exit</span><br><span class="line">LOAD R6,X[R2] ;load x[i]</span><br><span class="line">ADD R4,R4,R6 ;sum:=sum + x[i]</span><br><span class="line">ADD R2,R2,R1 ;i:=i+1</span><br><span class="line">JUMP FORLOOP[R0] ;loop</span><br><span class="line">OUT STORE R4,sum[R0]</span><br><span class="line">TRAP R0,R0,R0</span><br><span class="line">; Data Area</span><br><span class="line">n DATA 8</span><br><span class="line">sum DATA 0</span><br><span class="line">x 	DATA 0</span><br></pre></td></tr></table></figure>
+<h5 id="c-4">c</h5>
+<p>1+2+3+1+1+2=10</p>
+<p>10*8+1+2+2+1+3+1+3+1=94</p>
+<h5 id="d-4">d</h5>
+<p>在修正后的程序中，如果一个主存储器周期需要10ns，而一个高速缓存周期需要1ns，那么估计一个带有高速缓存的系统将获得多少优势。</p>
+<p>（1+2+2+1+1+2）*7*9+3*9=594</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">int[]x</span><br><span class="line">int[]y</span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	x[i]=max(x[i],y[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">R1 I</span><br><span class="line">R2 N</span><br><span class="line">R3 X[I]</span><br><span class="line">R4 Y[I]</span><br><span class="line">R5 TEMP BOOL</span><br><span class="line">R6 1</span><br><span class="line"></span><br><span class="line">	ADD	R1,R0,R0</span><br><span class="line">	LOAD R2,N[R0]</span><br><span class="line">	LEA	R6,1[R0]</span><br><span class="line">LOOP	COMEQ	R5,R1,R2</span><br><span class="line">	JUMPT	OUT[R0]</span><br><span class="line">	LOAD	R3,X[R1]</span><br><span class="line">	LOAD	R4,Y[R1]</span><br><span class="line">	COMGT	R5,R3,R4;IF X IS GREATER</span><br><span class="line">	JUMPT	R5,FLAG[R0]</span><br><span class="line">	LEA		R3,0[R4]</span><br><span class="line">	STORE	R3,X[R1]</span><br><span class="line">FLAG	</span><br><span class="line">	ADD		R1,R1,R6	</span><br><span class="line">	JUMP	LOOP[R0]</span><br><span class="line">OUT	TRAP	R0,R0,R0</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">X	DATA	1</span><br><span class="line">	DATA	2</span><br><span class="line">	DATA	3</span><br><span class="line">Y	DATA	2</span><br><span class="line">	DATA	3</span><br><span class="line">	DATA	4</span><br><span class="line">N	DATA	3</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/06/sn-revision/">http://example.com/2022/12/06/sn-revision/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/06/S-N-section9/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">S&amp;N section9</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/30/%E6%B5%B7%E9%97%A8%E5%9B%9E%E5%A3%B0pt8/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">海门回声pt8</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2021"><span class="toc-number">1.</span> <span class="toc-text">2021</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.0.1.</span> <span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">b</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">c</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">d</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">e</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-2"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-2"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">b</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#i"><span class="toc-number">1.0.2.2.1.</span> <span class="toc-text">i:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ii"><span class="toc-number">1.0.2.2.2.</span> <span class="toc-text">ii:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#iii"><span class="toc-number">1.0.2.2.3.</span> <span class="toc-text">iii:</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-%E4%BC%B0%E8%AE%A1%E4%BF%AE%E6%AD%A3%E5%90%8E%E7%9A%84%E7%A8%8B%E5%BA%8F%E9%9C%80%E8%A6%81%E5%A4%9A%E5%B0%91%E5%86%85%E5%AD%98%E5%91%A8%E6%9C%9F%E6%89%8D%E8%83%BD%E8%BF%90%E8%A1%8C%E3%80%82"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">c.估计修正后的程序需要多少内存周期才能运行。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-%E5%9C%A8%E4%BF%AE%E6%AD%A3%E5%90%8E%E7%9A%84%E7%A8%8B%E5%BA%8F%E4%B8%AD%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E5%91%A8%E6%9C%9F%E9%9C%80%E8%A6%8110ns%EF%BC%8C%E8%80%8C%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E5%91%A8%E6%9C%9F%E9%9C%80%E8%A6%811ns%EF%BC%8C%E9%82%A3%E4%B9%88%E4%BC%B0%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%B8%A6%E6%9C%89%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%B0%86%E8%8E%B7%E5%BE%97%E7%9A%84%E4%BC%98%E5%8A%BF%E3%80%82"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">d.在修正后的程序中，如果一个主存储器周期需要10ns，而一个高速缓存周期需要1ns，那么估计一个带有高速缓存的系统将获得的优势。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.0.3.</span> <span class="toc-text">3</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-3"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-3"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">b</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-2"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">c</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-2"><span class="toc-number">1.0.3.4.</span> <span class="toc-text">d</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2020"><span class="toc-number">2.</span> <span class="toc-text">2020</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2"><span class="toc-number">2.0.1.</span> <span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-4"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-4"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">b</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-3"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">c</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-3"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">d</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2"><span class="toc-number">2.0.2.</span> <span class="toc-text">2</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-5"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-5"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">b</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#i-2"><span class="toc-number">2.0.2.2.1.</span> <span class="toc-text">i</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ii-2"><span class="toc-number">2.0.2.2.2.</span> <span class="toc-text">ii</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#iii-2"><span class="toc-number">2.0.2.2.3.</span> <span class="toc-text">iii</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-4"><span class="toc-number">2.0.2.3.</span> <span class="toc-text">c</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-4"><span class="toc-number">2.0.2.4.</span> <span class="toc-text">d</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

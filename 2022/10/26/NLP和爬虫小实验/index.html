@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>NLP和爬虫小实验 | Franklin's secret cabin</title><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实验1 环境： Python            3.10.7 akshare      1.7.61 接口1：股票数据 代码：（代码解释类似故只写一次） 123456import akshare as ak#引入akshare库stock_sse_summary &#x3D; ak.stock_sse_summary()#使用接口print(stock_sse_summary)#打印股票数据print(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP和爬虫小实验">
+<meta property="og:url" content="http://example.com/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="实验1 环境： Python            3.10.7 akshare      1.7.61 接口1：股票数据 代码：（代码解释类似故只写一次） 123456import akshare as ak#引入akshare库stock_sse_summary &#x3D; ak.stock_sse_summary()#使用接口print(stock_sse_summary)#打印股票数据print(">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2022-10-26T12:32:33.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.680Z">
+<meta property="article:author" content="Franklin Yang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NLP和爬虫小实验',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NLP和爬虫小实验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-10-26T12:32:33.000Z" title="Created 2022-10-26 20:32:33">2022-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.680Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/" data-flag-title="NLP和爬虫小实验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>实验1</h1>
+<p><strong>环境：</strong></p>
+<p><strong>Python            3.10.7</strong></p>
+<p><strong>akshare      1.7.61</strong></p>
+<p>接口1：股票数据</p>
+<p>代码：（代码解释类似故只写一次）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> akshare <span class="keyword">as</span> ak<span class="comment">#引入akshare库</span></span><br><span class="line"></span><br><span class="line">stock_sse_summary = ak.stock_sse_summary()<span class="comment">#使用接口</span></span><br><span class="line"><span class="built_in">print</span>(stock_sse_summary)<span class="comment">#打印股票数据</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(stock_sse_summary))<span class="comment">#打印数据类型</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>数据保存：</p>
+<p>项目     股票     主板    科创板</p>
+<p>0  流通股本  41944.17  41275.55  668.62</p>
+<p>1  总市值 444946.49 386082.05 58864.43</p>
+<p>2 平均市盈率   12.27   11.07   46.13</p>
+<p>3  上市公司    2149    1669    480</p>
+<p>4  上市股票    2188    1708    480</p>
+<p>5  流通市值 378064.06 352535.11 25528.94</p>
+<p>6  报告时间  20221025  20221025 20221025</p>
+<p>8  总股本  47235.84  45563.13  1672.72</p>
+<p>接口2：期货数据</p>
+<p>数据保存：（内容多达620行故使用截图）</p>
+<p>​	<img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/%E5%9B%BE%E7%89%871.png" alt="图片1"></p>
+<p>接口3：债券数据</p>
+<p>代码：</p>
+<p>数据保存：</p>
+<p>​    债券现货  托管只数    托管市值    托管面值</p>
+<p>数据日期</p>
+<p>0     国债  193  6815.47  6758.46 2021-01-11</p>
+<p>1    地方债  5317  6713.69  6709.22 2021-01-11</p>
+<p>2    金融债   19   989.76   970.70 2021-01-11</p>
+<p>3    企业债  2233  7497.15  7433.93 2021-01-11</p>
+<p>4 非公开发行公司债券  4974  43857.61  44191.15 2021-01-11</p>
+<p>5    可交换债   57  1352.85  1280.10 2021-01-11</p>
+<p>6  公开发行公司债券  3393  46382.41  46644.57 2021-01-11</p>
+<p>7   可转换公司债  142  3655.79  3179.81 2021-01-11</p>
+<p>8   资产支持证券  4141  14838.03  14829.47 2021-01-11</p>
+<p>9     合计 20469 132102.75 131997.40 2021-01-11</p>
+<h1>实验2</h1>
+<p>内容1<strong>使用snownlp库对歌词进行情感打分：</strong></p>
+<p><strong>环境：</strong></p>
+<p><strong>Python         3.10.7</strong></p>
+<p><strong>jieba        0.42.1</strong></p>
+<p><strong>snownlp        0.12.3</strong></p>
+<p><strong>代码：（重要代码后有注释）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> snownlp <span class="keyword">import</span> SnowNLP<span class="comment">#导入SnowNLP包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">&#x27;lyrics/玫瑰少年.txt&#x27;</span>, mode=<span class="string">&quot;r&quot;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>).read()<span class="comment">#打开歌词文件</span></span><br><span class="line">y = []</span><br><span class="line">attitude=[]</span><br><span class="line">high=<span class="number">0</span></span><br><span class="line">low=<span class="number">0</span></span><br><span class="line">mid=<span class="number">0</span></span><br><span class="line">s = SnowNLP(text)<span class="comment">#对歌词进行处理</span></span><br><span class="line"><span class="built_in">print</span>(s.words)</span><br><span class="line">sentence = s.sentences</span><br><span class="line">avg=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> sentence_1 <span class="keyword">in</span> s.sentences:<span class="comment">#对每句歌词分别打分</span></span><br><span class="line">    <span class="built_in">print</span>(sentence_1)</span><br><span class="line">    s1 = SnowNLP(sentence_1)</span><br><span class="line">    score = s1.sentiments</span><br><span class="line">    <span class="keyword">if</span>(score&gt;<span class="number">0.7</span>):<span class="comment">#分数大于0.7认为是积极</span></span><br><span class="line">        attitude.append(<span class="number">2.0</span>)<span class="comment">#积极情感贡献分为2.0</span></span><br><span class="line">        high+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span>(score&lt;<span class="number">0.5</span>):<span class="comment">#分数小于0.5认为是消极</span></span><br><span class="line">        attitude.append(<span class="number">0.0</span>)<span class="comment">#消极情感贡献分为0.0</span></span><br><span class="line">        low+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:<span class="comment">#分数介于0.5到0.7之间认为是中性</span></span><br><span class="line">        attitude.append(<span class="number">1.0</span>)<span class="comment">#中性情感贡献分为1.0</span></span><br><span class="line">        mid+=<span class="number">1</span></span><br><span class="line">    y.append(score)<span class="comment">#将分数加入分数列表</span></span><br><span class="line">    avg+=score</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)<span class="comment">#输出全部分数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;avg: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(avg/<span class="built_in">len</span>(y))<span class="comment">#输出平均分数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;high percentage: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(high/<span class="built_in">len</span>(y))<span class="comment">#输出高分分数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;middle percentage: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(mid/<span class="built_in">len</span>(y))<span class="comment">#输出中分分数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;low percentage: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(low/<span class="built_in">len</span>(y))<span class="comment">#输出低分占比</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;avg emotion score: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(attitude))</span><br></pre></td></tr></table></figure>
+<p><strong>测试：</strong></p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203632026.png" alt="image-20221026203632026"></p>
+<p><strong>用例1：《歌唱祖国》</strong></p>
+<p><strong>歌词：</strong></p>
+<p>五星红旗迎风飘扬胜利歌声多么响亮歌唱我们亲爱的祖国从今走向繁荣富强歌唱我们亲爱的祖国从今走向繁荣富强越过高山 越过平原跨过奔腾的黄河长江</p>
+<p>宽广美丽的土地是我们亲爱的家乡英雄的人民站起来了我们团结友爱坚强如钢</p>
+<p>五星红旗迎风飘扬胜利歌声多么响亮歌唱我们亲爱的祖国从今走向繁荣富强</p>
+<p>歌唱我们亲爱的祖国从今走向繁荣富强我们勤劳 我们勇敢独立自由是我们的理想</p>
+<p>我们战胜了多少苦难才得到今天的解放我们爱和平我们爱家乡谁敢侵犯我们就叫他灭亡</p>
+<p>五星红旗迎风飘扬胜利歌声多么响亮歌唱我们亲爱的祖国从今走向繁荣富强</p>
+<p>歌唱我们亲爱的祖国从今走向繁荣富强东方太阳 正在升起人民共和国正在成长</p>
+<p>我们领袖毛泽东指引着前进的方向们的生活天天向上我们的前程万丈光芒</p>
+<p>五星红旗迎风飘扬胜利歌声多么响亮歌唱我们亲爱的祖国从今走向繁荣富强</p>
+<p>歌唱我们亲爱的祖国从今走向繁荣富强</p>
+<p><strong>使用.words()函数对歌词按照词语进行分割：</strong></p>
+<p>[‘五星红旗’, ‘迎风’, ‘飘扬’, ‘胜利’, ‘歌声’, ‘多么’, ‘响亮’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘越过’, ‘高山’, ‘越过’, ‘平原’, ‘跨过’, ‘奔腾’, ‘的’, ‘黄河’, ‘长江’, ‘宽广’, ‘美丽’, ‘的’, ‘土地’, ‘是’, ‘我们’, ‘亲爱’, ‘的’, ‘家乡’, ‘英雄’, ‘的’, ‘人民’, ‘站’, ‘起来’, ‘了’, ‘我们’, ‘团结’, ‘友爱’, ‘坚强’, ‘如’, ‘钢’, ‘五星红旗’, ‘迎风’, ‘飘扬’, ‘胜利’, ‘歌声’, ‘多么’, ‘响亮’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, '走</p>
+<p>向’, ‘繁荣富强’, ‘我们’, ‘勤劳’, ‘我们’, ‘勇敢’, ‘独立’, ‘自由’, ‘是’, ‘我们’, ‘的’, ‘理想’, ‘我们’, ‘战胜’, ‘了’, ‘多少’, ‘苦难’, ‘才’, ‘得到’, ‘今天’, ‘的’, ‘解放’, ‘我们’, ‘爱’, ‘和平’, ‘我们’, ‘爱’, ‘家乡’, ‘谁’, ‘敢’, ‘侵犯’, ‘我们’, ‘就’, ‘叫’, ‘他’, ‘灭亡’, ‘五星红旗’, ‘迎风’, ‘飘扬’, ‘胜利’, ‘歌声’, ‘多么’, ‘响亮’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘东方’, ‘太阳’, ‘正’, ‘在’, ‘升起’, ‘人民共和国’, ‘正在’, ‘成长’, ‘我们’, ‘领袖’, ‘毛’, ‘泽东’, ‘指引’, ‘着’, ‘前进’, ‘的’, ‘方向’, ‘我们’, ‘的’, ‘生活’, ‘天天’, ‘向上’, ‘我们’, ‘的’, ‘前程’, ‘万’, ‘丈’, ‘光芒’, ‘五星红旗’, ‘迎风’, ‘飘扬’, ‘胜利’, ‘歌声’, ‘多么’, ‘响亮’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’, ‘歌唱’, ‘我们’, ‘亲爱’, ‘的’, ‘祖国’, ‘从’, ‘今’, ‘走向’, ‘繁荣富强’]</p>
+<p><strong>使用SnowNLP对歌词每句进行打分并输出：</strong></p>
+<p>[0.7085923308003611, 0.9879464496422522, 0.9909439025827114, 0.9517612899908432, 0.9909439025827114, 0.9517612899908432, 0.5225802334617956, 0.9849360556402759, 0.9887661002237187, 0.9848074139377597, 0.9920180540338792, 0.9926862896601001, 0.7085923308003611, 0.9879464496422522, 0.9909439025827114, 0.9517612899908432, 0.9909439025827114, 0.9517612899908432, 0.7998030037805249, 0.9770528103361111, 0.9729817270377531, 0.431838445531166, 0.9191968596122729, 0.9553834127487298, 0.9292602857405009, 0.7085923308003611, 0.9879464496422522, 0.9909439025827114, 0.9517612899908432, 0.9909439025827114, 0.9517612899908432, 0.923141027700708, 0.9569102823404806, 0.952518544771091, 0.9469832014015251, 0.9789954991929685, 0.8109748197068926, 0.7085923308003611, 0.9879464496422522, 0.9909439025827114, 0.9517612899908432, 0.9909439025827114, 0.9517612899908432]</p>
+<p><strong>平均分：</strong></p>
+<p>0.9150844355631895</p>
+<p><strong>积极中性消极占比：</strong></p>
+<p>high percentage:</p>
+<p>0.9534883720930233</p>
+<p>middle percentage:</p>
+<p>0.023255813953488372</p>
+<p>low percentage:</p>
+<p>0.023255813953488372</p>
+<p><strong>平均情感得分：</strong></p>
+<p>avg emotion score:</p>
+<p>1.930232558139535</p>
+<p><strong>用例2：《玫瑰少年》</strong></p>
+<p><strong>歌词：</strong></p>
+<p>谁把谁的灵魂装进谁的身体谁把谁的身体变成囹圄囚禁自己乱世总是最 不缺耳语哪种美丽会唤来妒忌你并没有罪有罪是这世界生而为人无罪你不需要抱歉One day I will be you baby oy,and you gon’be me喧哗如果不停让我陪你安静 wish I could hug you,till you’re really really being free哪朵玫瑰 没有荆棘最好的 报复是 美丽最美的 盛开是 反击别让谁去 改变了你你是你 或是妳都行会有人 全心的 爱你试着想象 you switched to his body</p>
+<p>sexuality 当心 什么会伤你多少次的重伤 多少次的冷语rowning 谁会拉你</p>
+<p>dreaming 谁会陪你Same shit happens every day你离开后 世界可改变</p>
+<p>多少无知罪愆 事过不境迁永志不忘纪念 往事不如烟生而为人无罪</p>
+<p>你不需要抱歉One day I will be you baby boy, and you gon’be me喧哗如果不停</p>
+<p>让我陪你安静I wish I could hug you,till you’re really really being free哪朵玫瑰 没有荆棘</p>
+<p>最好的 报复是 美丽最美的 盛开是 反击别让谁去 改变了你你是你 或是妳都行会有人 全心的 爱你玫瑰少年 在我心里玫瑰少年 在我心里玫瑰少年 在我心里绽放着 鲜艳的 传奇</p>
+<p>我们都 从来没 忘记你的控诉 没有声音倾诉 更多的 真理却唤醒 无数的 真心</p>
+<p>哪朵玫瑰 没有荆棘最好的 报复是 美丽最美的 盛开是 反击</p>
+<p>别让谁去 改变了你你是你 或是妳 都行会有人 全心的 爱你玫瑰少年 在我心里</p>
+<p>玫瑰少年 在我心里</p>
+<p><strong>分词：</strong></p>
+<p>[‘谁’, ‘把’, ‘谁’, ‘的’, ‘灵魂’, ‘装’, ‘进’, ‘谁’, ‘的’, ‘身体’, ‘谁’, ‘把’, ‘谁’, ‘的’, ‘身体’, ‘变成’, ‘囹圄’, ‘囚’, ‘禁’, ‘自己’, ‘乱’, ‘世’, ‘总是’, ‘最’, ‘不’, ‘缺耳语’, ‘哪’, ‘种’, ‘美丽’, ‘会’, ‘唤来’, ‘妒’, ‘忌’, ‘你’, ‘并’, ‘没有’, ‘罪’, ‘有’, ‘罪’, ‘是’, ‘这’, ‘世界’, ‘生而为人’, ‘无罪’, ‘你’, ‘不’, ‘需要’, ‘抱歉’, ‘One’, ‘day’, ‘I’, ‘will’, ‘be’, ‘you’, ‘baby’, ‘boy,and’, ‘you’, “gon’be”, ‘me’, ‘喧’, ‘哗’, ‘如果’, ‘不’, ‘停’, ‘让’, ‘我’, ‘陪’, ‘你’, ‘安静’, ‘I’, ‘wish’, ‘I’, ‘could’, ‘hug’, ‘you,’, ‘till’, “you’re”, ‘really’, ‘really’, ‘being’, ‘free’, ‘哪朵’, ‘玫瑰’, ‘没有’, ‘荆棘’, ‘最’, ‘好’, ‘的’, ‘报复’, ‘是’, ‘美丽’, ‘最’, ‘美’, ‘的’, ‘盛开’, ‘是’, ‘反击’, ‘别’, ‘让’, ‘谁’, ‘去’, ‘改变’, ‘了’, ‘你’, ‘你’, ‘是’, ‘你’, ‘或’, ‘是’, ‘妳’, ‘都’, ‘行’, ‘会’, ‘有人’, ‘全心’, ‘的’, ‘爱’,</p>
+<p>‘你’, ‘试’, ‘着’, ‘想象’, ‘you’, ‘switched’, ‘to’, ‘his’, ‘body’, ‘sexuality’, ‘当心’, ‘什么’, ‘会’, ‘伤’, ‘你’, ‘多少’, ‘次’, ‘的’, ‘重’, ‘伤’, ‘多少’, ‘次’, ‘的’, ‘冷语’, ‘drowning’, ‘谁会’, ‘拉’, '你</p>
+<p>', ‘dreaming’, ‘谁会’, ‘陪’, ‘你’, ‘Same’, ‘shit’, ‘happens’, ‘every’, ‘day’, ‘你’, ‘离开’, ‘后’, ‘世界’, ‘可’, ‘改变’, ‘多少’, ‘无’, ‘知罪’, ‘愆’, ‘事过’, ‘不境迁’, ‘永志不忘’, ‘纪念’, ‘往事’, ‘不如烟’, ‘生而为人’, ‘无罪’, ‘你’, ‘不’, ‘需要’, ‘抱歉’, ‘One’, ‘day’, ‘I’, ‘will’, ‘be’, ‘you’, ‘baby’, ‘boy,’, ‘and’, ‘you’, “gon’be”, ‘me’, ‘喧’, ‘哗’, ‘如果’, ‘不’, ‘停’, ‘让’, ‘我’, ‘陪’, ‘你’, ‘安静’, ‘I’, ‘wish’, ‘I’, ‘could’, ‘hug’, ‘you,’, ‘till’, “you’re”, ‘really’, ‘really’, ‘being’, ‘free’, ‘哪朵’, ‘玫瑰’, ‘没有’, ‘荆棘’, ‘最’, ‘好’, ‘的’, ‘报复’, ‘是’, ‘美丽’, ‘最’, ‘美’, ‘的’, ‘盛开’, ‘是’, '反</p>
+<p>击’, ‘别’, ‘让’, ‘谁’, ‘去’, ‘改变’, ‘了’, ‘你’, ‘你’, ‘是’, ‘你’, ‘或’, ‘是’, ‘妳’, ‘都’, ‘行’, ‘会’, ‘有人’, ‘全心’, ‘的’, ‘爱’, ‘你’, ‘玫瑰’, ‘少年’, ‘在’, ‘我’, ‘心里’, ‘玫瑰’, ‘少年’, ‘在’, ‘我’, ‘心里’, ‘玫瑰’, ‘少年’, ‘在’, ‘我’, ‘心里’, ‘绽放’, ‘着’, ‘鲜艳’, ‘的’, ‘传奇’, ‘我们’, ‘都’, ‘从来’, ‘没’, ‘忘记’, ‘你’, ‘的’, ‘控诉’, ‘没有’, ‘声音’, ‘却’, ‘倾诉’, ‘更’, ‘多’, ‘的’, ‘真理’, ‘却’, '唤醒</p>
+<p>', ‘无数’, ‘的’, ‘真心’, ‘哪朵’, ‘玫瑰’, ‘没有’, ‘荆棘’, ‘最’, ‘好’, ‘的’, ‘报复’, ‘是’, ‘美丽’, ‘最’, ‘美’, ‘的’, ‘盛开’, ‘是’, ‘反击’, ‘别’, ‘让’, ‘谁’, ‘去’, ‘改变’, ‘了’, ‘你’, ‘你’, ‘是’, ‘你’, '或</p>
+<p>', ‘是’, ‘妳’, ‘都’, ‘行’, ‘会’, ‘有人’, ‘全心’, ‘的’, ‘爱’, ‘你’, ‘玫瑰’, ‘少年’, ‘在’, ‘我’, ‘心里’, ‘玫瑰’, ‘少年’, ‘在’, ‘我’, ‘心里’]</p>
+<p><strong>每句打分：</strong></p>
+<p>[0.8999999999999999, 0.5016298200109414, 0.8090452261306532, 0.48602752599007637, 0.4851538353229785, 0.9491296352012689, 0.7333333333333333, 0.9619796662903592, 0.7297953905324696, 0.13961245856781057, 0.04109890646258085, 0.11199185251699495, 0.7883767222266714, 0.03333657266262391, 0.23082833962758653, 0.9067727256589115, 0.9866469163526772, 0.9812149277831834, 0.7876694417122336, 0.5484089598126693, 0.77013147089893, 0.8084436857161835, 0.5458153458830967, 0.3756758574408604, 0.3868753268711015, 0.5015419894282334, 0.21270991843231468, 0.9572793740887575, 0.31268506145636343, 0.9882744223292088, 0.7297953905324696, 0.13961245856781057, 0.04109890646258085, 0.11199185251699495, 0.7883767222266714, 0.03333657266262391, 0.23082833962758653, 0.9067727256589115, 0.9866469163526772, 0.9812149277831834, 0.7876694417122336, 0.5484089598126693, 0.77013147089893, 0.9898200560670697, 0.9898200560670697, 0.9898200560670697, 0.9861739966073407, 0.4088777617948429, 0.19659428330207063, 0.9744607613694538, 0.8461064045273098, 0.9067727256589115, 0.9866469163526772, 0.9812149277831834, 0.7876694417122336, 0.5484089598126693, 0.77013147089893, 0.9898200560670697, 0.9898200560670697]</p>
+<p><strong>平均分：</strong></p>
+<p>0.6503309715883285</p>
+<p><strong>积极中性消极占比：</strong></p>
+<p>high percentage:</p>
+<p>0.5932203389830508</p>
+<p>middle percentage:</p>
+<p>0.1016949152542373</p>
+<p>low percentage:</p>
+<p>0.3050847457627119</p>
+<p><strong>平均情感得分：</strong></p>
+<p>avg emotion score:</p>
+<p>1.2881355932203389</p>
+<p><strong>结论：</strong></p>
+<p>SnowNLP能够很好的根据对歌词文本以单词为单位分割后进行情感分析，对于积极向上的词语打分偏高，对于消极负面的词语打分偏低，整体可信度较高</p>
+<h2 id="内容2-爬取文本并分析">内容2 爬取文本并分析</h2>
+<p><strong>环境：</strong></p>
+<p><strong>Python        3.10.7</strong></p>
+<p><strong>requests       2.28.1</strong></p>
+<p><strong>beautifulsoup4 4.11.1</strong></p>
+<p><strong>soupsieve      2.3.2.post1</strong></p>
+<p><strong>nltk      3.7</strong></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> bs4 </span><br><span class="line"><span class="keyword">import</span> jieba.analyse</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> RegexpTokenizer</span><br><span class="line"><span class="keyword">from</span> nltk.text <span class="keyword">import</span> TextCollection</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> word_tokenize</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> sent_tokenize</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SplitSentence</span>(<span class="params">content</span>): <span class="comment">#对中文段落进行分句</span></span><br><span class="line">    tokenizer = RegexpTokenizer(<span class="string">&quot;.*?[。！？]&quot;</span>) <span class="comment">#就是以[]中的符号为标识分割的</span></span><br><span class="line">    rst = tokenizer.tokenize(content)<span class="comment"># list</span></span><br><span class="line">    <span class="keyword">return</span> rst</span><br><span class="line"></span><br><span class="line">nltk.download(<span class="string">&#x27;punkt&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    url = <span class="string">&#x27;http://district.ce.cn/newarea/roll/202201/25/t20220125_37286708.shtml&#x27;</span><span class="comment">#设置url</span></span><br><span class="line">    header = &#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.52&quot;</span>&#125;</span><br><span class="line">    <span class="comment">#设置浏览器header</span></span><br><span class="line"></span><br><span class="line">    req = requests.get(url=url,headers = header)</span><br><span class="line">    req.encoding = <span class="string">&#x27;gbk&#x27;</span></span><br><span class="line">    html = req.text</span><br><span class="line">    bes = BeautifulSoup(html,<span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    texts = bes.find(<span class="string">&quot;div&quot;</span>, <span class="built_in">id</span> = <span class="string">&quot;articleText&quot;</span>)<span class="comment">#爬取标签为div，id为articleText的全部内容</span></span><br><span class="line">    texts = texts.text.split(<span class="string">&quot;\xa0&quot;</span>*<span class="number">4</span>)</span><br><span class="line">    sents=SplitSentence(texts[<span class="number">0</span>])<span class="comment">#对文本进行分句</span></span><br><span class="line">    <span class="built_in">print</span>(sents)<span class="comment">#输出分句后的结果</span></span><br><span class="line">    words=[jieba.lcut(sent) <span class="keyword">for</span> sent <span class="keyword">in</span> sents] <span class="comment">#对每个句子进行分词</span></span><br><span class="line">    <span class="built_in">print</span>(words)  <span class="comment">#输出分词后的结果</span></span><br><span class="line">    corpus=TextCollection(words)  <span class="comment">#构建语料库</span></span><br><span class="line">    <span class="comment"># print(corpus)  #输出语料库</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        word=<span class="built_in">input</span>(<span class="string">&quot;enter a word&quot;</span>)</span><br><span class="line">        <span class="comment">#计算出现次数</span></span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> group:</span><br><span class="line">                <span class="keyword">if</span> item==word:</span><br><span class="line">                    i+=<span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;times of : &quot;</span>,word,<span class="string">&quot; is: &quot;</span>,i)</span><br><span class="line">        <span class="comment">#计算词语出现在句子中的占比</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;percentage of : &quot;</span>,word,<span class="string">&quot; is: &quot;</span>,i/<span class="built_in">len</span>(words))</span><br><span class="line">        <span class="comment">#计算语料库中word的tf值</span></span><br><span class="line">        tf=corpus.tf(word,corpus)    </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;tf of : &quot;</span>,word,tf)        </span><br><span class="line">        <span class="comment">#计算语料库中word的idf值</span></span><br><span class="line">        idf=corpus.idf(word)     </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;idf of : &quot;</span>,word,idf)        </span><br><span class="line">        <span class="comment">#计算语料库中word的tf-idf值</span></span><br><span class="line">        tf_idf=corpus.tf_idf(word,corpus)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;tf_idf of : &quot;</span>,word,tf_idf)</span><br></pre></td></tr></table></figure>
+<h3 id="实验过程：">实验过程：</h3>
+<p>对河北省和山西省的省政府工作报告进行爬取，并对有效文本先后进行分句，分词和语料库构建，接着对待检测词语进行次数，比重和TF-IDF计算</p>
+<h3 id="实验结果：">实验结果：</h3>
+<h4 id="河北省：">河北省：</h4>
+<p><strong>爬取到的文本经过分句后的列表：</strong></p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203653803.png" alt="image-20221026203653803"></p>
+<p><strong>分词结果列表：</strong></p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203700416.png" alt="image-20221026203700416"></p>
+<p><strong>关键词检测结果：</strong></p>
+<p>振兴：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203708533.png" alt="image-20221026203708533"></p>
+<p>新能源：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203716204.png" alt="image-20221026203716204"></p>
+<p>公共服务：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203725862.png" alt="image-20221026203725862"></p>
+<p>企业：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203734944.png" alt="image-20221026203734944"></p>
+<p>互联网：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203744580.png" alt="image-20221026203744580"></p>
+<p>金融：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203756842.png" alt="image-20221026203756842"></p>
+<h4 id="山西省：">山西省：</h4>
+<p><strong>爬取到的文本经过分句后的列表：</strong></p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203803595.png" alt="image-20221026203803595"></p>
+<p><strong>分词结果列表：</strong></p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203809920.png" alt="image-20221026203809920"></p>
+<p><strong>关键词检测结果：</strong></p>
+<p>振兴：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203822351.png" alt="image-20221026203822351"></p>
+<p>新能源：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203829358.png" alt="image-20221026203829358"></p>
+<p>公共服务：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203835349.png" alt="image-20221026203835349"></p>
+<p>企业：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203841501.png" alt="image-20221026203841501"></p>
+<p>互联网：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203850072.png" alt="image-20221026203850072"></p>
+<p>金融：</p>
+<p><img src="/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/image-20221026203856109.png" alt="image-20221026203856109"></p>
+<h4 id="差异比较：">差异比较：</h4>
+<p>这个你自己比吧，我多测试了几个词，好奇怪山西省竟然没出现“企业”</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/">http://example.com/2022/10/26/NLP%E5%92%8C%E7%88%AC%E8%99%AB%E5%B0%8F%E5%AE%9E%E9%AA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/27/10-27-DB-lab/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">10.27 DB lab</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/24/10-22-S-N/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">10.22 S&amp;N</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">实验1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">实验2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B92-%E7%88%AC%E5%8F%96%E6%96%87%E6%9C%AC%E5%B9%B6%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">内容2 爬取文本并分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">实验过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">实验结果：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B2%B3%E5%8C%97%E7%9C%81%EF%BC%9A"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">河北省：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%B1%E8%A5%BF%E7%9C%81%EF%BC%9A"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">山西省：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%AE%E5%BC%82%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="toc-number">2.1.2.3.</span> <span class="toc-text">差异比较：</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

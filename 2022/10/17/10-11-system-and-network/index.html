@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>10.11 system and network | Franklin's secret cabin</title><meta name="keywords" content="S&amp;N,course"><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="machine code 寻址模式： 指令中第一个出现的是操作码（OW） 操作数：是指等待CPU处理的数据，也是指等待处理的数据所在的内存地址。 例如：mov a b （a 和 b分别是目的操作数和源操作数） 每个CPU中表达指令的操作数或者结果的存储位置的方法不一样，被称作寻址模式 一个源或者目标要么被存储在内存中，要么被存储在CPU寄存器里 一些引用内存的寻址模式需要CPU计算数据项的实际或有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10.11 system and network">
+<meta property="og:url" content="http://example.com/2022/10/17/10-11-system-and-network/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="machine code 寻址模式： 指令中第一个出现的是操作码（OW） 操作数：是指等待CPU处理的数据，也是指等待处理的数据所在的内存地址。 例如：mov a b （a 和 b分别是目的操作数和源操作数） 每个CPU中表达指令的操作数或者结果的存储位置的方法不一样，被称作寻址模式 一个源或者目标要么被存储在内存中，要么被存储在CPU寄存器里 一些引用内存的寻址模式需要CPU计算数据项的实际或有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2022-10-17T08:34:27.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.393Z">
+<meta property="article:author" content="Franklin Yang">
+<meta property="article:tag" content="S&amp;N">
+<meta property="article:tag" content="course">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2022/10/17/10-11-system-and-network/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '10.11 system and network',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">10.11 system and network</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-10-17T08:34:27.000Z" title="Created 2022-10-17 16:34:27">2022-10-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.393Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/10/17/10-11-system-and-network/" data-flag-title="10.11 system and network"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2022/10/17/10-11-system-and-network/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/10/17/10-11-system-and-network/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="machine-code">machine code</h3>
+<h4 id="寻址模式：">寻址模式：</h4>
+<p>指令中第一个出现的是操作码（OW）</p>
+<p><mark>操作数</mark>：是指等待CPU处理的数据，也是指等待处理的数据所在的内存地址。</p>
+<p>例如：mov a b （a 和 b分别是目的操作数和源操作数）</p>
+<p>每个CPU中表达指令的操作数或者结果的存储位置的方法不一样，被称作寻址模式</p>
+<p>一个源或者目标要么被存储在内存中，要么被存储在CPU寄存器里</p>
+<p>一些引用内存的寻址模式需要CPU计算数据项的实际或有效地址（EA）。</p>
+<p>常见寻址模式：</p>
+<p><strong>立即寻址 immediate：</strong></p>
+<p>因为源操作数就在指令中，被编码成可执行代码跟在操作码后面。这里要注意区分的是，立即数是写在代码中的常数，目的操作数是寄存器。而从寄存器或者内存中传输数据是变量，不是立即数。</p>
+<p><strong>直接寻址Absolute Addressing：</strong></p>
+<p>在指令格式的地址的字段中直接指出操作数在内存的地址。由于操作数的地址直接给出而不需要经过某种变换，所以称这种寻址方式为直接寻址方式。在指令中直接给出参与运算的操作数及运算结果所存放的主存地址，即在指令中直接给出有效地址。</p>
+<p><strong>寄存器（直接）寻址 Register Addressing:</strong></p>
+<p>操作数放在某个寄存器中，不需要访问存储器来取得操作数</p>
+<p><strong>寄存器间接寻址 Register  Indirect Addressing：</strong></p>
+<p>操作数的有效地址EA就写在寄存器中，不同于寄存器寻址，操作数还是在内存中，操作数的地址在寄存器中</p>
+<p><strong>寄存器相对寻址 Register Indexed Addressing：</strong></p>
+<p>操作数的有效地址EA是一个寄存器内容和位移量之和，不同于寄存器间接寻址，EA的构成除了寄存器内容，还要加上位移量常用于查表操作</p>
+<h4 id="Sigma16：">Sigma16：</h4>
+<h5 id="定义：">定义：</h5>
+<p>Sigma16是一个为计算机系统的研究和教学而设计的计算机架构。这个应用程序提供了一个完整的实验环境，包括一个编辑器、汇编器、链接器、仿真器和一个集成开发环境。有一个实现该架构的数字电路，它是用Hydra功能硬件描述语言指定的。Hydra可以模拟该电路，机器语言程序可以在仿真器和电路上运行。</p>
+<h5 id="组成：">组成：</h5>
+<p>16个16位寄存器R0—R15（R0总为0）</p>
+<p>一个16位的程序计数器（PC）</p>
+<p>65536个16位内存地址 $0000_{16}$ 到 $ffff_{16}$</p>
+<p>没有状态寄存器，意味着S16没有溢出标识或者其他错误标志</p>
+<p>S16机器机器码指令由一或两个存储在连续内存上的16位数值组成</p>
+<p>S16只有两种寻址方式：寄存器直接寻址和寄存器相对寻址</p>
+<h5 id="软件：">软件：</h5>
+<p>S16不是硬件机器而是由软件实现的</p>
+<p>我们使用的版本是Sigma16-0.1.7</p>
+<h4 id="S16-指令集">S16 指令集</h4>
+<h5 id="RRR-Instructions">RRR Instructions:</h5>
+<p>多数S16操作码都是RRR族的（0到$D_{16}$）</p>
+<p>前四个：数学运算：ADD, SUB, MUL, DLV</p>
+<p>后三个：比较运算：COMPLT, CMPEQ, CMPGT</p>
+<p>再后四个：位布尔运算：INV, AND, OR, XOR</p>
+<p>再后两个：逻辑偏移：SHIFTL, SHIFTR</p>
+<p>最后一个：特殊指令：TRAP</p>
+<p>TRAP指令是用来向操作系统请求服务的。在本课程中，TRAP只用于优雅地终止一个程序，并将控制权返回给操作系统。在这个角色中，d、a和b部分都被设置为0。</p>
+<p><mark><strong>MUL，DIV和比较指令只对补码值起作用。</strong></mark></p>
+<p>因此S16对补码的操作十分方便，其他类型就不怎么样，除非特别指出，所有数字都是用补码</p>
+<p>RRR指令集时使用寄存器直接寻址</p>
+<p>每条RRR指令指出三个寄存器：第一个存结果，另外俩存操作数</p>
+<p>例如，$ADD R_x,R_y,R_z$表示将$R_y$和$R_z$相加，结果为$R_x$。</p>
+<p>RRR指令格式：</p>
+<p><img src="/2022/10/17/10-11-system-and-network/image-20221017185321719.png" alt="image-20221017185321719"></p>
+<p>op存的操作码</p>
+<p>d存的目标寄存器（不能是R0）</p>
+<p>a和b存的是操作数寄存器的数字</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/17/10-11-system-and-network/">http://example.com/2022/10/17/10-11-system-and-network/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/S-N/">S&amp;N</a><a class="post-meta__tags" href="/tags/course/">course</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/17/10-12-java/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">10.12 java</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/16/voice-to-text-tutorial/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">voice to text tutorial</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/10/24/10-22-S-N/" title="10.22 S&amp;N"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-24</div><div class="title">10.22 S&amp;N</div></div></a></div><div><a href="/2022/11/06/10-24-S-N-course/" title="10.24 S&amp;N course"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-06</div><div class="title">10.24 S&amp;N course</div></div></a></div><div><a href="/2022/11/07/10-30-S-N-data-structures/" title="10.30 S&amp;N data structures"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-07</div><div class="title">10.30 S&amp;N data structures</div></div></a></div><div><a href="/2022/09/26/9-25%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="9.25网络与系统笔记"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-26</div><div class="title">9.25网络与系统笔记</div></div></a></div><div><a href="/2022/11/06/S-N-Sigma-16-tuorial/" title="S&amp;N Sigma 16 tuorial"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-06</div><div class="title">S&amp;N Sigma 16 tuorial</div></div></a></div><div><a href="/2022/12/06/S-N-section10/" title="S&amp;N section10"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-06</div><div class="title">S&amp;N section10</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#machine-code"><span class="toc-number">1.</span> <span class="toc-text">machine code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">寻址模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sigma16%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">Sigma16：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%84%E6%88%90%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">组成：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text">软件：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#S16-%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">1.3.</span> <span class="toc-text">S16 指令集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RRR-Instructions"><span class="toc-number">1.3.1.</span> <span class="toc-text">RRR Instructions:</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

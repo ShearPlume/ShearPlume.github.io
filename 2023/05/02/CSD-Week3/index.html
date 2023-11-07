@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSD-Week3 | Franklin's secret cabin</title><meta name="keywords" content="CSD"><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对称密钥加密法：block cipher 分组密码 块密码也被称为分组密码，因为它们将明文数据分成固定大小的块，并对每个块进行加密。每个块的大小取决于特定的块密码算法，例如AES将明文分成128位的块，而DES将明文分成64位的块。这些算法使用相同的密钥对每个块进行加密和解密。块密码是一种广泛使用的加密技术，用于保护计算机网络和数据通信的安全。 费斯塔尔密码器Feistel 这是一个单密钥、区块替">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSD-Week3">
+<meta property="og:url" content="http://example.com/2023/05/02/CSD-Week3/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="对称密钥加密法：block cipher 分组密码 块密码也被称为分组密码，因为它们将明文数据分成固定大小的块，并对每个块进行加密。每个块的大小取决于特定的块密码算法，例如AES将明文分成128位的块，而DES将明文分成64位的块。这些算法使用相同的密钥对每个块进行加密和解密。块密码是一种广泛使用的加密技术，用于保护计算机网络和数据通信的安全。 费斯塔尔密码器Feistel 这是一个单密钥、区块替">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2023-05-01T16:45:56.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.458Z">
+<meta property="article:author" content="Franklin Yang">
+<meta property="article:tag" content="CSD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2023/05/02/CSD-Week3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSD-Week3',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSD-Week3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.458Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/05/02/CSD-Week3/" data-flag-title="CSD-Week3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2023/05/02/CSD-Week3/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/05/02/CSD-Week3/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>对称密钥加密法：block cipher 分组密码</h1>
+<p>块密码也被称为分组密码，因为它们将明文数据分成固定大小的块，并对每个块进行加密。每个块的大小取决于特定的块密码算法，例如AES将明文分成128位的块，而DES将明文分成64位的块。这些算法使用相同的密钥对每个块进行加密和解密。块密码是一种广泛使用的加密技术，用于保护计算机网络和数据通信的安全。</p>
+<h2 id="费斯塔尔密码器Feistel">费斯塔尔密码器Feistel</h2>
+<p>这是一个单密钥、区块替换密码的系列。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502012300372.png" alt="image-20230502012300372"></p>
+<p>密钥是输入和输出块之间的映射。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502012628356.png" alt="image-20230502012628356"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502013826938.png" alt="image-20230502013826938"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502012651383.png" alt="image-20230502012651383"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502015649958.png" alt="image-20230502015649958"></p>
+<p>但是越复杂速度越慢</p>
+<h4 id="加密与解密是对称的">加密与解密是对称的</h4>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502015813320.png" alt="image-20230502015813320"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502015836522.png" alt="image-20230502015836522"></p>
+<p>Feistel结构把F函数转化为一 个置换（<mark>混淆</mark>）。 许多分组密码采用Feistel结构： FEAL, GOST, LOKI, E2,  Blowfish, Camellia和RC5等</p>
+<p>一般，每一轮中的F函数都相 同，仅密钥不同。 可推广为每一轮中的F函数也 变化，如Khufu和MD4等算法</p>
+<h2 id="Data-Encryption-Standard-DES-数据加密标准">Data Encryption Standard (DES)数据加密标准</h2>
+<h4 id="DES和费斯塔尔关系：">DES和费斯塔尔关系：</h4>
+<p>1.算法具体实现：尽管DES基于Feistel结构设计，但DES是一种具体的加密算法，而Feistel密码是一种加密结构。DES具有明确的置换表、子密钥生成规则和S盒（替换盒）定义。Feistel密码结构可以用来设计不同的加密算法，例如Blowfish和Twofish，它们的实现和DES在具体细节上有所不同。</p>
+<p>2.密钥长度和轮数：DES使用64位密钥，实际上只有56位有效（8位用于奇偶校验）。DES算法中的加密和解密过程包含16轮迭代。而基于Feistel结构的其他密码算法，如Blowfish和Twofish，可能具有不同的密钥长度和迭代轮数。这些参数对加密算法的安全性和性能有重要影响。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502022357191.png" alt="image-20230502022357191"></p>
+<h4 id="DES中F（k-Ri-1）的细节：">DES中F（k,Ri-1）的细节：</h4>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502023053464.png" alt="image-20230502023053464"></p>
+<p><img src="../../../AppData/Roaming/Typora/typora-user-images/image-20230502024401943.png" alt="image-20230502024401943"></p>
+<h4 id="拓展运算E：">拓展运算E：</h4>
+<p>起到扩散作用(实际上是扩展置换)，某一个比特的影响，几轮操作后会扩散到整 个分组64位 （就是个让他变多的置换表）</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502024745531.png" alt="image-20230502024745531"></p>
+<h4 id="DES全局">DES全局</h4>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502031128751.png" alt="image-20230502031128751"></p>
+<h4 id="S-box">S-box</h4>
+<p>如何将6位压缩成4位：</p>
+<p>1.将6位输入数据的首尾两位组合，作为行索引。将输入数据的中间4位组合，作为列索引。这样，每个6位输入数据就可以用行列索引确定一个特定的S-box中的单元格。</p>
+<p>2.使用行列索引在S-box中查找相应的4位输出数据（可以当成16进制）。</p>
+<p>3.将8个S-box的4位输出数据组合在一起，形成一个32位的输出。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">简化版S-<span class="keyword">box</span>：</span><br><span class="line">  <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">0</span> <span class="number">4</span> <span class="number">1</span> <span class="number">0</span> E</span><br><span class="line"><span class="number">1</span> A <span class="number">6</span> <span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">2</span> <span class="number">9</span> <span class="number">2</span> <span class="number">3</span> <span class="number">8</span></span><br><span class="line"><span class="number">3</span> B F D C</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在，我们有一个6位的输入数据：<code>101011</code>。我们将首尾两位（<code>11</code>）作为行索引，中间4位（<code>0101</code>）作为列索引，行索引：3（二进制11对应的十进制） 列索引：5（二进制0101对应的十进制）</p>
+<p>在简化版S-box中查找行索引为3，列索引为5的单元格，我们发现行索引为3，列索引为5的单元格包含数值<code>D</code>。因此，对于输入数据<code>101011</code>，S-box输出结果为<code>1101</code>（二进制表示）。</p>
+<p>实际的DES算法中，S-box有4行16列，每个单元格包含一个4位的二进制数。通过这种方式，S-box将6位输入数据转换为4位输出数据。</p>
+<p><strong>实际的8个S-box</strong>：</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502034049784.png" alt="a"></p>
+<h4 id="初始置换和逆置换IP和IP-1">初始置换和逆置换IP和IP-1</h4>
+<p>初始置换和逆置换其实就是<mark>扩散</mark>的一种实现（打乱明文顺序，最后再把密文逆着还原回原来顺序）</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230502034326828.png" alt="image-20230502034326828"></p>
+<h4 id="子密钥">子密钥</h4>
+<p>密钥调度从一个64位的初始密钥开始，实际上只有56位用于加密（其余8位用于奇偶校验）。通过一系列的置换、分割和移位操作，为每一轮加密生成一个48位的子密钥。</p>
+<ol>
+<li class="lvl-3">
+<p><strong>初始置换</strong>：首先，使用一个预定义的置换表（PC-1），将64位初始密钥的56个有效位重新排列。这个过程会去掉8个用于奇偶校验的位。</p>
+</li>
+<li class="lvl-3">
+<p><strong>分割</strong>：将置换后的56位密钥分为两个部分，每个部分包含28位。这两部分分别称为C（左半部分）和D（右半部分）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>循环左移</strong>：在生成每轮的子密钥之前，将C和D两部分进行循环左移。根据当前轮数确定移位的位数。在DES中，第1、2、9、16轮移位1位，其他轮次移位2位。</p>
+</li>
+<li class="lvl-3">
+<p><strong>压缩置换</strong>：对于每一轮，将移位后的C和D两部分（共56位）进行压缩置换，得到一个48位的子密钥。压缩置换使用预定义的置换表（PC-2），它将56位密钥映射为48位子密钥，同时去除部分位以实现压缩。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503012505520.png" alt="image-20230503012505520"></p>
+</li>
+</ol>
+<h4 id="DES解密：">DES解密：</h4>
+<p>和加密完全一样，只是使用密钥顺序相反，左移变成右移。</p>
+<p>看到38页</p>
+<h4 id="S-DES">S-DES</h4>
+<p>为了了解DES是如何工作的，我们研究了一个由圣克拉拉大学的Edward Schaefer开发的玩具系统Simplified-DES（SDES）。<br>
+► S-DES使用一个10位的密钥对8位的数据块进行加密。<br>
+► 有两轮替换，每轮都有自己的子密钥。<br>
+► 左半边和右半边在它们之间进行交换。<br>
+► 让我们生成一个样本数据块和样本密钥，以通过S-DES算法工作。数据 = 00111110<br>
+密钥 = 1011000110</p>
+<h5 id="最初的排列组合">最初的排列组合</h5>
+<p>初始置换（IP）对8位数据块进行操作</p>
+<p>► 如果数据位被编号为0…7，那么初始排列是15203746。</p>
+<p>► 稀释后的数据是： 00111110 → 01101011</p>
+<p>► 过程结束时应用的反置换（最终置换）是 30246175</p>
+<h5 id="子密钥的生成">子密钥的生成</h5>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511121719006.png" alt="image-20230511121719006"></p>
+<p>两个8位的子密钥由10位的主密钥生成。</p>
+<h5 id="第1步：根据P10排列表，对原钥匙的位进行排列：">第1步：根据P10排列表，对原钥匙的位进行排列：</h5>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511121811661.png" alt="image-20230511121811661"></p>
+<p>Key = 1011000110 → 1000101110</p>
+<h5 id="第二步：左边5位和右边5位都向左旋转1位">第二步：左边5位和右边5位都向左旋转1位</h5>
+<p>10001 01110 → 00011 11100</p>
+<h5 id="第三步：第一个8位子密钥是由以下匹配的8位表形成的">第三步：第一个8位子密钥是由以下匹配的8位表形成的</h5>
+<p>然后我们有： K1 = 10111100</p>
+<h5 id="第4步：将第2步中的左、右5位都向左旋转2位">第4步：将第2步中的左、右5位都向左旋转2位</h5>
+<p>10001 01110 → 00110 11001</p>
+<h5 id="第5步：第二个8位子密钥由与第3步相同的位组成（再次使用P8排列表）。">第5步：第二个8位子密钥由与第3步相同的位组成（再次使用P8排列表）。</h5>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122001788.png" alt="image-20230511122001788"></p>
+<h4 id="F函数的细节">F函数的细节</h4>
+<p>SDES中最复杂的部分是函数F<br>
+► 如图所示，由步骤定义：</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122050488.png" alt="image-20230511122050488"></p>
+<ol>
+<li class="lvl-3">
+<p>按照E/P表将4个数据位（区块的右半部分）扩展到8位 30121230<br>
+稀释后的数据：</p>
+</li>
+</ol>
+<p>0110 1011→ 11010111</p>
+<ol start="2">
+<li class="lvl-3">
+<p>这8位与第一个密钥K1的8位进行XOR。</p>
+</li>
+</ol>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122242383.png" alt="image-20230511122242383"></p>
+<ol start="3">
+<li class="lvl-3">
+<p>由此产生的8位（编号为012…7）被再次分割成4个独立的2位数，称为（row1 , col1），（row2 , col2），规则如下</p>
+</li>
+</ol>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122342069.png" alt="image-20230511122342069"></p>
+<p>01101011 ➔ (00, 11) , (11, 01)</p>
+<p>In decimal, row1 = 0, col1 = 3, row2 = 3, col2 = 1.</p>
+<ol start="4">
+<li class="lvl-3">
+<p>(row1 ,col1 )和(row2 ,col2 )构成两个4x4表格的行和列索引，称为替代箱(S-boxes)。</p>
+<p>o 一个S-box是一个矩阵，以行和列为索引。 o 每个S-box产生2比特的输出</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122450063.png" alt="image-20230511122450063"></p>
+<p>S1(0, 3) = 10, S2(3, 1) = 01</p>
+</li>
+<li class="lvl-3">
+<p>由此产生的4位数，即两个S-boxes的输出，经过P4表1320的另一次置换，这是函数F的输出。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230511122736156.png" alt="image-20230511122736156"></p>
+<p>该算法继续进行：</p>
+</li>
+<li class="lvl-3">
+<p>切换函数（SW）将左右4位互换，使f K的第二个实例在不同的4位上操作。</p>
+</li>
+<li class="lvl-3">
+<p>在这第二个实例中，E/P，S0，S1，和P4函数是相同的。密钥输入是K2。</p>
+</li>
+<li class="lvl-3">
+<p>最后应用反置换法（即最终置换法）来获得密码文本</p>
+</li>
+</ol>
+<h4 id="小结：">小结：</h4>
+<p>• 用代替S-盒实现小块的非线性变换,达到混乱目的</p>
+<p>• 用置换P实现大块的非线性变换,达到扩散目的</p>
+<p>一位明文改变后造成的各轮密文变化：</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503022849644.png" alt="image-20230503022849644"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503022441986.png" alt="image-20230503022441986"></p>
+<h4 id="DES的破解">DES的破解</h4>
+<h5 id="差分密码分析">差分密码分析</h5>
+<h5 id="线性密码分析">线性密码分析</h5>
+<h5 id="Double-DES">Double DES</h5>
+<h5 id="Triple-DES">Triple DES</h5>
+<p><mark>• DES的安全性完全依赖于所用的密钥，这是划时代的</mark></p>
+<h2 id="Advanced-Encryption-Standard-AES-高级加密标准">Advanced Encryption Standard (AES)高级加密标准</h2>
+<h4 id="背景">背景</h4>
+<p>DES不安全，三重DES安全但是太慢</p>
+<h4 id="参数">参数</h4>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503023759464.png" alt="image-20230503023759464"></p>
+<p><strong>不是</strong>Feistel结构，是一种SPN</p>
+<p>迭代次数 Nr可变 ：</p>
+<p>|K|=128时Nr=10</p>
+<p>|K|=192 时Nr=12</p>
+<p>|K|=256 时Nr=14</p>
+<p><mark>我们只考虑128</mark></p>
+<h4 id="AES输入：">AES输入：</h4>
+<p>输入矩阵由 4 行和每行 4 个字节（32位）组成，共计 16 个字节，因此它也被称为 4x4 的矩阵。</p>
+<p>原因：方便和密钥进行高效操作</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503024526947.png" alt="image-20230503024526947"></p>
+<h4 id="AES-128">AES-128</h4>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503024025447.png" alt="image-20230503024025447"></p>
+<h4 id="加密过程">加密过程</h4>
+<p>每区段为 8 bits →输入数组 in →状态数组 (State) S →输出数组 out</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503025037152.png" alt="image-20230503025037152"></p>
+<p>状态矩阵是AES算法内部计算的中间状态，它的结构与输入矩阵非常相似，也由 4 行和每行 4 个字节（32位）组成，共计 16 个字节，同样也是一个 4x4 的矩阵。</p>
+<h5 id="密钥扩展">密钥扩展</h5>
+<p>AES密钥扩展算法使用了一个密钥扩展算法来生成轮密钥。该算法的核心是密钥调度算法（Key Schedule Algorithm），它会将输入的密钥分为多个字（Word），并对这些字进行一系列的变换，生成多轮加密所需的轮密钥。</p>
+<p>输入密钥128位，每轮轮密钥都需要128位，即4字16字节128位，11轮共44字，这44字都是从初始输入128位密钥扩展而出的</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503030103795.png" alt="image-20230503030103795"></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>第一步，将输入的密钥分为若干个字，每个字32位。对于128位密钥，共有4个字（w0, w1, w2, w3）</p>
+</li>
+<li class="lvl-2">
+<p>第二步，对最后一个字w3进行<mark>处理</mark>，生成一个新的字。</p>
+<ul class="lvl-2">
+<li class="lvl-4">将w3进行循环左移一位。</li>
+<li class="lvl-4">对temp中的每个字节，使用S盒进行字节替换。</li>
+<li class="lvl-4">将temp与前一轮的轮密钥中的第0个字（w0）异或，得到当前轮次的轮密钥中的第0个字（w0’）。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>第三步，对最后生成的新字，根据不同的轮数，进行不同的变换操作，生成每轮所需的轮密钥。</p>
+<ul class="lvl-2">
+<li class="lvl-4">对w0’进行处理，得到一个新的字w1’：
+<ul class="lvl-4">
+<li class="lvl-6">将w0’与前一轮的轮密钥中的第1个字（w1）异或。</li>
+</ul>
+</li>
+<li class="lvl-4">对w1’进行处理，得到一个新的字w2’：
+<ul class="lvl-4">
+<li class="lvl-6">将w1’与前一轮的轮密钥中的第2个字（w2）异或。</li>
+</ul>
+</li>
+<li class="lvl-4">对w2’进行处理，得到一个新的字w3’：
+<ul class="lvl-4">
+<li class="lvl-6">将w2’与前一轮的轮密钥中的第3个字（w3）异或。</li>
+</ul>
+</li>
+<li class="lvl-4">最终得到的轮密钥为：w0’, w1’, w2’, w3’，共4个字。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>第四步，重复以上步骤，直到生成所有轮所需的轮密钥。</p>
+</li>
+</ul>
+<p>第二部的处理：</p>
+<h5 id="ADD-key加密钥">ADD key加密钥</h5>
+<p>将输入矩阵和当前轮的轮密钥进行异或操作，得到一个新的矩阵。这个新的矩阵将作为下一步的输入矩阵，进入SubBytes操作。</p>
+<p>将第一个轮密钥扩展到和输入矩阵相同大小然后异或，得到的矩阵作为下一步SubBytes的的输入矩阵</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503030912150.png" alt="image-20230503030912150"></p>
+<h5 id="SubBytes步骤">SubBytes步骤</h5>
+<p>S盒，将输入的每个字节替换为另一个字节。S盒是AES加密算法中的一个核心组件，其作用是将输入的8位二进制数替换为另一个8位二进制数，从而进行数据混淆。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503033242377.png" alt="image-20230503033242377"></p>
+<p>S盒由一个16x16的矩阵组成，其中每个元素是一个8位的字节。</p>
+<p>对于每个字节，算法将其拆分为高4位和低4位两个部分，并将这两个部分分别用作S盒的行索引和列索引，以在S盒中查找对应的替换值。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S00的输入是0x53，分成5和3，也就是sbox第五行第三列，如果S盒中的对应元素的值是0x8F，那么算法就将原来的0x53字节替换为新的0x8F字节。</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503032005762.png" alt="image-20230503032005762"></p>
+<p>S盒替换操作是一个非线性的操作，它增加了AES加密算法的复杂度和安全性。</p>
+<h5 id="Shift-row：行位移">Shift row：行位移</h5>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503033220951.png" alt="image-20230503033220951"></p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503034758975.png" alt="image-20230503034758975"></p>
+<p>将输入矩阵的每一行进行循环移位操作</p>
+<p>第一行不移位，第二行向左移动一位，第三行向左移动两位，第四行向左移动三位。这样，ShiftRows操作可以使每一行的字节在矩阵中的位置发生改变，从而增加了数据的扩散性，增加了加密算法的强度。</p>
+<h5 id="Mix-column：列混合">Mix column：列混合</h5>
+<p><mark>MixColumns步骤是AES算法中最难理解的步骤之一，但它是保证AES安全性的重要组成部分。</mark></p>
+<p><mark>MixColumns</mark>操作是一个线性变换，它将输入矩阵的每一列映射为一个新的列。具体来说，MixColumns阶段对矩阵中的每一列应用一个固定的线性变换，从而混淆矩阵中的数据，增加了加密算法的强度。</p>
+<p><img src="/2023/05/02/CSD-Week3/image-20230503034647786.png" alt="image-20230503034647786"></p>
+<h5 id="AddRoundKey">AddRoundKey</h5>
+<p>最后一个阶段是AddRoundKey，这个阶段跟第一轮AddRoundKey的操作相似，不过这里使用的轮密钥是倒数第二轮产生的轮密钥，而不是当前轮次产生的轮密钥。这个操作相当于将最后一轮加密的输出与倒数第二轮的轮密钥进行异或运算，从而得到最终的加密结果。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/02/CSD-Week3/">http://example.com/2023/05/02/CSD-Week3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSD/">CSD</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">week 4 Message Digests, Random Numbers, and Secret Sharing</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/02/CSD-revision/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">CSD revision</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/02/23/CSD-Bitcoin-and-Blockchain/" title="CSD Bitcoin and Blockchain"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-23</div><div class="title">CSD Bitcoin and Blockchain</div></div></a></div><div><a href="/2023/02/20/CSD-Information-Theory/" title="CSD-Information-Theory"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">CSD-Information-Theory</div></div></a></div><div><a href="/2023/05/02/CSD-revision/" title="CSD revision"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-02</div><div class="title">CSD revision</div></div></a></div><div><a href="/2023/01/19/CSD-week2/" title="CSD week2"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">CSD week2</div></div></a></div><div><a href="/2023/02/15/CSD-week1/" title="CSD-week1"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">CSD-week1</div></div></a></div><div><a href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-03</div><div class="title">week 5 Public Key Cryptography</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">对称密钥加密法：block cipher 分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%B9%E6%96%AF%E5%A1%94%E5%B0%94%E5%AF%86%E7%A0%81%E5%99%A8Feistel"><span class="toc-number">1.1.</span> <span class="toc-text">费斯塔尔密码器Feistel</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E6%98%AF%E5%AF%B9%E7%A7%B0%E7%9A%84"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">加密与解密是对称的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data-Encryption-Standard-DES-%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86"><span class="toc-number">1.2.</span> <span class="toc-text">Data Encryption Standard (DES)数据加密标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DES%E5%92%8C%E8%B4%B9%E6%96%AF%E5%A1%94%E5%B0%94%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">DES和费斯塔尔关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DES%E4%B8%ADF%EF%BC%88k-Ri-1%EF%BC%89%E7%9A%84%E7%BB%86%E8%8A%82%EF%BC%9A"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">DES中F（k,Ri-1）的细节：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E8%BF%90%E7%AE%97E%EF%BC%9A"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">拓展运算E：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DES%E5%85%A8%E5%B1%80"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">DES全局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#S-box"><span class="toc-number">1.2.0.5.</span> <span class="toc-text">S-box</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%BD%AE%E6%8D%A2%E5%92%8C%E9%80%86%E7%BD%AE%E6%8D%A2IP%E5%92%8CIP-1"><span class="toc-number">1.2.0.6.</span> <span class="toc-text">初始置换和逆置换IP和IP-1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%AF%86%E9%92%A5"><span class="toc-number">1.2.0.7.</span> <span class="toc-text">子密钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DES%E8%A7%A3%E5%AF%86%EF%BC%9A"><span class="toc-number">1.2.0.8.</span> <span class="toc-text">DES解密：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#S-DES"><span class="toc-number">1.2.0.9.</span> <span class="toc-text">S-DES</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%88%9D%E7%9A%84%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number">1.2.0.9.1.</span> <span class="toc-text">最初的排列组合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%90%E5%AF%86%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">1.2.0.9.2.</span> <span class="toc-text">子密钥的生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC1%E6%AD%A5%EF%BC%9A%E6%A0%B9%E6%8D%AEP10%E6%8E%92%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AF%B9%E5%8E%9F%E9%92%A5%E5%8C%99%E7%9A%84%E4%BD%8D%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%88%97%EF%BC%9A"><span class="toc-number">1.2.0.9.3.</span> <span class="toc-text">第1步：根据P10排列表，对原钥匙的位进行排列：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%B7%A6%E8%BE%B95%E4%BD%8D%E5%92%8C%E5%8F%B3%E8%BE%B95%E4%BD%8D%E9%83%BD%E5%90%91%E5%B7%A6%E6%97%8B%E8%BD%AC1%E4%BD%8D"><span class="toc-number">1.2.0.9.4.</span> <span class="toc-text">第二步：左边5位和右边5位都向左旋转1位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%AC%AC%E4%B8%80%E4%B8%AA8%E4%BD%8D%E5%AD%90%E5%AF%86%E9%92%A5%E6%98%AF%E7%94%B1%E4%BB%A5%E4%B8%8B%E5%8C%B9%E9%85%8D%E7%9A%848%E4%BD%8D%E8%A1%A8%E5%BD%A2%E6%88%90%E7%9A%84"><span class="toc-number">1.2.0.9.5.</span> <span class="toc-text">第三步：第一个8位子密钥是由以下匹配的8位表形成的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC4%E6%AD%A5%EF%BC%9A%E5%B0%86%E7%AC%AC2%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%B7%A6%E3%80%81%E5%8F%B35%E4%BD%8D%E9%83%BD%E5%90%91%E5%B7%A6%E6%97%8B%E8%BD%AC2%E4%BD%8D"><span class="toc-number">1.2.0.9.6.</span> <span class="toc-text">第4步：将第2步中的左、右5位都向左旋转2位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC5%E6%AD%A5%EF%BC%9A%E7%AC%AC%E4%BA%8C%E4%B8%AA8%E4%BD%8D%E5%AD%90%E5%AF%86%E9%92%A5%E7%94%B1%E4%B8%8E%E7%AC%AC3%E6%AD%A5%E7%9B%B8%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BB%84%E6%88%90%EF%BC%88%E5%86%8D%E6%AC%A1%E4%BD%BF%E7%94%A8P8%E6%8E%92%E5%88%97%E8%A1%A8%EF%BC%89%E3%80%82"><span class="toc-number">1.2.0.9.7.</span> <span class="toc-text">第5步：第二个8位子密钥由与第3步相同的位组成（再次使用P8排列表）。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#F%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%86%E8%8A%82"><span class="toc-number">1.2.0.10.</span> <span class="toc-text">F函数的细节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A"><span class="toc-number">1.2.0.11.</span> <span class="toc-text">小结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DES%E7%9A%84%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.2.0.12.</span> <span class="toc-text">DES的破解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.2.0.12.1.</span> <span class="toc-text">差分密码分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.2.0.12.2.</span> <span class="toc-text">线性密码分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Double-DES"><span class="toc-number">1.2.0.12.3.</span> <span class="toc-text">Double DES</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Triple-DES"><span class="toc-number">1.2.0.12.4.</span> <span class="toc-text">Triple DES</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Encryption-Standard-AES-%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Encryption Standard (AES)高级加密标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AES%E8%BE%93%E5%85%A5%EF%BC%9A"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">AES输入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AES-128"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">AES-128</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">加密过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95"><span class="toc-number">1.3.0.5.1.</span> <span class="toc-text">密钥扩展</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ADD-key%E5%8A%A0%E5%AF%86%E9%92%A5"><span class="toc-number">1.3.0.5.2.</span> <span class="toc-text">ADD key加密钥</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SubBytes%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.0.5.3.</span> <span class="toc-text">SubBytes步骤</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Shift-row%EF%BC%9A%E8%A1%8C%E4%BD%8D%E7%A7%BB"><span class="toc-number">1.3.0.5.4.</span> <span class="toc-text">Shift row：行位移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mix-column%EF%BC%9A%E5%88%97%E6%B7%B7%E5%90%88"><span class="toc-number">1.3.0.5.5.</span> <span class="toc-text">Mix column：列混合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AddRoundKey"><span class="toc-number">1.3.0.5.6.</span> <span class="toc-text">AddRoundKey</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

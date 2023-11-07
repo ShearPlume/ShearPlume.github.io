@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>AP week2 design patterns | Franklin's secret cabin</title><meta name="keywords" content="courses,AP"><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="组合模式Composite Pattern Composite Pattern使得用户对单个对象和组合对象的使用具有一致性，所以又称部分-整体模式。 拿生活会遇到的例子来讲：总公司的部门与分公司、学生的书与书包… 等等。 成员    成员 功用     Component 抽象构件 为组合中的对象宣告接口，在透明式组合模式中可以宣告包括管理子类的方法接口。 安全式组合模式中管理子类的方法则由树枝构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AP week2 design patterns">
+<meta property="og:url" content="http://example.com/2023/01/25/AP-week2-design-patterns/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="组合模式Composite Pattern Composite Pattern使得用户对单个对象和组合对象的使用具有一致性，所以又称部分-整体模式。 拿生活会遇到的例子来讲：总公司的部门与分公司、学生的书与书包… 等等。 成员    成员 功用     Component 抽象构件 为组合中的对象宣告接口，在透明式组合模式中可以宣告包括管理子类的方法接口。 安全式组合模式中管理子类的方法则由树枝构">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2023-01-25T06:17:52.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.437Z">
+<meta property="article:author" content="Franklin Yang">
+<meta property="article:tag" content="courses">
+<meta property="article:tag" content="AP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2023/01/25/AP-week2-design-patterns/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AP week2 design patterns',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AP week2 design patterns</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-01-25T06:17:52.000Z" title="Created 2023-01-25 14:17:52">2023-01-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.437Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/01/25/AP-week2-design-patterns/" data-flag-title="AP week2 design patterns"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2023/01/25/AP-week2-design-patterns/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/01/25/AP-week2-design-patterns/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="组合模式Composite-Pattern">组合模式Composite Pattern</h3>
+<p>Composite Pattern使得用户对单个对象和组合对象的使用具有一致性，所以又称<strong>部分-整体模式</strong>。 拿生活会遇到的例子来讲：总公司的部门与分公司、学生的书与书包… 等等。</p>
+<h4 id="成员">成员</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">成员</th>
+<th style="text-align:left">功用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Component 抽象构件</td>
+<td style="text-align:left">为组合中的对象<mark>宣告接口</mark>，在透明式组合模式中可以宣告包括管理子类的方法接口。 安全式组合模式中管理子类的方法则由树枝构件完成。</td>
+</tr>
+<tr>
+<td style="text-align:left">Leaf 树叶构件</td>
+<td style="text-align:left">组合中的树叶节点，没有子节点。 实作Component宣告的接口。</td>
+</tr>
+<tr>
+<td style="text-align:left">Composite 树枝构件</td>
+<td style="text-align:left">组合中的分支节点，有子节点。 实作Component宣告的接口。 主要作用在于储存及管理子类对象。 通常有add（）， remove（）等方法。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="UML：">UML：</h4>
+<p><img src="/2023/01/25/AP-week2-design-patterns/image-20230125151322372.png" alt="image-20230125151322372"></p>
+<h4 id="范例：">范例：</h4>
+<p>最近中秋节要到了，大家都疯狂地去买烤肉用品。 要去大卖场之前，就会提着大包小包的购物袋，冲去卖场装各种肉类海鲜以及烤肉用具。 在这个范例里面，购物袋就是树枝构件。 而肉类海鲜以及烤肉用具就是树叶构件。 将肉放入（add）或拿出（remove）购物袋的行为，就是管理子构件的方法。</p>
+<p>课上例子：shop算价格</p>
+<p>shopcomponent类：只有一个comPrice接口，会被叶子和树枝所实现</p>
+<p>shopleaf类：简单的叶子节点，实现了单个元素实现价格计算接口</p>
+<p>shopcomosite类：树枝类型，维护一个数组（父类Component类型的，回忆把子类赋值给父类可以实现其重写后的函数），具有add，remove等函数，其重写的comPrice是用循环来计算数组内每一个元素的Price</p>
+<h3 id="装饰者模式Decorator-Pattern">装饰者模式Decorator Pattern</h3>
+<p>装饰者模式动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
+<p>装饰者模式可以想成买了一间房子不需要因为要装潢，而改变整体结构。 只需要在既有的结构上，加上要装潢的材料即可。 即动态将责任附加在对象上，若要扩展功能上，装饰者提供比继承更有弹性的替代方案。</p>
+<p>“一旦你熟悉了装饰的技巧，你将能够在不修改任何底层代码的情况下,给你的（或别人的)对象赋予新的职责。”</p>
+<h4 id="成员-2">成员</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">成员</th>
+<th style="text-align:left">功用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Component</td>
+<td style="text-align:left">定义一个对象的接口，可以给对象动态增加职责。</td>
+</tr>
+<tr>
+<td style="text-align:left">ConcreteComponent</td>
+<td style="text-align:left">定义一个对象，可以给这个物件增加一些职责。 （将ConcreteDecorator装饰到他身上）</td>
+</tr>
+<tr>
+<td style="text-align:left">Decorator</td>
+<td style="text-align:left">维持一个指向Component对象的指标，并定义一个与Component界面一致的接口（可以直接实现Component界面）。</td>
+</tr>
+<tr>
+<td style="text-align:left">ConcreteDecorator</td>
+<td style="text-align:left">组件新增的职责</td>
+</tr>
+</tbody>
+</table>
+<h4 id="范例：星巴兹咖啡">范例：星巴兹咖啡</h4>
+<p>我们要以饮料为主体，然后在运行时以调料来“装饰”( decorate）饮料。比方说，如果顾客想要摩卡和奶泡深焙咖啡，那么，要做的是:<br>
+拿一个深焙咖啡(DarkRoast)对象</p>
+<p>以摩卡(Mocha)对象装饰它</p>
+<p>以奶泡(Whip）对象装饰它</p>
+<p>调用cost()方法，并依赖委托(delegate)将调料的价钱加上去</p>
+<p>最外层调用cost函数，委托内层的cost，进入最内层后返回内层饮料或者调料的价格，外层接收后加上自己的价格返回给更外层，最终得到饮料总价</p>
+<h4 id="UML：-2">UML：</h4>
+<p><img src="/2023/01/25/AP-week2-design-patterns/image-20230125151208715.png" alt="image-20230125151208715"></p>
+<p><img src="/2023/01/25/AP-week2-design-patterns/image-20230125151531265.png" alt="image-20230125151531265"></p>
+<h3 id="观察者模式The-Observer-Pattern">观察者模式The Observer Pattern</h3>
+<h4 id="目的：">目的：</h4>
+<p>多個物件之間存在著一對多的依賴關係，當一個物件發生改變時，所有跟他有關的物件都會被通知且更新。</p>
+<h4 id="成员：">成员：</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Subject</td>
+<td style="text-align:left">抽象目标，提供保存观察者对象的集合以及增加观察者对象的方法、删除观察者对象的方法以及通知所有观察者的抽象方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">ConcreteSubject</td>
+<td style="text-align:left">具体目标，实作抽象目标中的通知方法。 具体目标内部发生改变时会通知所有加入的观察者对象。</td>
+</tr>
+<tr>
+<td style="text-align:left">Observer</td>
+<td style="text-align:left">抽象观察者，可以是抽象类别或是接口。 <mark>含有更新自己的抽象方法，即定義接收到目標時的方法。</mark>。</td>
+</tr>
+<tr>
+<td style="text-align:left">ConcreteObserver</td>
+<td style="text-align:left">实作抽象观察者，在目标更改状态时接收通知并更改自身状态。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="UML：-3">UML：</h4>
+<p><img src="/2023/01/25/AP-week2-design-patterns/image-20230125152750146.png" alt="image-20230125152750146"></p>
+<h4 id="例子：">例子：</h4>
+<p>Up主更新视频通知粉丝和老板：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ObserverPattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Subject</span> <span class="variable">subject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">YoutuberYFK</span>();</span><br><span class="line">        <span class="type">Observer</span> <span class="variable">obs1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Fans</span>();</span><br><span class="line">        <span class="type">Observer</span> <span class="variable">obs2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Vendor</span>();</span><br><span class="line">        subject.add(obs1);</span><br><span class="line">        subject.add(obs2);</span><br><span class="line">        subject.notifyObserver(Type.BUSINESS);</span><br><span class="line">        System.out.println();    </span><br><span class="line">        subject.notifyObserver(Type.VLOG);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">YFK 发布恰饭视频</span><br><span class="line">--------------</span><br><span class="line">紛絲看到表示傷心！</span><br><span class="line">老板看到恰饭视频覺得開心！</span><br><span class="line"></span><br><span class="line">YFK 發布新vlog影片</span><br><span class="line">--------------</span><br><span class="line">紛絲看到VLOG覺得有趣！</span><br><span class="line">老板看到VLOG表示為啥不是恰饭视频！</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/01/25/AP-week2-design-patterns/">http://example.com/2023/01/25/AP-week2-design-patterns/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/courses/">courses</a><a class="post-meta__tags" href="/tags/AP/">AP</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/01/30/HCI-week1-4/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">HCI week1-4</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/25/IT-Project001/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">IT Project001</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/02/01/AP-AE1/" title="AP AE1"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">AP AE1</div></div></a></div><div><a href="/2023/02/07/AP-week3-container/" title="AP week3 container"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-07</div><div class="title">AP week3 container</div></div></a></div><div><a href="/2023/04/15/ADS-revision/" title="ADS revision"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-15</div><div class="title">ADS revision</div></div></a></div><div><a href="/2023/01/24/ADS1/" title="ADS1"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-24</div><div class="title">ADS1</div></div></a></div><div><a href="/2023/01/19/CSD-week2/" title="CSD week2"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">CSD week2</div></div></a></div><div><a href="/2023/02/15/CSD-week1/" title="CSD-week1"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">CSD-week1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8FComposite-Pattern"><span class="toc-number">1.</span> <span class="toc-text">组合模式Composite Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%90%E5%91%98"><span class="toc-number">1.1.</span> <span class="toc-text">成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UML%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">UML：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E4%BE%8B%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">范例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8FDecorator-Pattern"><span class="toc-number">2.</span> <span class="toc-text">装饰者模式Decorator Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%90%E5%91%98-2"><span class="toc-number">2.1.</span> <span class="toc-text">成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E4%BE%8B%EF%BC%9A%E6%98%9F%E5%B7%B4%E5%85%B9%E5%92%96%E5%95%A1"><span class="toc-number">2.2.</span> <span class="toc-text">范例：星巴兹咖啡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UML%EF%BC%9A-2"><span class="toc-number">2.3.</span> <span class="toc-text">UML：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8FThe-Observer-Pattern"><span class="toc-number">3.</span> <span class="toc-text">观察者模式The Observer Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">目的：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%90%E5%91%98%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">成员：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UML%EF%BC%9A-3"><span class="toc-number">3.3.</span> <span class="toc-text">UML：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-number">3.4.</span> <span class="toc-text">例子：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

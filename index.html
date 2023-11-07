@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Franklin's secret cabin - 记录一些刷题笔记、日记以及可能会尝试的plog</title><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Franklin&#39;s secret cabin">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:author" content="Franklin Yang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Franklin\'s secret cabin',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-11-07 20:09:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/神奈川冲浪里.jpg?raw=true')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Franklin's secret cabin</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/11/07/DB-week-9-Optimization/#post-comment"><span class="valine-comment-count" data-xid="/2023/11/07/DB-week-9-Optimization/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">title: DB week 9 Optimization
+date: 2022-12-11 21:55:41
+tags:
+
+course
+DB
+
+关系代数
+路线图
+目标：探索数据库系统内部的内容
+…从做什么到如何做列出SQL处理的不同策略关系代数挑战：将SQL转换为关系表达式挑战：将关系表达式转化为关系树查询优化的背景
+关系代数
+代数：操作的集合：选择、项目、连接、聚合、分组，分组的条件
+关系表达式：是一连串的操作，定义了执行顺序，即算法。目标：找到使SQL查询的计算复杂性最小化的最佳操作顺序。
+关系代数符号
+单项操作
+
+二项操作
+
+通过分组进行聚合操作
+
+细说
+选择：
+
+
+嵌套选择：
+多重选择的前后顺序取决于中间结果的大小
+选取率（Selectivity）：检索到的图元的百分比（%）或符合选择条件的图元的概率。
+挑战：对于任何查询，在不执行查询的情况下预测其选择性*。
+策略：选择具有最小预测规模的策略。
+
+例子：
+
+投影：
+
+例子：
+
+投影和选择的先后顺序
+Heuristic rules1 先选择再投影，因为选择后会大概率过滤掉一些元组，接着进行投影会简便很多
+连接和笛卡尔积
+He ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/courses/">courses</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/CSD/">CSD</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/#post-comment"><span class="valine-comment-count" data-xid="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">JAVA标准加密库
+实现我们自己的加密算法是一个坏主意。
+➢ 建立一个安全的系统可能需要使用标准的加密算法。
+➢ 我们通过使用所提供的加密算法库来做到这一点。
+➢ Java 有自己的加密包：
+▪ java.security.*
+▪ javax.crypto..
+▪ javax.crypto.spec..
+密码库： 接口和实现
+这些库是以标准方式实现的。
+➢ 所有功能都在接口中提供。
+➢ 实际的实现是由工厂方法提供的。
+➢ 这使得切换实现很容易。
+▪ 大部分代码使用接口，不会改变。只有工厂方法需要改变，以选择不同的实现。
+我将介绍使用标准Java加密库的加密功能实例 ▪ 在文件MainJavaCrypto.java中实现一些加密功能。
+这些库是以标准方式实现的。
+➢ 所有功能都在接口中提供。
+➢ 实际的实现是由工厂方法提供的。
+➢ 这使得切换实现很容易。
+▪ 大部分代码使用接口，不会改变。只有工厂方法需要改变，以选择不同的实现。
+我将介绍加密函数的例子  使用标准的Java加密库 在MainJavaCrypto.java文件中实现一些加密功能。在文件MainJavaCrypto.java ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSD/">CSD</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/05/03/week-5-Public-Key-Cryptography/#post-comment"><span class="valine-comment-count" data-xid="/2023/05/03/week-5-Public-Key-Cryptography/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">Public Key Cryptography
+引言
+公钥加密：动机和需求
+传统加密：
+
+灵魂三问：如何保证m的保密？如何保证m的认证？如何保证m的完整？
+问题
+要求发送方、接收方知道共享秘钥： 问：如何首先就密钥达成一致（尤其是在从未 &quot;见面 &quot;的情况下）？
+加密能力与解密能力捆绑：解决机密性
+密钥管理问题：量、方法
+其他安全需求：网络
+不相识、不信任 的人之间通信的安全要求
+Diffe和Hellman提出：
+其加密算法和解密算法分别使用 不同的密钥，从而，可将加密密钥公开(称为公开密钥P)、解 密密钥保密(称为保密密钥S)。要求：
+
+解决方法：
+
+
+发送方和接收方不共享秘密密钥
+
+
+所有人都知道的公开加密密钥
+
+
+只有接收方知道的私人解密密钥
+
+
+示意图：
+
+
+所有用户的密钥保存在目录服务里
+三点需求：
+
+Diffe Hellman Key Exchange Protocol
+idea:
+困难的单向操作：容易做，但很难反着做
+见老师的混合色例子
+概述：
+➢ Diffie-Hellman 密钥交换使用一个指数加密系统来生成一个由两个人共享的单一密钥。
+➢ 双方通过 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/#post-comment"><span class="valine-comment-count" data-xid="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSD/">CSD</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/05/02/CSD-Week3/#post-comment"><span class="valine-comment-count" data-xid="/2023/05/02/CSD-Week3/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">对称密钥加密法：block cipher 分组密码
+块密码也被称为分组密码，因为它们将明文数据分成固定大小的块，并对每个块进行加密。每个块的大小取决于特定的块密码算法，例如AES将明文分成128位的块，而DES将明文分成64位的块。这些算法使用相同的密钥对每个块进行加密和解密。块密码是一种广泛使用的加密技术，用于保护计算机网络和数据通信的安全。
+费斯塔尔密码器Feistel
+这是一个单密钥、区块替换密码的系列。
+
+密钥是输入和输出块之间的映射。
+
+
+
+
+但是越复杂速度越慢
+加密与解密是对称的
+
+
+Feistel结构把F函数转化为一 个置换（混淆）。 许多分组密码采用Feistel结构： FEAL, GOST, LOKI, E2,  Blowfish, Camellia和RC5等
+一般，每一轮中的F函数都相 同，仅密钥不同。 可推广为每一轮中的F函数也 变化，如Khufu和MD4等算法
+Data Encryption Standard (DES)数据加密标准
+DES和费斯塔尔关系：
+1.算法具体实现：尽管DES基于Feistel结构设计，但DES是一种具体的加密算法，而Feistel密码 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/05/02/CSD-revision/" title="CSD revision">CSD revision</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-01T16:08:06.000Z" title="Created 2023-05-02 00:08:06">2023-05-02</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSD/">CSD</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/05/02/CSD-revision/#post-comment"><span class="valine-comment-count" data-xid="/2023/05/02/CSD-revision/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">Crypto Secure Dev revision
+共四题  ,往年题参考性不大
+Crypto
+Single key algorithm
+subquestions:a,b,c
+单密钥算法一题
+DES
+…
+public key algorithm
+DH
+课上举例：
+
+RSA
+DH+RSA一题
+ECC
+ECC一题
+Secure Dev
+Attacks
+Java Labs
+第四道题 不考编程，考加密的方法，比如，如果要加密一个文件，需要用到哪些库，定义一个method
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/04/26/long-code/" title="long code">long code</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-26T11:29:24.000Z" title="Created 2023-04-26 19:29:24">2023-04-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/04/26/long-code/#post-comment"><span class="valine-comment-count" data-xid="/2023/04/26/long-code/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">long code
+我们提供了一个简化的考试报告和抄袭检查工具的Java实现，旨在输出一份关于考试的报告：例如，如何调整额外时间的权重和任何可疑的抄袭行为。为了节省空间，这个实现是局部的，你应该假设以后会提供缺失的功能，例如，有一种方法可以将提交的内容添加到考试中。
+Exam
+123456789101112131415161718192021222324252627import java.util.ArrayList;public class Exam &#123;    public String name;    public ArrayList&lt;ExamScript&gt; submissions;//不符合安全类原则之数据隐藏    // Date of exam    public int day;    public int month;    public int year;    public Exam(String name) &#123;        this.name = name;        submissions = new ArrayList() ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/04/26/pastpapers/" title="pastpapers">pastpapers</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-25T19:02:01.000Z" title="Created 2023-04-26 03:02:01">2023-04-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/04/26/pastpapers/#post-comment"><span class="valine-comment-count" data-xid="/2023/04/26/pastpapers/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">SEpaper2020
+1a
+？
+1b
+异常可以用来以安全的方式设计类，它提供了一种结构化的方式来处理错误和特殊情况，即使在出现意外事件或条件时也能确保类的正常运行,因为有时fail比产生错误的数据更能让人接受
+other 3:
+• Data Hiding
+数据隐藏，，是指将一个类的内部状态从外部实体中隐藏起来，只通过明确定义的接口或方法提供访问。这种方法通过防止未经授权的修改或不一致的更新来帮助保持一个对象状态的一致性。
+好处：
+保护对象的内部状态不被未经授权的访问或修改
+使得维护和更新代码更加容易，因为对内部实现的改变不会影响外部接口
+• Atomic Operations
+原子操作是指完全完成或根本不执行的操作，确保一个对象的状态保持一致，即使在操作过程中发生错误或异常情况。换句话说就是不将时序耦合暴露在类之外，防止调用类时因未调用全部操作而产生错误
+好处：确保对象状态的一致性和有效性，即使在出现错误或特殊情况下也是如此简化了错误处理，因为它消除了在发生错误时手动跟踪和撤销部分修改的需要
+• Explicit Constructors
+使用显示构造函数，每次初始化对象的时候都将对 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/04/15/ADS-revision/" title="ADS revision">ADS revision</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-15T10:33:51.000Z" title="Created 2023-04-15 18:33:51">2023-04-15</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/courses/">courses</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/ADS/">ADS</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/04/15/ADS-revision/#post-comment"><span class="valine-comment-count" data-xid="/2023/04/15/ADS-revision/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/04/14/SE-revision/" title="SE revision">SE revision</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-14T06:33:06.000Z" title="Created 2023-04-14 14:33:06">2023-04-14</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/courses/">courses</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/SE/">SE</a></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-comments"></i><a href="/2023/04/14/SE-revision/#post-comment"><span class="valine-comment-count" data-xid="/2023/04/14/SE-revision/"><i class="fa-solid fa-spinner fa-spin"></i></span></a><span class="article-meta-label"> comments</span></span></div><div class="content">第二学期
+学期整体主题：如何编写软件
+
+
+好的设计是什么样子的？
+
+
+我们有哪些设计/架构的工具？
+
+
+我们如何知道我们构建了正确的东西？
+
+
+有哪些常见的模式/架构？
+
+
+Week 1 Recap of Sem 1 + Recap of OOP
+复习要点：
+抽象, 封装, 继承, 多态性
+
+
+继承的典型用途
+
+基类：
+为一系列的子类定义一个接口
+为子类添加特定的功能
+系统只通过基类的接口进行交互
+
+
+
+多态性
+
+
+子类共享父类的类型
+
+你不能删除功能，只能扩展（表格只会变大）。
+
+
+
+意味着它们可以透明地用于父类可以使用的任何地方
+
+
+多态性意味着一个对象的具体行为取决于它的类型
+
+多态性： 隐藏行为多态性同样因为你不能做什么而有用
+
+调用者不允许知道一个对象的确切类型只允许它至少具有给定（很宽泛）类型的功能
+
+
+
+
+封闭性
+
+对象控制自己的状态，例如，它们内部有数据。
+理想情况下，只有隐藏的/很好地控制对它的访问
+
+
+
+可见性修改器
+抽象类/接口
+获取器/设置器
+最终性
+Week 2 Challenges, Handling Complexity, Coupling and Coh ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ADS/" style="font-size: 1.14em; color: #999b9d">ADS</a> <a href="/tags/AP/" style="font-size: 1.19em; color: #999da1">AP</a> <a href="/tags/CSD/" style="font-size: 1.32em; color: #99a2ae">CSD</a> <a href="/tags/DB/" style="font-size: 1.41em; color: #99a5b7">DB</a> <a href="/tags/ECS/" style="font-size: 1.14em; color: #999b9d">ECS</a> <a href="/tags/HCI/" style="font-size: 1.1em; color: #999">HCI</a> <a href="/tags/IT-Project/" style="font-size: 1.14em; color: #999b9d">IT Project</a> <a href="/tags/S-N/" style="font-size: 1.41em; color: #99a5b7">S&N</a> <a href="/tags/SE/" style="font-size: 1.1em; color: #999">SE</a> <a href="/tags/clog/" style="font-size: 1.19em; color: #999da1">clog</a> <a href="/tags/coding/" style="font-size: 1.14em; color: #999b9d">coding</a> <a href="/tags/course/" style="font-size: 1.5em; color: #99a9bf">course</a> <a href="/tags/courses/" style="font-size: 1.46em; color: #99a7bb">courses</a> <a href="/tags/experience/" style="font-size: 1.23em; color: #999ea6">experience</a> <a href="/tags/food/" style="font-size: 1.1em; color: #999">food</a> <a href="/tags/interview/" style="font-size: 1.1em; color: #999">interview</a> <a href="/tags/java/" style="font-size: 1.37em; color: #99a4b2">java</a> <a href="/tags/lab/" style="font-size: 1.28em; color: #99a0aa">lab</a> <a href="/tags/life/" style="font-size: 1.19em; color: #999da1">life</a> <a href="/tags/summary/" style="font-size: 1.14em; color: #999b9d">summary</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">February 2023</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">January 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">24</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">89</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-07T12:09:51.261Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  function loadValine () {
+    function initValine () {
+      let initData = {
+        el: '#vcomment',
+        appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+        appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+        serverURLs: 'https://bucfeipg.api.lncldglobal.com'
+      }
+      
+      const valine = new Valine(initData)
+    }
+
+    if (typeof Valine === 'function') initValine() 
+    else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+  }
+
+  window.pjax ? loadValine() : window.addEventListener('load', loadValine)
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

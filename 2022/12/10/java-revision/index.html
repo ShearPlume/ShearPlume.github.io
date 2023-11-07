@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>java revision | Franklin's secret cabin</title><meta name="keywords" content="course,java"><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2020 1 对于以下每个代码片断，写出代码将产生的输出，并描述为什么输出是这样的，特别注意循环的标准：如何初始化i，如何和何时改变它，以及如何终止循环。 a 输出：0 1 2 3 4 i从0开始，每次循环打印i，然后i+&#x3D;1，继续循环直到i&#x3D;5跳出循环 b 1 2 4 i从1开始每次循环打印，然后i*&#x3D;2，继续循环直到i&gt;&#x3D;7,即i&#x3D;8时结束循环 c 0 1 2 打印时先打印后执行i++，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java revision">
+<meta property="og:url" content="http://example.com/2022/12/10/java-revision/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="2020 1 对于以下每个代码片断，写出代码将产生的输出，并描述为什么输出是这样的，特别注意循环的标准：如何初始化i，如何和何时改变它，以及如何终止循环。 a 输出：0 1 2 3 4 i从0开始，每次循环打印i，然后i+&#x3D;1，继续循环直到i&#x3D;5跳出循环 b 1 2 4 i从1开始每次循环打印，然后i*&#x3D;2，继续循环直到i&gt;&#x3D;7,即i&#x3D;8时结束循环 c 0 1 2 打印时先打印后执行i++，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2022-12-10T01:44:31.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.717Z">
+<meta property="article:author" content="Franklin Yang">
+<meta property="article:tag" content="course">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2022/12/10/java-revision/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java revision',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java revision</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-12-10T01:44:31.000Z" title="Created 2022-12-10 09:44:31">2022-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.717Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/12/10/java-revision/" data-flag-title="java revision"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2022/12/10/java-revision/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/12/10/java-revision/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="2020">2020</h2>
+<h4 id="1">1</h4>
+<p>对于以下每个代码片断，写出代码将产生的输出，并描述为什么输出是这样的，特别注意循环的标准：如何初始化i，如何和何时改变它，以及如何终止循环。</p>
+<p>a</p>
+<p>输出：0 1 2 3 4</p>
+<p>i从0开始，每次循环打印i，然后i+=1，继续循环直到i=5跳出循环</p>
+<p>b</p>
+<p>1 2 4</p>
+<p>i从1开始每次循环打印，然后i*=2，继续循环直到i&gt;=7,即i=8时结束循环</p>
+<p>c</p>
+<p>0 1 2</p>
+<p>打印时先打印后执行i++，当i=2时，打印2，然后因为3&gt;=3所以跳出循环，因此只打印到2</p>
+<p>d</p>
+<p>4 5</p>
+<p>++i优先级高于println，因此打印时i先自增，然后打印i，所以i从3循环到4后，++i=5，最后一次打印5，下一次条件检查时跳出循环</p>
+<p>e</p>
+<p>5</p>
+<p>do while语句总是会先执行一次do语句，因此会先打印i=5，接着i自增，接着判断条件不符合，跳出循环</p>
+<h4 id="2">2</h4>
+<p>a</p>
+<p>main方法将一个int类型的数组传递给go方法。通过检查代码，推断出go方法返回数组的什么有用属性。</p>
+<p>这是一个递归函数，通过二分法查找a[]中的最大值，最终返回的应该是8</p>
+<p>b</p>
+<p>Recursion</p>
+<p>c</p>
+<p>描述该程序如何实现其目标。特别是，按照发生的顺序，逐步完成对go方法的不同调用，以及该方法的返回。你不需要看完所有的调用（在这个例子中会有9个），只要能够描述程序是如何工作的就可以了。</p>
+<p>先对输入的数组的长度进行判断，如果长度&gt;1，那么把此数组分成前后两段，分别再对两段数组进行分解，直到数组被分解成两个元素为1的原子数组，再返回其中较大的那个，以此类推，最终返回的是数组中最大的元素</p>
+<p>d</p>
+<p>会返回索引为2的元素，如c中所说，递归函数会把此问题分解成许多小问题，最终再层层向上返回i，因此第一次调用时得到的返回值就应该递归完成后的结果，即数组中最大元素</p>
+<p>e</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Mystery</span> &#123;</span><br><span class="line"><span class="number">2.</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">3.</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="number">4.</span> <span class="type">int</span>[] a = &#123;<span class="number">8</span>,<span class="number">1</span>,-<span class="number">3</span>,<span class="number">12</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="number">5.</span> System.out.println(go(a,<span class="number">0</span>,a.length));</span><br><span class="line"><span class="number">6.</span> &#125;</span><br><span class="line"><span class="number">7.</span></span><br><span class="line"><span class="number">8.</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> <span class="title function_">go</span><span class="params">(object[] a,<span class="type">int</span> le,<span class="type">int</span> ri)</span> &#123;</span><br><span class="line"><span class="number">9.</span> c += <span class="number">1</span>;</span><br><span class="line"><span class="number">10.</span> <span class="keyword">if</span>(ri - le &lt;= <span class="number">1</span>) &#123;</span><br><span class="line"><span class="number">11.</span> <span class="keyword">return</span> a[le];</span><br><span class="line"><span class="number">12.</span> &#125;</span><br><span class="line"><span class="number">13.</span> <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">14.</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> le+(ri-le)/<span class="number">2</span>;</span><br><span class="line"><span class="number">15.</span> <span class="type">object</span> <span class="variable">m1</span> <span class="operator">=</span> go(a,le,cp);</span><br><span class="line"><span class="number">16.</span> <span class="type">object</span> <span class="variable">m2</span> <span class="operator">=</span> go(a,cp,ri);</span><br><span class="line"><span class="number">17.</span> <span class="keyword">if</span>(m1.compareTo(m2)==<span class="number">1</span>)</span><br><span class="line"><span class="number">18.</span> <span class="keyword">return</span> m1;</span><br><span class="line"><span class="number">19.</span> &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">20.</span> <span class="keyword">return</span> m2;</span><br><span class="line"><span class="number">21.</span> &#125;</span><br><span class="line"><span class="number">22.</span> &#125;</span><br><span class="line"><span class="number">23.</span> &#125;</span><br><span class="line"><span class="number">24.</span> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>将int[] a改为 object [] a，int m1,m2改为object m1，m2，但是oject必须是实现了comparable接口的类型，改写了comparTo（）函数这样就可以用&gt;来直接判断两个元素大小</p>
+<p>17行的if（m1&gt;m2）改成 if(m1.compareTo(m2)==1)</p>
+<h4 id="3">3</h4>
+<p>a</p>
+<p>代表a属于私有类型，此变量只能在类内部访问，无法在类外直接访问或修改，可以在类内写get（）和set（）方法来实现</p>
+<p>b</p>
+<p>第9行包含一个方法签名。复制这个签名，并给它的每一个组成部分贴上标签，描述它们的含义。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9.</span>	<span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setA</span><span class="params">(<span class="type">int</span> b)</span> &#123;</span><br><span class="line"><span class="number">10.</span> a = b;</span><br><span class="line"><span class="number">11.</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>private表示这个方法是私有的，只能在类内部被调用，且子类中不可见</p>
+<p>void表示方法没有返回值</p>
+<p>setA是方法名</p>
+<p>（int b）表示方法接受一个int类型的参数b作为形参</p>
+<p>c</p>
+<p>使用了重写override</p>
+<p>在第12行，对toString函数进行了重写，使得返回的string是int a所表示的数字的字符串形式</p>
+<p>d</p>
+<p>创建了一个类型为ExamQ2类，名为ee的对象，并给其构造函数传入数字a=5，使得ee的私有变量a被赋值为5</p>
+<p>e</p>
+<p>从第24行开始的四行包含两个调用方法，将3加到一个整数上。说明第25行和第27行的输出。详细描述一下为什么你认为输出是你所说的那样。</p>
+<p>25行输出5</p>
+<p>27行输出8</p>
+<p>24行的add3（a）是调用类中的add3（）函数，传入的形参是main函数内的局部变量a，但是操作的实参是类的属性a，二者作用域scope不同，所以main中的局部变量a没改变而25行输出的是局部变量a，因此是5</p>
+<p>而26行的add3Obj(ee)则是传入了实际对象ee，在add3Obj（）函数内部通过set函数对对象ee的变量a进行+3操作，而ee的a与局部变量a没有关系，因此24行对局部变量a的改变不影响ee的属性a的值，因此27行输出的值是ee.a由5加3后的值，即是8</p>
+<h3 id="4">4</h3>
+<p>一所当地学校为在班上做了好事（整理、帮助他人等）的学生奖励积分。在每个星期结束时，积分最高的学生将获得一份奖励。你是一个团队的成员，学校要求你帮助他们编写一个程序，以记录每周的积分和他们获得积分的原因。该程序将当前的积分存储在一个文本文件中，每一行都对应着一个学生获得积分的实例（也就是说，每个学生可能出现在多行中）。</p>
+<p><img src="/2022/12/10/java-revision/image-20221210191157009.png" alt="image-20221210191157009"></p>
+<p>(而且字段之间用空格隔开)。当程序运行时，它首先加载这个文件，存储数据，然后等待用户输入输入。有三种类型的输入。</p>
+<p>用户可以通过输入以下内容给学生加分。 ADD &lt;secondname&gt;&lt;firstname&gt; &lt;points to add&gt; &lt;reason for points&gt; 。(同样，字段用空格隔开)。你可以假设&lt;积分的原因&gt;永远不会包括任何空格，无论是在这里还是在原始文件中。</p>
+<p>用户可以通过以下方式将所有学生重置为没有积分。RESET</p>
+<p>或者按照总分的降序排列所有学生，使用: LIST</p>
+<p>a</p>
+<p>团队决定用一个解决方案来解决这个问题，该方案包括一个学生类，该类的对象将代表每个学生，以及一个AwardedPoints类，该类将代表授予学生的特定分数实例。学生类应该存储对授予该学生的所有积分实例的引用。为一个合适的AwardedPoints类提供代码。根据上面的问题描述，说明你所包含的所有属性和方法。无论是否有一个代表&lt;积分原因&gt;的字符串参数，都应该可以制作一个对象。你不需要在本题的任何代码中包括导入语句。只使用我们在课程中涉及的Java类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AwardedPoints</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>	<span class="type">int</span> pointstoadd;</span><br><span class="line">    <span class="keyword">private</span> String reasonforpoints;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">AwardedPoints</span><span class="params">(<span class="type">int</span> pointsadd)</span></span><br><span class="line">    &#123;</span><br><span class="line">        pointstoadd=pointsadd;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">AwardedPoints</span><span class="params">(<span class="type">int</span> pointsadd,String reason)</span> </span><br><span class="line">    &#123;</span><br><span class="line">        pointstoadd=pointsadd;</span><br><span class="line">        reasonforpoints=reason;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>pointstoadd表示要加的分数</p>
+<p>reasonforpoints表示加分原因</p>
+<p>void AwardedPoints(int pointsadd)</p>
+<p>此构造函数创建一个pointstoadd为pointsadd的对象，无需输入reason</p>
+<p>public void AwardedPoints(int pointsadd,String reason)</p>
+<p>此重载构造函数接受两个参数，分别是要加的分和加分原因，并创建一个AwardedPoints对象</p>
+<p>b</p>
+<p>为一个合适的Pupil类提供代码。根据上面的问题描述，证明你包括的任何方法。你可以假设任何特定的Pupil永远不会被授予超过100次的分数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pupil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String secondname;</span><br><span class="line">    <span class="keyword">private</span> String firstname;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> totalpoints;</span><br><span class="line">    <span class="keyword">private</span> AwardedPoints[] points;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getsname</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> secondname;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setsname</span><span class="params">(String sname)</span></span><br><span class="line">    &#123;</span><br><span class="line">        secondname=sname;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getfname</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> firstname;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setfname</span><span class="params">(String fname)</span></span><br><span class="line">    &#123;</span><br><span class="line">        firstname=fname;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getpoints</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> totalpoints;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setpoints</span><span class="params">(<span class="type">int</span> p)</span></span><br><span class="line">    &#123;</span><br><span class="line">        totalpoints=p;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addpoint</span><span class="params">(AwardedPoints aw)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.points[i]==<span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                points[i]=aw;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pupil</span><span class="params">(String sname,String fname)</span></span><br><span class="line">    &#123;</span><br><span class="line">        secondname=sname;</span><br><span class="line">        firstname=fname;</span><br><span class="line">        totalpoints=<span class="number">0</span>;</span><br><span class="line">        points=<span class="keyword">new</span> <span class="title class_">AwardedPoints</span>[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            points[i]=<span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>两个名字不用解释</p>
+<p>totalpoints表示学生当前总共分数</p>
+<p>六个set和get是修改和获得学生分数，姓和名</p>
+<p>addpoint把一个AwardedPoints添加给学生的AwardedPoints数组变量 points</p>
+<p>构造函数读取两个名字作为参数，并赋予学生，并将学生分数初始化为0，并将属性points初始化为容量为100的AwardedPoints数组（根据提议一个学生最多被奖励100次）</p>
+<p>c</p>
+<p>如果两个Pupil对象有相同的第一和第二名字，它们将被定义为相等。为你的类写一个.equals(Object o)方法，以满足这个规范。你可以假设两个不同的学生永远不会共享一个名字和第二个名字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(o <span class="keyword">instanceof</span> Pupil)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Pupil</span> <span class="variable">other</span> <span class="operator">=</span>(Pupil)o;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.getsname()==other.getsname()&amp;&amp;<span class="built_in">this</span>.getfname()==other.getfname())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>d</p>
+<p>我们决定用用户在 ADD 命令中输入的数据创建一个新的临时学生对象来实现 ADD 命令。然后这个临时的学生对象将与数组中的所有学生进行比较，用.equals方法（来自(d)部分）找到一个匹配的对象。编写一个方法，将学生数组、对单个学生对象的引用和对奖励积分对象的引用作为其参数。该方法应该在数组中找到与单个学生对象相匹配的条目，并将AwardedPoints对象添加到该学生身上。如果该学生不存在于数组中，它应该被添加到数组中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findtuple</span><span class="params">(Pupil[] pupils,Pupil tempp,AwardedPoints ap)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">boolean</span> ifexists=<span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;pupils.length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(tempp.equals(pupils[i]))</span><br><span class="line">        &#123;</span><br><span class="line">            ifexists=<span class="literal">true</span>;</span><br><span class="line">            pupils[i].addpoint(ap);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!ifexists)</span><br><span class="line">    &#123;</span><br><span class="line">        Pupil [] newpupils=<span class="keyword">new</span> <span class="title class_">Pupil</span>[pupils.length+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;pupils.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            newpupils[i]=pupils[i];                </span><br><span class="line">        &#125;</span><br><span class="line">        newpupils[pupils.length]=tempp;</span><br><span class="line">        pupils=newpupils;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>e</p>
+<p>编写代码来读取数据文件，并将结果存储到一个Pupil对象的数组中。你不需要包括异常处理，你可以假设数据文件的格式总是正确的。文件的第一行对应于第一个学生（也就是说，文件中没有标题）。你可以假设永远不会有超过 100 名的学生。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">read</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">       Pupil[] pupils=<span class="keyword">new</span> <span class="title class_">Pupil</span>[<span class="number">100</span>];</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">       &#123;</span><br><span class="line">           pupils[i]=<span class="literal">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">FileReader</span> <span class="variable">fr</span> <span class="operator">=</span> <span class="literal">null</span>;        </span><br><span class="line">       fr = <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;file.txt&quot;</span>);</span><br><span class="line">       <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(fr);</span><br><span class="line">       String line;</span><br><span class="line">       <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(sc.hasNextLine())</span><br><span class="line">       &#123;</span><br><span class="line">           line=sc.nextLine();</span><br><span class="line">           String []tokens=line.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">           System.out.println(line);</span><br><span class="line">           Pupil p=<span class="keyword">new</span> <span class="title class_">Pupil</span>(tokens[<span class="number">0</span>],tokens[<span class="number">1</span>]);</span><br><span class="line">           pupils[i]=p;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>f</p>
+<p>假设另一个小组成员提供了一个compareTo方法，允许你使用Arrays.sort对你的学生数组进行排序，使得分最高的学生处于第一位置。编写代码，提示用户输入，解析输入，决定相关动作，然后执行该动作。你可以假设用户总是正确地输入数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不会，这说的是个屁，用户输入啥？学生数组吗？</span><br></pre></td></tr></table></figure>
+<p>g</p>
+<p>OO的四个好处百度或者ai就行了</p>
+<p>h</p>
+<p>在团队中，在开发之前你们讨论了两种可能的解决方案。一个是由一个学生类组成的，另一个是最终被选中的，由独立的类来代表学生和奖励积分。描述一下为什么第二个方案更好。请确保你的答案是针对这个应用的，而不是针对一般的面向对象的论证。</p>
+<p>答：我觉得是因为，我们关注的是学生的每次奖励的细节，包括为什么被奖励，如果只用学生类，那就需要存很多数组（比如每次奖励的原因数组），而这些数组之间的关联却很不明朗，不如将奖励单独作为一个类处理，把每次奖励的细节存储在奖励对象里</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/10/java-revision/">http://example.com/2022/12/10/java-revision/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/course/">course</a><a class="post-meta__tags" href="/tags/java/">java</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/12/DB-week-10-HEURISTIC-QUERY-OPTIMIZATION/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">DB week 10 HEURISTIC QUERY OPTIMIZATION</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/08/S-N-section11/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">S&amp;N section11</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/10/17/10-12-java/" title="10.12 java"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-17</div><div class="title">10.12 java</div></div></a></div><div><a href="/2022/10/18/10-18Java/" title="10.18Java"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-18</div><div class="title">10.18Java</div></div></a></div><div><a href="/2022/10/04/10-4-java/" title="10.4 java"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-04</div><div class="title">10.4 java</div></div></a></div><div><a href="/2022/10/05/10-5-java/" title="10.5 java"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-05</div><div class="title">10.5 java</div></div></a></div><div><a href="/2022/09/27/9-27-%E7%AC%94%E8%AE%B0/" title="9.27 笔记"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-27</div><div class="title">9.27 笔记</div></div></a></div><div><a href="/2022/11/05/Java-File-IO/" title="Java File IO"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-05</div><div class="title">Java File IO</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2020"><span class="toc-number">1.</span> <span class="toc-text">2020</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.0.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.0.3.</span> <span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-number">1.1.</span> <span class="toc-text">4</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>week 5 Public Key Cryptography | Franklin's secret cabin</title><meta name="keywords" content="CSD"><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Public Key Cryptography 引言 公钥加密：动机和需求 传统加密：  灵魂三问：如何保证m的保密？如何保证m的认证？如何保证m的完整？ 问题 要求发送方、接收方知道共享秘钥： 问：如何首先就密钥达成一致（尤其是在从未 &quot;见面 &quot;的情况下）？ 加密能力与解密能力捆绑：解决机密性 密钥管理问题：量、方法 其他安全需求：网络 不相识、不信任 的人之间通信的安全要求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="week 5 Public Key Cryptography">
+<meta property="og:url" content="http://example.com/2023/05/03/week-5-Public-Key-Cryptography/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="Public Key Cryptography 引言 公钥加密：动机和需求 传统加密：  灵魂三问：如何保证m的保密？如何保证m的认证？如何保证m的完整？ 问题 要求发送方、接收方知道共享秘钥： 问：如何首先就密钥达成一致（尤其是在从未 &quot;见面 &quot;的情况下）？ 加密能力与解密能力捆绑：解决机密性 密钥管理问题：量、方法 其他安全需求：网络 不相识、不信任 的人之间通信的安全要求">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2023-05-02T20:00:52.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.732Z">
+<meta property="article:author" content="Franklin Yang">
+<meta property="article:tag" content="CSD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2023/05/03/week-5-Public-Key-Cryptography/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'week 5 Public Key Cryptography',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">week 5 Public Key Cryptography</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.732Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/05/03/week-5-Public-Key-Cryptography/" data-flag-title="week 5 Public Key Cryptography"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2023/05/03/week-5-Public-Key-Cryptography/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/05/03/week-5-Public-Key-Cryptography/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Public Key Cryptography</h1>
+<h2 id="引言">引言</h2>
+<h3 id="公钥加密：动机和需求">公钥加密：动机和需求</h3>
+<p>传统加密：</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230503040530690.png" alt="image-20230503040530690"></p>
+<p>灵魂三问：如何保证m的保密？如何保证m的认证？如何保证m的完整？</p>
+<p>问题</p>
+<p>要求发送方、接收方知道共享秘钥： 问：如何首先就密钥达成一致（尤其是在从未 &quot;见面 &quot;的情况下）？</p>
+<p>加密能力与解密能力捆绑：解决机密性</p>
+<p>密钥管理问题：量、方法</p>
+<p>其他安全需求：网络</p>
+<p>不相识、不信任 的人之间通信的安全要求</p>
+<p>Diffe和Hellman提出：</p>
+<p>其加密算法和解密算法分别使用 不同的密钥，从而，可将加密密钥公开(称为公开密钥P)、解 密密钥保密(称为保密密钥S)。要求：</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230503041001578.png" alt="image-20230503041001578"></p>
+<p>解决方法：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>发送方和接收方不共享秘密密钥</p>
+</li>
+<li class="lvl-2">
+<p>所有人都知道的公开加密密钥</p>
+</li>
+<li class="lvl-2">
+<p>只有接收方知道的私人解密密钥</p>
+</li>
+</ul>
+<p>示意图：</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230503040911292.png" alt="image-20230503040911292"></p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230503043537948.png" alt="image-20230503043537948"></p>
+<p>所有用户的密钥保存在目录服务里</p>
+<h5 id="三点需求：">三点需求：</h5>
+<h2 id><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230503043844476.png" alt="image-20230503043844476"></h2>
+<h2 id="Diffe-Hellman-Key-Exchange-Protocol">Diffe Hellman Key Exchange Protocol</h2>
+<h3 id="idea">idea:</h3>
+<p>困难的单向操作：容易做，但很难反着做</p>
+<p>见老师的混合色例子</p>
+<h3 id="概述：">概述：</h3>
+<p>➢ Diffie-Hellman 密钥交换使用一个指数加密系统来生成一个由两个人共享的单一密钥。<br>
+➢ 双方通过不安全的通信渠道共享信息，对密钥作出贡献。<br>
+➢ 每一方都对一些信息进行保密。这种秘密信息对于构建密钥至关重要。<br>
+➢ 密钥不能从公共信息中产生。<br>
+➢ 这种算法是许多互联网应用中构建会话密钥的基础。</p>
+<h3 id="交换步骤：">交换步骤：</h3>
+<p>1.选择全局参数：通信双方（通常称为Alice和Bob）选择两个全局参数g和p，其中p是一个大素数，g是p的一个原根。这些参数可以公开，并且可以在多个密钥交换过程中重复使用。</p>
+<p>2.生成私钥：Alice和Bob各自生成一个私有随机数，分别称为a和b。这些私钥必须保密，不要在通信过程中公开。</p>
+<p>3.计算公钥：Alice和Bob分别使用全局参数和私钥计算公钥。Alice的公钥为A = g^a mod p，Bob的公钥为B = g^b mod p。公钥可以在公共通道上安全地交换。</p>
+<p>4.交换公钥：Alice将公钥A发送给Bob，Bob将公钥B发送给Alice。</p>
+<p>5.计算共享密钥：现在，Alice和Bob可以使用对方的公钥和自己的私钥计算共享密钥。Alice计算K_Alice = B^a mod p，Bob计算K_Bob = A^b mod p。由于离散对数的性质，K_Alice和K_Bob相等，因此双方得到相同的共享密钥K。</p>
+<p>6.加密通信：Alice和Bob现在可以使用共享密钥K作为对称加密算法的密钥（如AES）来加密和解密数据。</p>
+<h3 id="使用的单向函数：">使用的单向函数：</h3>
+<p>离散对数问题</p>
+<p>给定一个有限域（通常是模p的乘法群，其中p是素数）和该域中的两个元素a和b，离散对数问题是找到一个整数x，使得a^x ≡ b (mod p)。</p>
+<p>假设我们在模p = 23的乘法群中工作，我们选择a = 5。现在，我们知道b = 15。我们的目标是找到一个整数x，使得 5^x ≡ 15 (mod 23)。</p>
+<p>在这个例子中，我们可以尝试不同的x值，直到找到一个满足等式的值：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当x = 1时，5^1 ≡ 5 (mod 23)</p>
+</li>
+<li class="lvl-2">
+<p>当x = 2时，5^2 ≡ 25 ≡ 2 (mod 23)</p>
+</li>
+<li class="lvl-2">
+<p>当x = 3时，5^3 ≡ 125 ≡ 10 (mod 23)</p>
+</li>
+<li class="lvl-2">
+<p>当x = 4时，5^4 ≡ 625 ≡ 4 (mod 23)</p>
+</li>
+<li class="lvl-2">
+<p>当x = 5时，5^5 ≡ 3125 ≡ 20 (mod 23)</p>
+</li>
+<li class="lvl-2">
+<p>当x = 6时，5^6 ≡ 15625 ≡ 15 (mod 23)</p>
+</li>
+</ul>
+<p>在这个例子中，我们找到了一个整数x = 6，使得5^6 ≡ 15 (mod 23)。因此，离散对数log_5(15) ≡ 6 (mod 23)。</p>
+<p>让我们考虑整数的乘法组mod p</p>
+<p>简单的例子中，我们可以通过穷举法找到x。然而，在实际应用中，涉及的素数p通常是一个非常大的数，使得穷举法变得<mark>不切实际</mark></p>
+<p>$s = g^n \ mod\  p$</p>
+<p>已知g,n,p算s很简单</p>
+<p>已知s,g,p算n<mark>很难</mark></p>
+<h5 id="生成元（原根）：">生成元（原根）：</h5>
+<p>一个元素a被称为生成元，当且仅当它的整数次幂能生成群的所有元素</p>
+<h4 id="例子">例子</h4>
+<ol>
+<li class="lvl-3">
+<p>首先，Alice和Bob协商一个大素数p和该素数的一个原根（生成元）g。这两个值可以公开，因为它们不包含任何敏感信息。</p>
+</li>
+<li class="lvl-3">
+<p>接下来，Alice选择一个私有整数a（保密），并计算A = g^a mod p。然后，Alice将A发送给Bob。</p>
+</li>
+<li class="lvl-3">
+<p>同时，Bob选择一个私有整数b（保密），并计算B = g^b mod p。然后，Bob将B发送给Alice。</p>
+</li>
+<li class="lvl-3">
+<p>在收到B之后，Alice用自己的私有整数a计算共享密钥：K_Alice = B^a mod p = (g<sup>b)</sup>a mod p。（<mark>模运算的幂运算性质</mark>）</p>
+</li>
+<li class="lvl-3">
+<p>在收到A之后，Bob用自己的私有整数b计算共享密钥：K_Bob = A^b mod p = (g<sup>a)</sup>b mod p。</p>
+</li>
+<li class="lvl-3">
+<p>这时，Alice和Bob计算出的共享密钥相同：K_Alice = K_Bob = K。他们可以使用<mark>此共享密钥s</mark>进行对称加密通信，例如使用AES加密算法。</p>
+</li>
+</ol>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230506194824112.png" alt="image-20230506194824112"></p>
+<h2 id="RSA-Public-key-Cryptography"><mark>RSA</mark> Public key Cryptography</h2>
+<h4 id="例子：">例子：</h4>
+<ol>
+<li class="lvl-3">
+<p>生成密钥对：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Bob首先选择两个大质数p和q。</li>
+<li class="lvl-5">计算n = p * q。</li>
+<li class="lvl-5">计算欧拉函数φ(n) = (p - 1) * (q - 1)。</li>
+<li class="lvl-5">Bob选择一个整数e，使得1 &lt; e &lt; φ(n)，且e与φ(n)互质。</li>
+<li class="lvl-5">计算d，使得d * e ≡ 1 (mod φ(n))。</li>
+<li class="lvl-5">Bob的公钥为(e, n)，私钥为(d, n)。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>加密过程：</p>
+<ul class="lvl-2">
+<li class="lvl-5">假设Alice想要向Bob发送加密消息M。</li>
+<li class="lvl-5">Alice获取Bob的公钥(e, n)。</li>
+<li class="lvl-5">使用公钥(e, n)，Alice将明文消息M加密为密文C：C ≡ M^e (mod n)。</li>
+<li class="lvl-5">然后，Alice将加密后的密文C发送给Bob。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>解密过程：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Bob收到Alice发送的密文C。</li>
+<li class="lvl-5">Bob使用他的私钥(d, n)对密文C进行解密，以还原明文消息M：M ≡ C^d (mod n)。</li>
+<li class="lvl-5">现在，Bob已经成功解密了Alice发送的消息M。</li>
+</ul>
+</li>
+</ol>
+<p><mark>之所以</mark>能解密：</p>
+<p>因为d和e互逆的，因此de ≡1 mod (n)，所以de=1 + k*φ(n)，</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507001526132.png" alt="image-20230507001526132"></p>
+<p>由于d * e ≡ 1 (mod φ(n))，根据欧拉定理，我们知道如果a和n互质（即gcd(a, n) = 1），那么： a^(φ(n)) ≡ 1 (mod n)</p>
+<p>接下来，我们将等式P^(d * e)拆分为两部分： P^(d * e) ≡ P * (P<sup>(φ(n)))</sup>k (mod n)，又由于P，n互质，所以P^(φ(n)) mod n=1,所以原式P * (P<sup>(φ(n)))</sup>k ≡ P * 1^k (mod n)，即 P^(d * e) mod n=P mod n =P</p>
+<p><mark>明文P不能有p或者q作为因数，这样它才能与n互质</mark></p>
+<p>在实际应用中，P（明文）通常是由消息通过某种编码转换成的数字。由于p和q是大质数，这样的P值（即p的倍数）出现的概率非常低。在实际情况下，这种问题很少出现。另外，如果需要的话，可以使用某种填充方案（padding scheme）来确保转换后的数字不是p或q的倍数。</p>
+<h5 id="解释欧拉函数：">解释欧拉函数：</h5>
+<p>φ(n) 表示小于等于n的正整数中与n互质的个数</p>
+<p>由于我们找到的p，q都是质数，小于p,q的正整数都与p，q互质，所以φ§=p-1且φ(q)=q-1而n又=p*q，又由于欧拉函数满足φ(a * b) = φ(a) * φ(b)因此φ(n) = (p - 1) * (q - 1)</p>
+<h4 id="实际例子：">实际例子：</h4>
+<ol>
+<li class="lvl-3">
+<p>Alice生成密钥对： a. 选择两个不同的质数p和q。例如，p = 3和q = 11。 b. 计算n = p * q。在这个例子中，n = 3 * 11 = 33。 c. 计算欧拉函数φ(n) = (p - 1)(q - 1)。在这个例子中，φ(n) = (3 - 1)(11 - 1) = 2 * 10 = 20。 d. 选择一个整数e，使得1 &lt; e &lt; φ(n)且e与φ(n)互质。在这个例子中，我们可以选择e = 3（其他有效选择是7和11）。 e. 计算d，使得d * e ≡ 1 (mod φ(n))。在这个例子中，我们需要找到一个d，使得d * 3 ≡ 1 (mod 20)，即d = 7。</p>
+<p>现在，Alice的公钥是(n, e) = (33, 3)，私钥是(n, d) = (33, 7)。</p>
+</li>
+<li class="lvl-3">
+<p>Bob向Alice发送加密消息： a. 假设Bob想要发送消息M = 10给Alice。他需要使用Alice的公钥(n, e) = (33, 3)进行加密。 b. 计算密文C = M^e (mod n)。在这个例子中，C = 10^3 (mod 33) = 1000 (mod 33) = 13。 c. Bob将密文C = 13发送给Alice。</p>
+</li>
+<li class="lvl-3">
+<p>Alice解密收到的密文： a. Alice收到密文C = 13。她需要使用自己的私钥(n, d) = (33, 7)进行解密。 b. 计算解密后的明文M’ = C^d (mod n)。在这个例子中，M’ = 13^7 (mod 33) = 62748517 (mod 33) = 10。</p>
+<p>Alice成功解密了Bob发送的消息，并得到了原始明文M = 10。</p>
+</li>
+</ol>
+<h4 id="RSA的安全性">RSA的安全性</h4>
+<h4 id="总结">总结</h4>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507004919101.png" alt="image-20230507004919101"></p>
+<h4 id="quiz">quiz</h4>
+<p>-描述RSA公钥加密系统，并说明当素数5和7被用来构建模数n=35时，它是如何工作的。<br>
+-选择一个加密参数e并计算出相应的解密参数d。<br>
+-利用这些值对明文值17进行加密，并解密所产生的密文以恢复明文。</p>
+<h2 id="Digital-Signature-数字签名">Digital Signature 数字签名</h2>
+<h4 id="术语解释">术语解释</h4>
+<p>DS中的公钥（解密钥匙）叫验证密钥，私钥（加密钥匙）叫签名钥匙</p>
+<h4 id="加解密过程：">加解密过程：</h4>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507010353997.png" alt="image-20230507010353997"></p>
+<p>签名过程：</p>
+<ol>
+<li class="lvl-3">
+<p>发送方使用自己的私钥对消息进行加密，得到数字签名。</p>
+</li>
+<li class="lvl-3">
+<p>发送方将原始消息和数字签名一起发送给接收方。</p>
+</li>
+</ol>
+<p>验证过程：</p>
+<ol>
+<li class="lvl-3">
+<p>接收方使用发送方的公钥对数字签名进行解密，得到明文消息的散列值。</p>
+</li>
+<li class="lvl-3">
+<p>接收方对收到的原始消息计算散列值，并将其与解密得到的散列值进行比较。</p>
+</li>
+<li class="lvl-3">
+<p>如果两个散列值相同，则认为数字签名是有效的，否则认为数字签名是无效的。</p>
+</li>
+</ol>
+<h4 id="安全性保证：">安全性保证：</h4>
+<p>签名实际上代表了发送方发送时的消息的散列值，如果中途被篡改，那么接收方对被<mark>篡改</mark>过的消息计算散列值，得到的散列值和用公钥解析数字签名得到的散列值就不一样了</p>
+<h4 id="RSA签名">RSA签名</h4>
+<h4 id="DSA：数字签名算法">DSA：数字签名算法</h4>
+<p>使用了几十年，没有受到任何严重的攻击与Elgamal加密密切相关</p>
+<h4 id="数字签名和数字证书">数字签名和数字证书</h4>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507175346114.png" alt="image-20230507175346114"></p>
+<h4 id="实际操作练习：">实际操作练习：</h4>
+<p>用两台机器模拟Bob和Alice</p>
+<h5 id="Alice：-我的笔记本菠萝屋">Alice：(我的笔记本菠萝屋)</h5>
+<p>ip地址：172.16.1.183</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -aes128 -out alice_private.pem 1024（生成私钥）</span><br><span class="line">Generating RSA private key, 1024 bit long modulus (2 primes)</span><br><span class="line">输出：</span><br><span class="line">Generating RSA private key, 1024 bit long modulus (2 primes)</span><br><span class="line">.........+++++</span><br><span class="line">.................+++++</span><br><span class="line">e is 65537 (0x010001)</span><br><span class="line">Enter pass phrase for alice_private.pem:</span><br><span class="line">输入：</span><br><span class="line">alice</span><br><span class="line">输出：</span><br><span class="line">Verifying - Enter pass phrase for alice_private.pem:</span><br><span class="line">输入：</span><br><span class="line">alice</span><br><span class="line">输入：</span><br><span class="line"> openssl rsa -in alice_private.pem -pubout &gt; alice_public.pem（提取相关的公钥）</span><br><span class="line">输出：</span><br><span class="line">writing RSA key</span><br><span class="line">输入：</span><br><span class="line"> openssl rsa -in alice_private.pem -noout -text（查看密钥）</span><br><span class="line">输出：</span><br><span class="line">RSA Private-Key: (1024 bit, 2 primes)</span><br><span class="line">modulus:</span><br><span class="line">    00:c9:f5:10:f6:e6:1e:0c:22:af:4a:6a:29:45:74:</span><br><span class="line">    8c:74:ec:3f:a0:10:bb:51:e6:7a:4a:8f:e8:07:c6:</span><br><span class="line">    9e:2c:66:93:05:8d:41:d9:c5:27:0d:5f:b8:6d:2c:</span><br><span class="line">    2c:f8:8b:04:4e:d7:c7:00:8f:c5:fd:3c:e4:2a:b0:</span><br><span class="line">    86:0e:3b:ee:fd:a0:94:e2:5c:5f:b4:f8:9e:94:53:</span><br><span class="line">    32:e9:31:a5:e9:a8:cd:89:a2:53:2b:79:72:a5:c0:</span><br><span class="line">    69:bd:ae:06:9d:28:59:a8:51:ee:af:42:f6:b1:f3:</span><br><span class="line">    e4:e1:71:30:46:d9:22:06:26:80:47:aa:7b:3c:97:</span><br><span class="line">    85:11:5f:ce:bc:59:9f:09:e3</span><br><span class="line">publicExponent: 65537 (0x10001)</span><br><span class="line">privateExponent:</span><br><span class="line">    1d:0b:3a:6a:57:83:c0:b9:08:3e:8a:6f:ef:06:28:</span><br><span class="line">    e0:f3:cc:de:a7:29:59:48:ed:13:66:08:b7:7d:8f:</span><br><span class="line">    e7:d0:c4:9a:0a:cb:8a:96:f8:db:ca:85:4a:66:0c:</span><br><span class="line">    fd:9d:78:7c:22:3a:03:51:a9:e6:96:68:35:df:77:</span><br><span class="line">    17:fa:f4:8e:91:ad:31:e7:74:39:b7:b3:d0:d9:bb:</span><br><span class="line">    7f:62:4d:39:de:28:5d:1b:79:cf:96:1a:67:2a:42:</span><br><span class="line">    3e:83:27:ae:d5:2f:08:66:8b:83:27:90:1f:08:d8:</span><br><span class="line">    c5:f0:23:4b:93:cf:52:19:c8:85:e4:7a:09:ea:ee:</span><br><span class="line">    8f:f9:69:53:d8:ab:f7:c1</span><br><span class="line">prime1:</span><br><span class="line">    00:e7:87:ba:e2:66:39:65:3c:12:9a:f3:d5:d2:f8:</span><br><span class="line">    ff:4d:c1:55:e4:83:1e:e6:18:76:10:75:b0:b9:eb:</span><br><span class="line">    59:f9:c3:11:21:4c:6b:5c:39:3c:b0:02:f1:97:db:</span><br><span class="line">    f1:e9:fa:c7:de:8c:a8:61:22:24:81:0c:bf:d4:f1:</span><br><span class="line">    87:98:fe:64:43</span><br><span class="line">prime2:</span><br><span class="line">    00:df:4d:36:8f:90:8d:50:78:85:19:9c:ac:0d:41:</span><br><span class="line">    44:c4:52:0e:19:7c:6a:8e:ca:15:eb:82:0f:08:be:</span><br><span class="line">    81:54:f1:c1:c3:94:e1:f4:2d:7b:f9:99:aa:4a:3c:</span><br><span class="line">    15:82:2e:d2:e8:5a:31:a9:56:f6:fa:74:00:99:d9:</span><br><span class="line">    65:7b:12:39:e1</span><br><span class="line">exponent1:</span><br><span class="line">    2a:92:08:48:ac:67:0d:38:18:6b:a9:3d:bd:86:ce:</span><br><span class="line">    da:6b:1b:f1:e2:32:02:38:a9:2c:a9:97:0e:f8:39:</span><br><span class="line">    18:f5:46:e7:0a:78:0b:02:f3:27:a1:c2:ee:1b:20:</span><br><span class="line">    c5:d6:b8:7d:30:fb:9c:b0:7c:69:c6:00:57:94:f9:</span><br><span class="line">    4b:a6:2a:a5</span><br><span class="line">exponent2:</span><br><span class="line">    03:3d:84:98:2a:b9:d2:3c:1d:7a:54:aa:ae:7a:8e:</span><br><span class="line">    fb:e6:50:ec:0f:c1:20:17:50:a0:1d:40:08:99:73:</span><br><span class="line">    18:ff:75:17:58:76:ba:eb:5a:0c:32:2d:a5:6c:1f:</span><br><span class="line">    c7:c6:d4:2a:a8:fc:65:7f:ac:8f:cf:d5:1e:66:68:</span><br><span class="line">    31:93:ff:21</span><br><span class="line">coefficient:</span><br><span class="line">    76:00:c5:a9:da:d9:36:0f:ad:ce:39:9d:dc:55:f6:</span><br><span class="line">    9a:05:17:44:0a:db:6b:82:c5:46:62:5b:c9:b1:79:</span><br><span class="line">    90:c1:94:52:b9:05:96:de:b3:43:2d:71:3e:1c:0a:</span><br><span class="line">    c4:68:59:9c:28:30:85:46:8e:59:75:1b:e6:4d:b1:</span><br><span class="line">    7a:f4:e0:9f</span><br></pre></td></tr></table></figure>
+<h5 id="Bob：-我的台式石头屋">Bob：(我的台式石头屋)</h5>
+<p>ip地址：</p>
+<p>172.16.2.94</p>
+<p>在另一台机器上重复上述Alice操作，密码bobbob</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507190253368.png" alt="image-20230507190253368"></p>
+<p>Alice：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">输入：scp .\alice_private.pem Admin@172.16.2.94:C:\Users\Admin\bobsssh\</span><br><span class="line">输出：Admin@172.16.2.94&#x27;s password:</span><br><span class="line">输入：1571</span><br><span class="line">输出：alice_public.pem</span><br><span class="line"></span><br><span class="line">（爱丽丝将他的私钥发送给Admin（Bob））</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\18309&gt; openssl rsautl -encrypt -inkey alice_private.pem -in C:\Users\18309\alicesssh\someshit.txt -out C:\Users\18309\alicesssh\someshit.enc</span><br><span class="line">Enter pass phrase for alice_private.pem:</span><br><span class="line">PS C:\Users\18309&gt; scp C:\Users\18309\alicesssh\someshit.enc Admin@172.16.2.94:C:\Users\Admin\bobsssh\</span><br><span class="line">Admin@172.16.2.94&#x27;s password:</span><br><span class="line">Permission denied, please try again.</span><br><span class="line">Admin@172.16.2.94&#x27;s password:</span><br><span class="line">someshit.enc                                                                                                                                                                   100%  128    21.1KB/s   00:00</span><br><span class="line"></span><br><span class="line">Alice把一个叫someshit.txt的文本文件用私钥加密并发给了bob</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507200157984.png" alt="image-20230507200157984"></p>
+<h5 id="在Bob电脑上查看：">在Bob电脑上查看：</h5>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507193943489.png" alt="image-20230507193943489"></p>
+<p>已经正确接受</p>
+<h5 id="Bob使用Alice的私钥对someshit-进行解密：">Bob使用Alice的私钥对someshit 进行解密：</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Admin&gt; openssl rsautl -decrypt -inkey bobsssh\alice_private.pem -in bobsssh\someshit.enc &gt; bobsssh\someshit.txt</span><br><span class="line">Enter pass phrase for bobsssh\alice_private.pem:</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230507202004090.png" alt="image-20230507202004090"></p>
+<h2 id="ECC-椭圆曲线密码学">ECC 椭圆曲线密码学</h2>
+<h4 id="背景">背景</h4>
+<p>RSA加解密庞大的运算，且密钥长度不断提高</p>
+<p>ECC可以达到同样安全但是密钥位数更少</p>
+<p>RSA算法是建立在大整数分解问题基础之上</p>
+<p>DH是基于有限域乘法群上的离散对数问题</p>
+<h4 id="基本椭圆曲线">基本椭圆曲线</h4>
+<p>椭圆曲线是：$y<sup>2=x</sup>3+ax+b$ （1），且满足 $4a<sup>3+27b</sup>2≠ 0$ （2）的点的集合</p>
+<p>限定条件（2）是 为了保证曲线不包含奇点.</p>
+<p>为了以离散的方式，在椭圆曲线上进行运算，需要定义某种运算，这种运算对集合中两个点进行操作所得的结果，也在该集合中</p>
+<h5 id="群：-封闭性、结合律、单位元、逆元。加上交换律，这个群就叫做阿贝尔群-abelian-group">群： 封闭性、结合律、单位元、逆元。加上交换律，这个群就叫做阿贝尔群 (abelian group)</h5>
+<p>单位元：任何数和单位元做群的二元运算，结果还是a</p>
+<p>逆元：a和b做二元单位运算，结果为单位元，那b就是a的逆元</p>
+<h4 id="椭圆曲线上的加法和乘法">椭圆曲线上的加法和乘法</h4>
+<h5 id="加法">加法</h5>
+<p>在椭圆曲线群上，我们定义一种二元加法运算，将两个点P和Q相加得到一个新的点R。以下是这个加法运算的规则：</p>
+<ol>
+<li class="lvl-3">
+<p>如果P = O（无穷远点），那么P + Q = Q。</p>
+</li>
+<li class="lvl-3">
+<p>如果Q = O（无穷远点），那么P + Q = P。</p>
+</li>
+<li class="lvl-3">
+<p>如果P和Q是椭圆曲线上的相反点（意味着它们的x坐标相同，y坐标互为相反数，例如P=(x1, y1)和Q=(x1, -y1)），那么P + Q = O。</p>
+</li>
+<li class="lvl-3">
+<p><mark>若椭圆曲线上的三个点P, Q, R（皆非零）处于一条直线上，则它们的 和P+Q+R=O为单位元O</mark></p>
+</li>
+<li class="lvl-3">
+<p>如果P = Q，我们可以使用切线方法计算点R = P + Q。首先找到切线的斜率λ，计算方法为：$λ = (3x1^2 + a) / (2y1) (mod p)$。然后计算R的坐标：$Rx = λ^2 - 2x1 (mod p)$，Ry = $λ(x1 - Rx) - y1 (mod p)$。</p>
+</li>
+<li class="lvl-3">
+<p>如果P ≠ Q，我们可以使用割线方法计算点R = P + Q。首先找到割线的斜率λ，计算方法为：$λ = (y2 - y1) / (x2 - x1) (mod p)$。然后计算R的坐标：$Rx = λ^2 - x1 - x2 (mod p)，Ry = λ(x1 - Rx) - y1 (mod p)$。</p>
+</li>
+</ol>
+<p>根据3，4我们可以推出：P,Q,R中任意两个相加得到的新点，是和剩下那个点关于x轴对称的，也就是P+Q=-R</p>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230508052813398.png" alt="image-20230508052813398"></p>
+<p>在椭圆曲线上计算两个点P和Q的和时（即P + Q = R），可以按照以下步骤进行：</p>
+<ol>
+<li class="lvl-3">
+<p>连接点P和Q，找到它们所在直线与椭圆曲线的另一个交点R’。</p>
+</li>
+<li class="lvl-3">
+<p>找到点R’关于x轴的对称点R。换句话说，如果R’的坐标是(x, y)，那么R的坐标是(x, -y)。</p>
+</li>
+</ol>
+<p>特殊情况：</p>
+<p>如果P,Q关于x轴对称，那P+Q=O</p>
+<p>如果P=Q，那做切线，切线和椭圆曲线的的交点就是R</p>
+<h5 id="乘法">乘法</h5>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230508052828908.png" alt="image-20230508052828908"></p>
+<p>二倍：其实就是P+P，见加法特殊情况2，做切线</p>
+<p>数乘：多次累加，kP=P+…+P，也就是先二倍后，再用二倍结果点和P一个个重复相加操作</p>
+<h4 id="椭圆曲线离散对数问题（ECDLP）">椭圆曲线离散对数问题（ECDLP）</h4>
+<p><img src="/2023/05/03/week-5-Public-Key-Cryptography/image-20230508054337645.png" alt="image-20230508054337645"></p>
+<p>也就是说，已知两点P和k*P，想求k非常难</p>
+<p>我们算k*P可以用倍加法，比较快速：</p>
+<p>比如说，如果我们知道了2<em>P，想要计算4</em>P，其实不需要在计算2<em>P+P+P，而只需要对2</em>P这个点做切线，切线和椭圆曲线的交点M关于x轴对称的点R就是4*P，这省了好多力气</p>
+<h4 id="椭圆曲线Diffie-Hellman密钥交换协议（ECDH）">椭圆曲线Diffie Hellman密钥交换协议（ECDH）</h4>
+<h5 id="概述：-2">概述：</h5>
+<p><mark>公钥是kP，密钥是k</mark></p>
+<p>爱丽丝和鲍勃希望建立一个共享秘钥k。<br>
+➢ Alice和Bob同意一个EC，一个大素数p（称为乘法参数），以及曲线上的一个点B（称为生成器或基点） ▪ 称为域参数<br>
+➢ 夏娃知道曲线、点和素数</p>
+<p>➢ 爱丽丝秘密地挑选了一个大数字$P_A$ , Bob秘密地挑选了一个大数字$P_B$<br>
+爱丽丝计算$QA = P_AB$。鲍勃计算出$QB= P_BB$。他们交换点$Q_A$和$Q_B$</p>
+<p>▪ p：私钥<br>
+▪ Q = p*B：公钥<br>
+➢ Alice计算出$P_AQ_B$ = $P_AP_BB$。鲍勃计算$P_BQ_A$ = $P_BP_AB$<br>
+两人都使用点$P_AP_BB$的x值作为密钥k。<br>
+➢ 共享秘钥k然后用于对称加密，如DES和AES</p>
+<h5 id="计算">计算</h5>
+<p>已知椭圆曲线$y^2 = x^3 + ax + b$ 和一点 $P(x_1, y_1)$求切线斜率：</p>
+<p>$λ = dy/dx = (3x_1^2 + a) / (2 * y_1) \ mod \ p$，斜率取正，因为在有限字段中所有的元素都是非负的</p>
+<p>两个不同点相加：</p>
+<ol>
+<li class="lvl-3">
+<p>计算斜率：如果P ≠ Q，斜率$λ = (y2 - y1) / (x2 - x1) mod p$。</p>
+</li>
+<li class="lvl-3">
+<p>计算和的x坐标：$(x3 = λ^2 - x1 - x2) \ mod \ p。$</p>
+</li>
+<li class="lvl-3">
+<p>计算和的y坐标：$(y3 = λ(x1 - x3) - y1)  \ mod \ p。$</p>
+</li>
+</ol>
+<h5 id="观察：">观察：</h5>
+<p>在有限字段中，我们实际上是在一个有限的集合中进行运算，而这个集合是由一个大素数p决定的。这意味着所有的点都有整数坐标，并且这些坐标都在0到p-1的范围内。因此，当我们试图在有限字段中画出椭圆曲线时，我们实际上是在画出一组在有限平面上的离散的点，而这些点并<mark>不形成一个连续的椭圆形状</mark>。</p>
+<p>这个特性是椭圆曲线密码学的基础。正是因为在有限字段中，椭圆曲线的结构变得更复杂，这使得椭圆曲线离散对数问题变得难以解决，从而为椭圆曲线提供了良好的密码学性质。</p>
+<h5 id="示例：">示例：</h5>
+<ol>
+<li class="lvl-3">
+<p>让我们用$y<sup>2=x</sup>3-x$，$p=541$，$B=（10，80）$</p>
+</li>
+<li class="lvl-3">
+<p>爱丽丝选择了$p_A=20$。鲍勃选择了$p_B=103$，这分别是他们的<mark>私钥</mark></p>
+</li>
+<li class="lvl-3">
+<p>$Q_A = 20 (10, 80) = (519, 241)$ ，这是Alice的<mark>公钥</mark></p>
+</li>
+<li class="lvl-3">
+<p>$Q_B = 103 (10, 80) = (85, 345)$，这是Bob的<mark>公钥</mark></p>
+</li>
+<li class="lvl-3">
+<p>交换公钥给对方</p>
+</li>
+<li class="lvl-3">
+<p>当爱丽丝得到$Q_B$时，她发现$20Q_B=（353，158）$</p>
+</li>
+<li class="lvl-3">
+<p>当鲍勃得到$Q_A$后，他发现$103Q_A=（353，158）$</p>
+</li>
+<li class="lvl-3">
+<p>他们都使用$K = 353$作为他们的密钥。</p>
+</li>
+<li class="lvl-3">
+<p>$K$接下来可以用作DES/AES等对称加密算法的密钥</p>
+</li>
+</ol>
+<h4 id="椭圆曲线数字签名算法（ECDSA）">椭圆曲线数字签名算法（ECDSA）</h4>
+<h2 id="总结-2">总结</h2>
+<p>首先搞清楚4个概念：<mark>A</mark>:对称加密算法，<mark>B</mark>:非对称加密算法，==C:==非对称密钥交换协议，<mark>D</mark>:数字签名算法</p>
+<p>其中A和B都是加密算法，能直接加密消息，而C只是一个非对称密钥交换协议，<mark>不能</mark>直接加密文本，还得将其产生的密钥用于AES或DES等对称加密算法，D则不是用来加密消息，而是保证在开放信道上公开传递的消息不会被篡改</p>
+<p>关于A我们学了：<strong>AES，DES</strong></p>
+<p>关于B我们学了：<strong>RSA</strong>，难题用的是大质数分解问题</p>
+<p>关于C我们学了：<strong>DH和ECDH</strong>（Diffie-Hellman密钥交换协议和椭圆曲线Diffie Hellman密钥交换协议）区别就是DH用的难题是离散对数，ECDH用的是椭圆曲线上的离散对数问题</p>
+<p>关于D我们学了：<strong>RSA</strong>数字签名算法，<strong>ECDSA</strong>数字签名算法</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/03/week-5-Public-Key-Cryptography/">http://example.com/2023/05/03/week-5-Public-Key-Cryptography/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSD/">CSD</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">week 7 Security, Secure Coding and DevelopmentFolder</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">week 4 Message Digests, Random Numbers, and Secret Sharing</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/02/23/CSD-Bitcoin-and-Blockchain/" title="CSD Bitcoin and Blockchain"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-23</div><div class="title">CSD Bitcoin and Blockchain</div></div></a></div><div><a href="/2023/02/20/CSD-Information-Theory/" title="CSD-Information-Theory"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">CSD-Information-Theory</div></div></a></div><div><a href="/2023/05/02/CSD-Week3/" title="CSD-Week3"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-02</div><div class="title">CSD-Week3</div></div></a></div><div><a href="/2023/05/02/CSD-revision/" title="CSD revision"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-02</div><div class="title">CSD revision</div></div></a></div><div><a href="/2023/01/19/CSD-week2/" title="CSD week2"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">CSD week2</div></div></a></div><div><a href="/2023/02/15/CSD-week1/" title="CSD-week1"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">CSD-week1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Public Key Cryptography</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%EF%BC%9A%E5%8A%A8%E6%9C%BA%E5%92%8C%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">公钥加密：动机和需求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E7%82%B9%E9%9C%80%E6%B1%82%EF%BC%9A"><span class="toc-number">1.1.1.0.1.</span> <span class="toc-text">三点需求：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffe-Hellman-Key-Exchange-Protocol"><span class="toc-number">1.3.</span> <span class="toc-text">Diffe Hellman Key Exchange Protocol</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#idea"><span class="toc-number">1.3.1.</span> <span class="toc-text">idea:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">交换步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8D%95%E5%90%91%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.3.4.</span> <span class="toc-text">使用的单向函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%85%83%EF%BC%88%E5%8E%9F%E6%A0%B9%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.4.0.1.</span> <span class="toc-text">生成元（原根）：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA-Public-key-Cryptography"><span class="toc-number">1.4.</span> <span class="toc-text">RSA Public key Cryptography</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">例子：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.4.0.1.1.</span> <span class="toc-text">解释欧拉函数：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">实际例子：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">RSA的安全性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#quiz"><span class="toc-number">1.4.0.5.</span> <span class="toc-text">quiz</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Digital-Signature-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">1.5.</span> <span class="toc-text">Digital Signature 数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">术语解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">加解密过程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E8%AF%81%EF%BC%9A"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">安全性保证：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA%E7%AD%BE%E5%90%8D"><span class="toc-number">1.5.0.4.</span> <span class="toc-text">RSA签名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DSA%EF%BC%9A%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.0.5.</span> <span class="toc-text">DSA：数字签名算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%92%8C%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">1.5.0.6.</span> <span class="toc-text">数字签名和数字证书</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0%EF%BC%9A"><span class="toc-number">1.5.0.7.</span> <span class="toc-text">实际操作练习：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Alice%EF%BC%9A-%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%8F%A0%E8%90%9D%E5%B1%8B"><span class="toc-number">1.5.0.7.1.</span> <span class="toc-text">Alice：(我的笔记本菠萝屋)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Bob%EF%BC%9A-%E6%88%91%E7%9A%84%E5%8F%B0%E5%BC%8F%E7%9F%B3%E5%A4%B4%E5%B1%8B"><span class="toc-number">1.5.0.7.2.</span> <span class="toc-text">Bob：(我的台式石头屋)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8Bob%E7%94%B5%E8%84%91%E4%B8%8A%E6%9F%A5%E7%9C%8B%EF%BC%9A"><span class="toc-number">1.5.0.7.3.</span> <span class="toc-text">在Bob电脑上查看：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Bob%E4%BD%BF%E7%94%A8Alice%E7%9A%84%E7%A7%81%E9%92%A5%E5%AF%B9someshit-%E8%BF%9B%E8%A1%8C%E8%A7%A3%E5%AF%86%EF%BC%9A"><span class="toc-number">1.5.0.7.4.</span> <span class="toc-text">Bob使用Alice的私钥对someshit 进行解密：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECC-%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="toc-number">1.6.</span> <span class="toc-text">ECC 椭圆曲线密码学</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">基本椭圆曲线</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BE%A4%EF%BC%9A-%E5%B0%81%E9%97%AD%E6%80%A7%E3%80%81%E7%BB%93%E5%90%88%E5%BE%8B%E3%80%81%E5%8D%95%E4%BD%8D%E5%85%83%E3%80%81%E9%80%86%E5%85%83%E3%80%82%E5%8A%A0%E4%B8%8A%E4%BA%A4%E6%8D%A2%E5%BE%8B%EF%BC%8C%E8%BF%99%E4%B8%AA%E7%BE%A4%E5%B0%B1%E5%8F%AB%E5%81%9A%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4-abelian-group"><span class="toc-number">1.6.0.2.1.</span> <span class="toc-text">群： 封闭性、结合律、单位元、逆元。加上交换律，这个群就叫做阿贝尔群 (abelian group)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E4%B8%8A%E7%9A%84%E5%8A%A0%E6%B3%95%E5%92%8C%E4%B9%98%E6%B3%95"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">椭圆曲线上的加法和乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95"><span class="toc-number">1.6.0.3.1.</span> <span class="toc-text">加法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B9%98%E6%B3%95"><span class="toc-number">1.6.0.3.2.</span> <span class="toc-text">乘法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88ECDLP%EF%BC%89"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">椭圆曲线离散对数问题（ECDLP）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BFDiffie-Hellman%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE%EF%BC%88ECDH%EF%BC%89"><span class="toc-number">1.6.0.5.</span> <span class="toc-text">椭圆曲线Diffie Hellman密钥交换协议（ECDH）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0%EF%BC%9A-2"><span class="toc-number">1.6.0.5.1.</span> <span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97"><span class="toc-number">1.6.0.5.2.</span> <span class="toc-text">计算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%EF%BC%9A"><span class="toc-number">1.6.0.5.3.</span> <span class="toc-text">观察：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">1.6.0.5.4.</span> <span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%EF%BC%88ECDSA%EF%BC%89"><span class="toc-number">1.6.0.6.</span> <span class="toc-text">椭圆曲线数字签名算法（ECDSA）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">1.7.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

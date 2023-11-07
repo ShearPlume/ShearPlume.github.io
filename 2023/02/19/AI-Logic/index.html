@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>AI Logic | Franklin's secret cabin</title><meta name="author" content="Franklin Yang"><meta name="copyright" content="Franklin Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="human点击endturn-&gt; EndTurnClickedToDo.roundEnd(human)&#x2F;&#x2F;human回合结束-&gt; RoundCommands.roundStart(ai)&#x2F;&#x2F;ai回合开始-&gt; AILogic.aiPlaying(out, gs);&#x2F;&#x2F;ai流程 if(attackOrDefence());&#x2F;&#x2F;极大极小值评估函数 do sth; AICommands.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Logic">
+<meta property="og:url" content="http://example.com/2023/02/19/AI-Logic/index.html">
+<meta property="og:site_name" content="Franklin&#39;s secret cabin">
+<meta property="og:description" content="human点击endturn-&gt; EndTurnClickedToDo.roundEnd(human)&#x2F;&#x2F;human回合结束-&gt; RoundCommands.roundStart(ai)&#x2F;&#x2F;ai回合开始-&gt; AILogic.aiPlaying(out, gs);&#x2F;&#x2F;ai流程 if(attackOrDefence());&#x2F;&#x2F;极大极小值评估函数 do sth; AICommands.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true">
+<meta property="article:published_time" content="2023-02-19T09:03:38.000Z">
+<meta property="article:modified_time" content="2023-11-07T11:49:23.436Z">
+<meta property="article:author" content="Franklin Yang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true"><link rel="canonical" href="http://example.com/2023/02/19/AI-Logic/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AI Logic',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-07 19:49:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Franklin's secret cabin</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AI Logic</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-02-19T09:03:38.000Z" title="Created 2023-02-19 17:03:38">2023-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-07T11:49:23.436Z" title="Updated 2023-11-07 19:49:23">2023-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/02/19/AI-Logic/" data-flag-title="AI Logic"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2023/02/19/AI-Logic/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/02/19/AI-Logic/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="human点击endturn">human点击endturn-&gt;</h3>
+<h4 id="EndTurnClickedToDo-roundEnd-human-human回合结束">EndTurnClickedToDo.roundEnd(human)//human回合结束-&gt;</h4>
+<h4 id="RoundCommands-roundStart-ai-ai回合开始">RoundCommands.roundStart(ai)//ai回合开始-&gt;</h4>
+<h5 id="AILogic-aiPlaying-out-gs-ai流程">AILogic.aiPlaying(out, gs);//ai流程</h5>
+<h6 id="if-attackOrDefence-极大极小值评估函数">if(attackOrDefence());//极大极小值评估函数</h6>
+<h6 id="do-sth">do sth;</h6>
+<h6 id="AICommands-aiEndRound-out-gs-ai回合结束">AICommands.aiEndRound(out, gs);//ai回合结束</h6>
+<h6 id="EndTurnClickedToDo-roundEnd-out-gs-“ai”">EndTurnClickedToDo.roundEnd(out, gs, “ai”);</h6>
+<h6 id="RoundCommands-roundStart-out-gs-“human”">RoundCommands.roundStart(out, gs, “human”);</h6>
+<h3 id="单位移动思路">单位移动思路</h3>
+<p><strong>贪心算法：计算单位能去的每个地方。然后评估去每个格子的收益</strong></p>
+<p>收益函数：计算将要去的格子上周围单位的价值加权平均数</p>
+<p>敌人单位：价值=$\alpha \times(attack\div hp)$,α是单位的技能系数，根据单位技能不同加权不同（敌方avatar系数极高，杀死他是胜利条件），单位生命值越低，越值得优先消灭（直接杀死不会被反击），单位攻击越高，越值得优先消灭（对己方造成威胁很大）</p>
+<p>友方单位：价值=$\alpha \times(attack\div hp)$,α是单位的技能系数，根据单位技能不同加权不同，单位生命值越低，攻击越高，越值得优先保护，其中avatar的系数极高，优先保护</p>
+<p>先分别计算此时棋子周围敌人和友军的价值加权平均数，乘以1和-1后相加，大于0趋于防守（敌人威胁大于己方实力），小于等于0趋于攻击</p>
+<p>（想象周围只有友军，此时价值肯定很小，应该趋于进攻）</p>
+<p>然后依次推演计算单位能去的每个格子的价值函数（空位置：价值=此时战略*1），此时只保留与刚才指定的策略相反的格子（因为进攻策略下就应该去敌人堆里，防御策略下就应该去友军堆里，这与开始战略是反的）然后挑一个绝对值最大的前往（如果最高价值格子有多个，攻击策略下去其中距离敌人avatar最近的，反之则去友军avatar最近的(分别计算曼哈顿距离)），注意每次推演完成后要还原现场</p>
+<h3 id="单位攻击思路">单位攻击思路</h3>
+<p>在打完召唤牌，且进行完移动后，开始攻击</p>
+<p>先对全场每个友军单位计算策略收益，然后按照单位系数求加权平均数（能力强的单位更有话语权），得到当前战场整体策略应该进攻还是防守</p>
+<p>接着得到所有可放置此召唤牌的tile</p>
+<p>再对每个tile计算attackordefence，</p>
+<p>若整体战略是进攻，则在attackordefence最高的tile召唤，若是防守，则在attackordefence最低的tile召唤</p>
+<p>(进攻就应该召唤进敌人堆乱杀，防守就应该回到大本营救主)</p>
+<h3 id="召唤牌思路">召唤牌思路</h3>
+<p>先对全场每个友军单位计算策略收益，然后按照单位系数求加权平均数（能力强的单位更有话语权），得到当前战场整体策略应该进攻还是防守</p>
+<p>接着得到所有可放置此召唤牌的tile</p>
+<p>再对每个tile计算attackordefence，</p>
+<p>若整体战略是进攻，则在attackordefence最高的tile召唤，若是防守，则在attackordefence最低的tile召唤</p>
+<p>(进攻就应该召唤进敌人堆乱杀，防守就应该回到大本营救主)</p>
+<h3 id="废案：极大极小值，αβ剪枝树">废案：极大极小值，αβ剪枝树</h3>
+<p>假设：A和Ｂ对弈，轮到Ａ走棋了，那么我们会遍历A的每一个可能走棋方法，然后对于前面A的每一个走棋方法，遍历B的每一个走棋方法，然后接着遍历A的每一个走棋方法，如此下去，直到得到确定的结果或者达到了搜索深度的限制。当达到了搜索深度限制，此时无法判断结局如何，一般都是根据当前局面的形式，给出一个得分，计算得分的方法被称为评价函数，不同游戏的评价函数差别很大，需要很好的设计。在搜索树中，表示A走棋的节点即为极大节点，表示B走棋的节点为极小节点。如下图：A为极大节点，B为极小节点。称A为极大节点，是因为A会选择局面评分最大的一个走棋方法，称B为极小节点，是因为B会选择局面评分最小的一个走棋方法，这里的局面评分都是相对于A来说的。这样做就是假设A和B都会选择在有限的搜索深度内，得到的最好的走棋方法。</p>
+<p><mark>先同时计算（打召唤牌或移动单位）再单位攻击</mark></p>
+<p>把战场上的所有友方unit和卡牌池中的所有unit卡都看作evaluate的对象（打召唤牌和移动可以看做类似操作）</p>
+<p>此AI属于比较有侵略性的</p>
+<h4 id="打召唤牌：">打召唤牌：</h4>
+<p>遍历手牌中的召唤牌，</p>
+<p>先判断敌人能不能一击必杀，（杀死后敌人就不能反击了）</p>
+<p>如果不能</p>
+<p>判断收益：</p>
+<p>如果收益低于损失（伤敌800自损1000）那就进入defence</p>
+<p>否则进入attack</p>
+<p>层数：暂定4层</p>
+<p>主角：AI</p>
+<p>电脑走棋的层我们称为 MAX层，这一层电脑要保证自己利益最大化，那么就需要选分最高的节点。</p>
+<p>玩家走棋的层我们称为MIN层，这一层玩家要保证自己的利益最大化，那么就会选分最低的节点。</p>
+<p><img src="/2023/02/19/AI-Logic/20160202181610356" alt="极大极小值搜索树"></p>
+<p>此图中甲是电脑，乙是玩家，那么在甲层的时候，总是选其中值最大的节点，乙层的时候，总是选其中最小的节点。</p>
+<p>而每一个节点的分数，都是由子节点决定的，因此我们对博弈树只能进行深度优先搜索而无法进行广度优先搜索。深度优先搜索用递归非常容易实现，然后主要工作其实是完成一个评估函数，这个函数需要对当前局势给出一个比较准确的评分。</p>
+<h3 id="极大极小值搜索">极大极小值搜索</h3>
+<p>棋盘是一个5*9的棋盘，因为棋盘大小不会变动，所以目前来看用5*9的二维数组来存储，效果是最好的。</p>
+<p>极大极小值的搜索比较简单，就是一个DFS，直接上代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">MinMax</span><span class="params">(<span class="type">int</span> depth)</span> &#123; <span class="comment">// 函数的评估都是以AI的角度来评估的</span></span><br><span class="line">　<span class="keyword">if</span> (SideToMove() == WHITE) &#123;　<span class="comment">// AI是“最大”者 </span></span><br><span class="line">　　<span class="keyword">return</span> Max(depth); </span><br><span class="line">　&#125; <span class="keyword">else</span> &#123;　　　　　　　　　　　<span class="comment">// human是“最小”者 </span></span><br><span class="line">　　<span class="keyword">return</span> Min(depth); </span><br><span class="line">　&#125; </span><br><span class="line">&#125; 　 </span><br><span class="line"><span class="type">int</span> <span class="title function_">Max</span><span class="params">(<span class="type">int</span> depth)</span> &#123; </span><br><span class="line">　<span class="type">int</span> <span class="variable">best</span> <span class="operator">=</span> -INFINITY; </span><br><span class="line">　<span class="keyword">if</span> (depth &lt;= <span class="number">0</span>) &#123; </span><br><span class="line">　　<span class="keyword">return</span> Evaluate(); <span class="comment">//评估函数也很重要</span></span><br><span class="line">　&#125; </span><br><span class="line">　GenerateLegalMoves();<span class="comment">// generator顾名思义，就是在每一步生成所有可以召唤或者攻击的点。并不是所有的空位我们又要搜索，很多位置明显不合适的我们可以直接排除。这个函数非常重要，是优化性能的关键。</span></span><br><span class="line">　<span class="keyword">while</span> (MovesLeft()) &#123; </span><br><span class="line">　　MakeNextMove(); </span><br><span class="line">　　val = Min(depth - <span class="number">1</span>); </span><br><span class="line">　　UnmakeMove(); </span><br><span class="line">　　<span class="keyword">if</span> (val &gt; best) &#123; </span><br><span class="line">　　　best = val; </span><br><span class="line">　　&#125; </span><br><span class="line">　&#125; </span><br><span class="line">　<span class="keyword">return</span> best; </span><br><span class="line">&#125; 　 </span><br><span class="line"><span class="type">int</span> <span class="title function_">Min</span><span class="params">(<span class="type">int</span> depth)</span> &#123; </span><br><span class="line">　<span class="type">int</span> <span class="variable">best</span> <span class="operator">=</span> INFINITY;　<span class="comment">// 注意这里不同于“最大”算法 </span></span><br><span class="line">　<span class="keyword">if</span> (depth &lt;= <span class="number">0</span>) &#123; </span><br><span class="line">　　<span class="keyword">return</span> Evaluate(); </span><br><span class="line">　&#125; </span><br><span class="line">　GenerateLegalMoves(); </span><br><span class="line">　<span class="keyword">while</span> (MovesLeft()) &#123; </span><br><span class="line">　　MakeNextMove(); </span><br><span class="line">　　val = Max(depth - <span class="number">1</span>); </span><br><span class="line">　　UnmakeMove(); </span><br><span class="line">　　<span class="keyword">if</span> (val &lt; best) &#123; 　<span class="comment">// 注意这里不同于“最大”算法 </span></span><br><span class="line">　　　best = val; </span><br><span class="line">　　&#125; </span><br><span class="line">　&#125; </span><br><span class="line">　<span class="keyword">return</span> best; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="α-─-β-剪枝算法">α ─ β 剪枝算法</h3>
+<p>举例来说，考虑下面的例子：</p>
+<p><img src="/2023/02/19/AI-Logic/27136c5dc700966b4b96c59aa775fb97.png" alt="img"></p>
+<p>极小极大搜索是一个深度搜索，当搜索到第二层的第二个绿色的节点时，已知其第一个子节点返回值为2，因为这是一个极小节点，那么这个节点得到的值肯定是小于2的，而第二层的第一个绿色节点的值为7，因此这个节点后面即使都搜索了，也不会超过2，更不会超过7，因此这个节点后面的节点可以忽略，即图中第三册没有数字的节点。这属于Alpha剪枝，可能是剪掉的节点是极大节点的原因吧。相应的也有Beta剪枝，图中忽略了。</p>
+<p>Wiki伪代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">alphabeta</span><span class="params">(node, depth, α, β, Player)</span>         </span><br><span class="line">    <span class="keyword">if</span>  depth = <span class="number">0</span> or node is a terminal node</span><br><span class="line">        <span class="keyword">return</span> the heuristic value of node</span><br><span class="line">    <span class="keyword">if</span>  Player = MaxPlayer <span class="comment">// 极大节点</span></span><br><span class="line">        <span class="keyword">for</span> each child of node <span class="comment">// 极小节点</span></span><br><span class="line">            α := max(α, alphabeta(child, depth<span class="number">-1</span>, α, β, not(Player) ))   </span><br><span class="line">            <span class="keyword">if</span> β ≤ α <span class="comment">// 该极大节点的值&gt;=α&gt;=β，该极大节点后面的搜索到的值肯定会大于β，因此不会被其上层的极小节点所选用了。对于根节点，β为正无穷</span></span><br><span class="line">                <span class="keyword">break</span>                             (* Beta cut-off *)</span><br><span class="line">        <span class="keyword">return</span> α</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">// 极小节点</span></span><br><span class="line">        <span class="keyword">for</span> each child of node <span class="comment">// 极大节点</span></span><br><span class="line">            β := min(β, alphabeta(child, depth<span class="number">-1</span>, α, β, not(Player) )) <span class="comment">// 极小节点</span></span><br><span class="line">            <span class="keyword">if</span> β ≤ α <span class="comment">// 该极大节点的值&lt;=β&lt;=α，该极小节点后面的搜索到的值肯定会小于α，因此不会被其上层的极大节点所选用了。对于根节点，α为负无穷</span></span><br><span class="line">                <span class="keyword">break</span>                             (* Alpha cut-off *)</span><br><span class="line">        <span class="keyword">return</span> β </span><br><span class="line">(* Initial call *)</span><br><span class="line">alphabeta(origin, depth, -infinity, +infinity, MaxPlayer)</span><br></pre></td></tr></table></figure>
+<h3 id="评估函数">评估函数</h3>
+<p>游戏胜利条件：把敌人（avatar）血量清空，因此我们对战况的评分是根据不同操作对敌人（human）的avatar的血量减少程度为基础的：具体评分如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if(自己不死):</span><br><span class="line">&#123;</span><br><span class="line">	if(canAttackHuman)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​	humanAvatarHp&lt;=0:9999;</span><br><span class="line"></span><br><span class="line">​	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="移动-战斗AI：">移动&amp;战斗AI：</h2>
+<p>在让AI自动做出召唤决定前，必须提供一个方法让其判断哪种走法较优，也即需要一个局面评估函数，能够返回一个表示局面好坏的分数，对于AI方，这个分数越大越好。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">evaluate</span><span class="params">(GameState gs)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">var</span> <span class="variable">score</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       score += unitCompetenceEvaluate();</span><br><span class="line">	score += enemyAvatarHit();</span><br><span class="line">	score += enemyMinionHit();</span><br><span class="line">	<span class="keyword">return</span> score;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前的局面评估只包括一个主要部分和两个分支部分，分别为本身战斗力和生命综合评估、对敌人avatar威胁评估和对敌人小兵威胁评估，主要部分unitCompetenceEvaluate依次考虑棋面上每个单独的子，由它们本身的属性和所在位置决定它们的分数，AI取正值，human取负值，并累加起来。</p>
+<p>有了棋面评估函数，AI现在可以遍历每一个己方棋子的每一种走法，并判断该走法的分数，基于这个，已经可以实现一个贪心算法，该算法只考虑当前的一步，并选择对自己最有利的走法。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Franklin Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/19/AI-Logic/">http://example.com/2023/02/19/AI-Logic/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/20/CSD-Information-Theory/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">CSD-Information-Theory</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/15/CSD-week1/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">CSD-week1</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/ShearPlume/ShearPlume.github.io/blob/hexo/source/images/headprofile.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Franklin Yang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ShearPlume"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的小屋，请不要吝啬评论</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#human%E7%82%B9%E5%87%BBendturn"><span class="toc-number">1.</span> <span class="toc-text">human点击endturn-&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#EndTurnClickedToDo-roundEnd-human-human%E5%9B%9E%E5%90%88%E7%BB%93%E6%9D%9F"><span class="toc-number">1.1.</span> <span class="toc-text">EndTurnClickedToDo.roundEnd(human)&#x2F;&#x2F;human回合结束-&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RoundCommands-roundStart-ai-ai%E5%9B%9E%E5%90%88%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.</span> <span class="toc-text">RoundCommands.roundStart(ai)&#x2F;&#x2F;ai回合开始-&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AILogic-aiPlaying-out-gs-ai%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">AILogic.aiPlaying(out, gs);&#x2F;&#x2F;ai流程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#if-attackOrDefence-%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E5%80%BC%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">if(attackOrDefence());&#x2F;&#x2F;极大极小值评估函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#do-sth"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">do sth;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#AICommands-aiEndRound-out-gs-ai%E5%9B%9E%E5%90%88%E7%BB%93%E6%9D%9F"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">AICommands.aiEndRound(out, gs);&#x2F;&#x2F;ai回合结束</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#EndTurnClickedToDo-roundEnd-out-gs-%E2%80%9Cai%E2%80%9D"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">EndTurnClickedToDo.roundEnd(out, gs, “ai”);</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#RoundCommands-roundStart-out-gs-%E2%80%9Chuman%E2%80%9D"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">RoundCommands.roundStart(out, gs, “human”);</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E7%A7%BB%E5%8A%A8%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">单位移动思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E6%94%BB%E5%87%BB%E6%80%9D%E8%B7%AF"><span class="toc-number">3.</span> <span class="toc-text">单位攻击思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AC%E5%94%A4%E7%89%8C%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">召唤牌思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%9F%E6%A1%88%EF%BC%9A%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E5%80%BC%EF%BC%8C%CE%B1%CE%B2%E5%89%AA%E6%9E%9D%E6%A0%91"><span class="toc-number">5.</span> <span class="toc-text">废案：极大极小值，αβ剪枝树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%8F%AC%E5%94%A4%E7%89%8C%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">打召唤牌：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E5%80%BC%E6%90%9C%E7%B4%A2"><span class="toc-number">6.</span> <span class="toc-text">极大极小值搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%CE%B1-%E2%94%80-%CE%B2-%E5%89%AA%E6%9E%9D%E7%AE%97%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">α ─ β 剪枝算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">评估函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8-%E6%88%98%E6%96%97AI%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">移动&amp;战斗AI：</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/11/07/DB-week-9-Optimization/" title="No title">No title</a><time datetime="2023-11-07T11:49:23.518Z" title="Created 2023-11-07 19:49:23">2023-11-07</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/10/week-7-Security-Secure-Coding-and-DevelopmentFolder/" title="week 7 Security, Secure Coding and DevelopmentFolder">week 7 Security, Secure Coding and DevelopmentFolder</a><time datetime="2023-05-09T19:13:46.000Z" title="Created 2023-05-10 03:13:46">2023-05-10</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-5-Public-Key-Cryptography/" title="week 5 Public Key Cryptography">week 5 Public Key Cryptography</a><time datetime="2023-05-02T20:00:52.000Z" title="Created 2023-05-03 04:00:52">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/03/week-4-Message-Digests-Random-Numbers-and-Secret-Sharing/" title="week 4 Message Digests, Random Numbers, and Secret Sharing">week 4 Message Digests, Random Numbers, and Secret Sharing</a><time datetime="2023-05-02T19:58:16.000Z" title="Created 2023-05-03 03:58:16">2023-05-03</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/05/02/CSD-Week3/" title="CSD-Week3">CSD-Week3</a><time datetime="2023-05-01T16:45:56.000Z" title="Created 2023-05-02 00:45:56">2023-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Franklin Yang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BUCFEIpgwsBkU6fuwYjsHeT5-MdYXbMMI',
+      appKey: 'Lhv1jbHMxufk10Q2ItAtLpnq',
+      avatar: 'monsterid',
+      serverURLs: 'https://bucfeipg.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
